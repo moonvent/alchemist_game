@@ -5,7 +5,8 @@ extends ColorRect
 class_name AlchemyTableElement
 
 
-@export var element: AlchemistCore.Element
+@export var element: AlchemyElements.Element
+var element_data: AlchemyElements.AlchemyElementData
 
 
 var dragging = false
@@ -13,11 +14,8 @@ var has_entered = false
 
 
 func _ready():
-	$Label.text = AlchemistCore.ElementData[element]
-
-
-func _custom_init(created_element: AlchemistCore.Element):
-	element = created_element
+	element_data = AlchemyElements.InitializedElements[element]
+	$Label.text = element_data.name
 
 
 func _input(event):
@@ -45,7 +43,7 @@ func _on_area_2d_area_entered(area):
 	var entered_element_name = alchemy_table_element.element
 	var elements_to_merge = [entered_element_name, element]
 	elements_to_merge.sort()
-	var new_element = AlchemistCore.ELEMENT_CREATION_MAP.get(elements_to_merge)
+	var new_element = AlchemyElements.CreationMap.get(elements_to_merge)
 
 	if new_element:
 		var self_copy = duplicate()

@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AlchemistCore="*res://alchemist_core.gd"
+Contant="*res://utils/contants.gd"
+AlchemyElements="*res://alchemy/aspects/elements.gd"
 
 [rendering]
 

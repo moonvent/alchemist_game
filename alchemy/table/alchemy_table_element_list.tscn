@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://4ung2so5ttkx"]
+
+[ext_resource type="Script" path="res://alchemy/table/alchemy_table_element_list.gd" id="1_qspel"]
+
+[node name="AlchemyTableElementList" type="TabContainer"]
+offset_right = 259.0
+offset_bottom = 646.0
+tab_alignment = 1
+script = ExtResource("1_qspel")
+
+[node name="Elements" type="TabBar" parent="."]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Elements"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+columns = 3
+
+[node name="Recipe Book" type="TabBar" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="GridContainer2" type="GridContainer" parent="Recipe Book"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 32.0
+offset_right = 259.0
+offset_bottom = 643.0
