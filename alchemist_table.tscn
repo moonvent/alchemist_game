@@ -1,24 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://btuvrqfja580s"]
 
 [ext_resource type="Script" path="res://alchemist_table.gd" id="1_qotgv"]
-[ext_resource type="Script" path="res://alchemist_core.gd" id="2_3m3ba"]
+[ext_resource type="PackedScene" uid="uid://4ung2so5ttkx" path="res://alchemy/table/alchemy_table_element_list.tscn" id="2_t78ex"]
 [ext_resource type="PackedScene" uid="uid://b5gx52xo32ick" path="res://alchemy_table_element.tscn" id="2_w3t03"]
 
 [node name="AlchemistTable" type="Node2D"]
 script = ExtResource("1_qotgv")
 
-[node name="AlchemistCore" type="Node" parent="."]
-script = ExtResource("2_3m3ba")
+[node name="AlchemyTableElementList" parent="." instance=ExtResource("2_t78ex")]
 
 [node name="AlchemyTableElement" parent="." instance=ExtResource("2_w3t03")]
-offset_left = 200.0
-offset_top = 83.0
-offset_right = 240.0
-offset_bottom = 106.0
+offset_left = 459.0
+offset_top = 109.0
+offset_right = 499.0
+offset_bottom = 149.0
 element = 1
 
 [node name="AlchemyTableElement2" parent="." instance=ExtResource("2_w3t03")]
-offset_left = 63.0
-offset_top = 80.0
-offset_right = 103.0
-offset_bottom = 103.0
+offset_left = 322.0
+offset_top = 111.0
+offset_right = 362.0
+offset_bottom = 151.0

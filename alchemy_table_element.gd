@@ -12,10 +12,29 @@ var element_data: AlchemyElements.AlchemyElementData
 var dragging = false
 var has_entered = false
 
+var alchemy_table_element_list: AlchemyTableElementList
+
+
+func custom_init(_element):
+	element = _element
+
 
 func _ready():
 	element_data = AlchemyElements.InitializedElements[element]
 	$Label.text = element_data.name
+
+
+func start_dragging():
+	dragging = true
+	$Area2D.connect("area_entered", _on_area_2d_area_entered)
+
+
+func stop_dragging():
+	dragging = false
+	$Area2D.disconnect("area_entered", _on_area_2d_area_entered)
+	
+	if alchemy_table_element_list and get_rect().intersects(alchemy_table_element_list.get_rect()):
+		queue_free()
 
 
 func _input(event):
@@ -25,13 +44,10 @@ func _input(event):
 			if event.pressed:
 
 				if get_rect().has_point(event.position):
-					dragging = true
-					
-					$Area2D.connect("area_entered", _on_area_2d_area_entered)
+					start_dragging()
 
 			else:
-				dragging = false
-				$Area2D.disconnect("area_entered", _on_area_2d_area_entered)
+				stop_dragging()
 
 	elif event is InputEventMouseMotion:
 

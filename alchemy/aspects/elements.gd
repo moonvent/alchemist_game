@@ -77,7 +77,3 @@ var InitializedElements = {
 }
 
 
-func kek():
-	var a = InitializedElements[Element.Fire]
-	print(a, a.name)
-	return a

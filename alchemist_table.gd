@@ -1,6 +1,9 @@
 extends Node2D
 
 
+class_name AlchemyTable
+
+
 var AlchemyTableElementScene = preload("res://alchemy_table_element.tscn")
 
 

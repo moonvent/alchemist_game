@@ -12,7 +12,9 @@ script = ExtResource("1_qspel")
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="Elements"]
-layout_mode = 2
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 2.0
@@ -23,8 +25,9 @@ visible = false
 layout_mode = 2
 
 [node name="GridContainer2" type="GridContainer" parent="Recipe Book"]
-layout_mode = 2
-offset_left = 1.0
-offset_top = 32.0
-offset_right = 259.0
-offset_bottom = 643.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
