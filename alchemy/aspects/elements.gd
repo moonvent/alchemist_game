@@ -1,23 +1,33 @@
 extends Node
 
 
+# english alphabet
+# A B C D 
+# E F G H 
+# I J K L 
+# M N O P 
+# Q R S T 
+# U V W X Y 
+# Z
+
+
 enum Element{
+	Air,
+	Earth,
 	Fire,
 	Water,
-	Earth,
-	Air,
 
-	Steam,
+	Lava,
 	Light,
 	Plant,
-	Wind,
+	Steam,
 	Stone,
-	Lava,
+	Wind,
 
-	Tree,
 	Grass,
 	Life,
 	Ore,
+	Tree,
 }
 
 
@@ -28,6 +38,16 @@ const ElementLevelMap = {
 	Element.Earth: 1,
 
 	Element.Steam: 2,
+	Element.Light: 2,
+	Element.Plant: 2,
+	Element.Wind: 2,
+	Element.Stone: 2,
+	Element.Lava: 2,
+
+	Element.Tree: 3,
+	Element.Grass: 3,
+	Element.Life: 3,
+	Element.Ore: 3,
 }
 
 
@@ -47,11 +67,33 @@ const CreationMap = {
 }
 
 
+const RadiusMap = {
+	Element.Air: 5,
+	Element.Earth: 5,
+	Element.Fire: 5,
+	Element.Water: 5,
+
+	Element.Steam: 4,
+	Element.Light: 4,
+	Element.Plant: 4,
+	Element.Wind: 4,
+	Element.Stone: 4,
+	Element.Lava: 4,
+
+	Element.Tree: 3,
+	Element.Grass: 3,
+	Element.Life: 3,
+	Element.Ore: 3,
+
+}
+
+
 class AlchemyElementData:
 	var element: Element
 	var name: String
 	var picture: String
 	var level: int
+	var radius: int
 
 	func _init(_element: Element):
 		element = _element
@@ -65,15 +107,18 @@ class AlchemyElementData:
 
 	func _setup_element_params():
 		level = ElementLevelMap.get(element)
+		radius = RadiusMap.get(element)
 
 
-var InitializedElements = {
-	Element.Fire: AlchemyElementData.new(Element.Fire),
-	Element.Water: AlchemyElementData.new(Element.Water),
-	Element.Air: AlchemyElementData.new(Element.Air),
-	Element.Earth: AlchemyElementData.new(Element.Earth),
+func _generate_initialized_elements():
+	var initialized_elements = {}
+	var element_number = 0
 
-	Element.Steam: AlchemyElementData.new(Element.Steam),
-}
+	for element in Element:
+		element_number = Element[element]
+		initialized_elements[element_number] = AlchemyElementData.new(element_number)
+
+	return initialized_elements
 
 
+var InitializedElements = _generate_initialized_elements()

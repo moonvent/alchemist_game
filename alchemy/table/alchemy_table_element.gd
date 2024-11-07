@@ -22,6 +22,11 @@ func custom_init(_element):
 func _ready():
 	element_data = AlchemyElements.InitializedElements[element]
 	$Label.text = element_data.name
+	var collision_shape = $Area2D.get_node("CollisionShape2D")
+	#collision_shape.shape.radius += 5 + element_data.radius
+	var material = CanvasItemMaterial.new()
+	#material.self_modulate = Color(1, 0, 0, 0.5)
+	#collision_shape.material = material
 
 
 func start_dragging():
@@ -59,6 +64,7 @@ func _on_area_2d_area_entered(area):
 	var entered_element_name = alchemy_table_element.element
 	var elements_to_merge = [entered_element_name, element]
 	elements_to_merge.sort()
+
 	var new_element = AlchemyElements.CreationMap.get(elements_to_merge)
 
 	if new_element:
@@ -68,4 +74,3 @@ func _on_area_2d_area_entered(area):
 		alchemy_table_element.queue_free()
 		queue_free()
 		
-

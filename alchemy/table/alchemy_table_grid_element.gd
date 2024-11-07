@@ -6,7 +6,7 @@ class_name AlchemyTableGridElement
 
 var element: AlchemyElements.AlchemyElementData
 var _table_element: AlchemyTable
-var _alchemy_table_element_prefab = preload("res://alchemy_table_element.tscn")
+var _alchemy_table_element_prefab = preload("res://alchemy/table/alchemy_table_element.tscn")
 var _alchemy_table_element_list: AlchemyTableElementList
 
 

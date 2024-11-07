@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://btuvrqfja580s"]
 
-[ext_resource type="Script" path="res://alchemist_table.gd" id="1_qotgv"]
+[ext_resource type="Script" path="res://alchemy/table/alchemist_table.gd" id="1_qotgv"]
 [ext_resource type="PackedScene" uid="uid://4ung2so5ttkx" path="res://alchemy/table/alchemy_table_element_list.tscn" id="2_t78ex"]
-[ext_resource type="PackedScene" uid="uid://b5gx52xo32ick" path="res://alchemy_table_element.tscn" id="2_w3t03"]
+[ext_resource type="PackedScene" uid="uid://b5gx52xo32ick" path="res://alchemy/table/alchemy_table_element.tscn" id="2_w3t03"]
 
 [node name="AlchemistTable" type="Node2D"]
 script = ExtResource("1_qotgv")
 
 [node name="AlchemyTableElementList" parent="." instance=ExtResource("2_t78ex")]
+current_tab = 0
 
 [node name="AlchemyTableElement" parent="." instance=ExtResource("2_w3t03")]
 offset_left = 459.0

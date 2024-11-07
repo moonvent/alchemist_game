@@ -4,7 +4,7 @@ extends Node2D
 class_name AlchemyTable
 
 
-var AlchemyTableElementScene = preload("res://alchemy_table_element.tscn")
+var AlchemyTableElementScene = preload("res://alchemy/table/alchemy_table_element.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,6 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxo3khff5vcli"]
-
-[ext_resource type="Script" path="res://alchemist_element.gd" id="1_cuyx7"]
+[gd_scene format=3 uid="uid://dlwt0shjtyuy4"]
 
 [node name="AlchemistElement" type="Node"]
-script = ExtResource("1_cuyx7")
