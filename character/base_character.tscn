@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=3 uid="uid://dq83nruv4u00g"]
+
+[ext_resource type="Texture2D" uid="uid://dnb74x2rlb6y8" path="res://assets/map/gfx/character.png" id="1_uyeml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2okd7"]
+size = Vector2(13.5, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbyr2"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(0, 4, 16, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8wxe"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(16, 4, 16, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hubq"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(32, 4, 16, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf6ur"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(48, 4, 16, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqvow"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(0, 101, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdgka"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(16, 101, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2xji"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(32, 101, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oe0w"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(48, 101, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyg4s"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(0, 38, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kb0b"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(16, 38, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu0ws"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(32, 38, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5vle"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(48, 38, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53guy"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(0, 68, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rownq"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(32, 68, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a7jo"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(48, 68, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf0yf"]
+atlas = ExtResource("1_uyeml")
+region = Rect2(16, 68, 16, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhtuk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbyr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8wxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hubq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf6ur")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqvow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdgka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2xji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oe0w")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyg4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kb0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu0ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5vle")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53guy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rownq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a7jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf0yf")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 1.0
+}]
+
+[node name="BaseCharacter" type="CharacterBody2D"]
+
+[node name="CollisionShapeForMap" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 5)
+shape = SubResource("RectangleShape2D_2okd7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xhtuk")
+animation = &"move_up"
+speed_scale = 10.0
