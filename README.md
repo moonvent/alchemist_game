@@ -33,8 +33,10 @@ if near the villager logic the same, but villagers can attack enemies to.
 ### Descriptions for references
 
 [1] Aspects can be merge in more difficult aspects, for example: fire + air = light
+
 [2] For example, to make the Iron he need to make some actions, create the researche from the book,
 place it on the learning table, and connect to or more point in one line.
+
 [3] Make the feature for learning, for example, one element will be in left side, one in right side,
 after that we need to add to the element from one of side the aspect, which contain connect aspect or
 make from it. For example, we have left side the iron, iron consist from earth and fire, it's mean, we 
