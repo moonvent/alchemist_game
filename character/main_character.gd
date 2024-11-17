@@ -24,14 +24,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_down"):
 		direction.y += 1
 
-	if direction.y and direction.x:
-		sprite.play("move_down" if direction.y == 1 else "move_up")
-	elif direction.y:
-		sprite.play("move_down" if direction.y == 1 else "move_up")
-	elif direction.x:
-		sprite.play("move_right" if direction.x == 1 else "move_left")
-	else:
-		sprite.stop()
+	_play_sprite_animation(direction)
 
 	direction = direction.normalized()
 	velocity = direction * SPEED
