@@ -35,8 +35,7 @@ func _physics_process(delta):
 			has_seen_player = false
 
 	velocity = direction * SPEED
-	print(direction)
-	_play_sprite_animation(direction)
+	_play_run_sprite_animation(direction)
 	move_and_slide()
 
 func can_see_player() -> bool:

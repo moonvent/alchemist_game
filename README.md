@@ -14,7 +14,7 @@ Game work on Godot 4.3
 
 ### Points
 
-- [ ] Make brain for enemies and villagers
+- [x] Make brain for enemies and villagers
   - [ ] Make following for the main character from enemy if they see him, if enemy doesn't see the main hero, 
   it going to the last point where see them and start to explore terrain, search the corners and some this logic
   - [ ] Villagers need just live, they can to make some actions in their home, out from home, going to the market, speak with other npc
