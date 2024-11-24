@@ -6,8 +6,10 @@ Game work on Godot 4.3
 
 ## State Log
 
-* State on 28.07.2024: https://youtu.be/8ys3l1ou1Bg
+More about features in 'CHANGELOG.md'
+
 * State on 16.11.2024: https://youtu.be/r8zgBmNLmKo
+* State on 28.07.2024: https://youtu.be/8ys3l1ou1Bg
 
 
 ## Roadmap
