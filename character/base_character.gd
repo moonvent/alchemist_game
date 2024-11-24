@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 
 
-const SPEED = 150.0
+const SPEED = 75.0
 const JUMP_VELOCITY = -400.0
 
 enum AttackSide {
@@ -33,3 +33,29 @@ func _play_attack_sprite_animation(attack_side: AttackSide):
 			sprite.play("attack_down")
 		AttackSide.RIGHT:
 			sprite.play("attack_right")
+
+
+func _attack():
+
+	var diff = get_global_mouse_position() - global_position
+
+	if diff.x >= 0 and diff.y <= 0:
+		# top right
+		_play_attack_sprite_animation(
+			AttackSide.TOP if (abs(diff.y) > diff.x) else AttackSide.RIGHT
+		)
+	elif diff.x >= 0 and diff.y >= 0:
+		# bottom right
+		_play_attack_sprite_animation(
+			AttackSide.BOTTOM if (diff.y > diff.x) else AttackSide.RIGHT
+		)
+	elif diff.x <= 0 and diff.y <= 0:
+		# top left
+		_play_attack_sprite_animation(
+			AttackSide.TOP if (abs(diff.y) > abs(diff.x)) else AttackSide.LEFT
+		)
+	elif diff.x <= 0 and diff.y >= 0:
+		# bottom left
+		_play_attack_sprite_animation(
+			AttackSide.BOTTOM if (diff.y > abs(diff.x)) else AttackSide.LEFT
+		)

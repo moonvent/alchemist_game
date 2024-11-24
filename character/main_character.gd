@@ -25,31 +25,3 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed('attack'):
 		_attack()
-
-
-func _attack():
-
-	var diff = get_global_mouse_position() - global_position
-
-	print(diff)
-
-	if diff.x >= 0 and diff.y <= 0:
-		# top right
-		_play_attack_sprite_animation(
-			AttackSide.TOP if (abs(diff.y) > diff.x) else AttackSide.RIGHT
-		)
-	elif diff.x >= 0 and diff.y >= 0:
-		# bottom right
-		_play_attack_sprite_animation(
-			AttackSide.BOTTOM if (diff.y > diff.x) else AttackSide.RIGHT
-		)
-	elif diff.x <= 0 and diff.y <= 0:
-		# top left
-		_play_attack_sprite_animation(
-			AttackSide.TOP if (abs(diff.y) > abs(diff.x)) else AttackSide.LEFT
-		)
-	elif diff.x <= 0 and diff.y >= 0:
-		# bottom left
-		_play_attack_sprite_animation(
-			AttackSide.BOTTOM if (diff.y > abs(diff.x)) else AttackSide.LEFT
-		)

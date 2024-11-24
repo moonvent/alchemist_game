@@ -6,7 +6,7 @@ Game work on Godot 4.3
 
 ## State Log
 
-More about features in 'CHANGELOG.md'
+More about dev activity in [Changelog](CHANGELOG.md)
 
 * State on 16.11.2024: https://youtu.be/r8zgBmNLmKo
 * State on 28.07.2024: https://youtu.be/8ys3l1ou1Bg
