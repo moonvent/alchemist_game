@@ -11,10 +11,13 @@ var vision_angle: float = 60
 # see only in up
 var forward_vector: Vector2 = Vector2.UP
 
+var vision_zone_node: Node2D
+
 
 func _ready():
 	player = get_node_or_null("../MainCharacter")
 	assert(player != null, "Player node not found! Check the path.")
+	vision_zone_node = get_node('VisionZone')
 
 
 func _physics_process(delta):
@@ -47,29 +50,7 @@ func can_see_player() -> bool:
 
 	var angle_to_player = forward_vector.angle_to(to_player)
 
-	return abs(rad_to_deg(angle_to_player)) <= vision_angle
-
-
-func _draw():
-	# draw_circle(Vector2.ZERO, vision_range, Color(0, 1, 0, 0.5))
-	# var angle_start = forward_vector.angle() - deg_to_rad(vision_angle)
-	# var angle_end = forward_vector.angle() + deg_to_rad(vision_angle)
-	# draw_arc(
-	# 	Vector2.ZERO, 
-	# 	vision_range, 
-	# 	angle_start,
-	# 	angle_end,
-	# 	50, 
-	# 	Color(1, 1, 0, 0.9),
-	# 	# vision_range
-	# )
-	var angle_start = forward_vector.angle() - deg_to_rad(vision_angle)
-	var angle_end = forward_vector.angle() + deg_to_rad(vision_angle)
-	var step = (angle_end - angle_start) / 50
-	
-	var points = [Vector2.ZERO]
-	for i in range(51):
-			var angle = angle_start + step * i
-			points.append(Vector2(cos(angle), sin(angle)) * vision_range)
-	
-	draw_polygon(points, [Color(1, 0, 0, 0.5)])
+	if abs(rad_to_deg(angle_to_player)) <= vision_angle:
+		vision_zone_node.redraw(to_player)
+		return true
+	return false

@@ -6,6 +6,8 @@ extends CharacterBody2D
 const SPEED = 75.0
 const JUMP_VELOCITY = -400.0
 
+var is_attacking = false
+
 enum AttackSide {
 	TOP,
 	LEFT,
@@ -59,3 +61,8 @@ func _attack():
 		_play_attack_sprite_animation(
 			AttackSide.BOTTOM if (diff.y > abs(diff.x)) else AttackSide.LEFT
 		)
+
+
+func _on_animated_sprite_2d_animation_finished():
+	print(1)
+	# need to setup argument about animation which finish

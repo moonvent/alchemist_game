@@ -24,4 +24,5 @@ func _physics_process(delta):
 		move_and_slide()
 
 	if Input.is_action_pressed('attack'):
+		is_attacking = true
 		_attack()
