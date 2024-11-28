@@ -9,7 +9,11 @@ script = ExtResource("2_hqpet")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 self_modulate = Color(1, 0.261236, 0.337813, 1)
-animation = &"move_up"
+animation = &"move_left"
+frame = 0
 
 [node name="VisionZone" type="Node2D" parent="." index="2"]
 script = ExtResource("3_k8bqn")
+
+[node name="Collisions" parent="." index="3"]
+visible = false

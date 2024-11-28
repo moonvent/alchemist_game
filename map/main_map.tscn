@@ -3702,10 +3702,9 @@ tile_set = SubResource("TileSet_ut8sc")
 
 [node name="Villager" parent="." instance=ExtResource("3_l65ui")]
 position = Vector2(71, -26)
-script = null
 
 [node name="Enemy" parent="." instance=ExtResource("4_otygb")]
-position = Vector2(35.5, -44)
+position = Vector2(-94, 80)
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_lxmyn")]
 position = Vector2(-141.5, 110)

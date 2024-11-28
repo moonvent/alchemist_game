@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.2.2] - 2024-11-28
+
+### Added
+- Collisions to attack animation
+- Logic to separate attack with moving animation
 
 ## [0.2.1] - 2024-11-26
 

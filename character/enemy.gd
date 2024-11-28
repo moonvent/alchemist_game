@@ -8,6 +8,7 @@ var has_seen_player: bool = false
 var vision_angle: float = 60
 
 
+
 # see only in up
 var forward_vector: Vector2 = Vector2.UP
 
@@ -15,6 +16,7 @@ var vision_zone_node: Node2D
 
 
 func _ready():
+	SPEED = 20
 	player = get_node_or_null("../MainCharacter")
 	assert(player != null, "Player node not found! Check the path.")
 	vision_zone_node = get_node('VisionZone')
@@ -37,6 +39,9 @@ func _physics_process(delta):
 		
 		if global_position.distance_to(last_seen_position) < 10:
 			has_seen_player = false
+
+	if global_position.distance_to(last_seen_position) < 20:
+		_start_attack(last_seen_position)
 
 	velocity = direction * SPEED
 	_play_run_sprite_animation(direction)
