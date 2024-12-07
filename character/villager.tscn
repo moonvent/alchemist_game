@@ -8,6 +8,5 @@ script = null
 [node name="AnimatedSprite2D" parent="." index="1"]
 self_modulate = Color(9.72241e-06, 0.9384, 0.236581, 1)
 animation = &"move_up"
-frame = 0
 
 [node name="VisionZone" type="Node2D" parent="." index="2"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://dq83nruv4u00g"]
+[gd_scene load_steps=42 format=3 uid="uid://dq83nruv4u00g"]
 
 [ext_resource type="Script" path="res://character/base_character.gd" id="1_cw67c"]
 [ext_resource type="Texture2D" uid="uid://dnb74x2rlb6y8" path="res://assets/map/gfx/character.png" id="1_uyeml"]
+[ext_resource type="AudioStream" uid="uid://cf3cn2pc1kbbc" path="res://assets/sounds/sword_clash.mp3" id="3_crni2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2okd7"]
 size = Vector2(13.5, 10)
@@ -318,8 +319,7 @@ shape = SubResource("RectangleShape2D_2okd7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xhtuk")
-animation = &"attack_up"
-frame = 2
+animation = &"attack_down"
 speed_scale = 10.0
 
 [node name="Collisions" type="Node2D" parent="."]
@@ -333,75 +333,93 @@ speed_scale = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Attack/Down/First"]
 position = Vector2(-4, 1.5)
 shape = SubResource("RectangleShape2D_4ps06")
+disabled = true
 
 [node name="Second" type="Area2D" parent="Collisions/Attack/Down"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/Attack/Down/Second"]
 polygon = PackedVector2Array(-7, 3, -4, 13, 3, 5, 1, 3, -3, 6)
+disabled = true
 
 [node name="Third" type="Area2D" parent="Collisions/Attack/Down"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/Attack/Down/Third"]
 polygon = PackedVector2Array(3, 4, 6, 4, 6, 12, 0, 10)
+disabled = true
 
 [node name="Right" type="Node2D" parent="Collisions/Attack"]
+visible = false
 
 [node name="First" type="Area2D" parent="Collisions/Attack/Right"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/Attack/Right/First"]
 polygon = PackedVector2Array(2, 6, 9, 11, 9, 8, 4, 4)
+disabled = true
 
 [node name="Second" type="Area2D" parent="Collisions/Attack/Right"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/Attack/Right/Second"]
 position = Vector2(0, -3)
 polygon = PackedVector2Array(3, 7, 7, 7, 5, 14, 9, 9, 10, 4, 3, 4)
+disabled = true
 
 [node name="Third" type="Area2D" parent="Collisions/Attack/Right"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Attack/Right/Third"]
 position = Vector2(7, -1.625)
 shape = SubResource("RectangleShape2D_5jcwa")
+disabled = true
 
 [node name="Up" type="Node2D" parent="Collisions/Attack"]
+visible = false
 
 [node name="First" type="Area2D" parent="Collisions/Attack/Up"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Attack/Up/First"]
 position = Vector2(6.5, 2.75)
 shape = SubResource("RectangleShape2D_4ps06")
+disabled = true
 
 [node name="Second" type="Area2D" parent="Collisions/Attack/Up"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Attack/Up/Second"]
 position = Vector2(6.75, -2.75)
 shape = SubResource("RectangleShape2D_4ggn6")
+disabled = true
 
 [node name="Third" type="Area2D" parent="Collisions/Attack/Up"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Attack/Up/Third"]
 position = Vector2(0.5, -9.5)
 shape = SubResource("RectangleShape2D_3s2go")
+disabled = true
 
 [node name="Left" type="Node2D" parent="Collisions/Attack"]
+visible = false
 
 [node name="First" type="Area2D" parent="Collisions/Attack/Left"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/Attack/Left/First"]
 position = Vector2(-2, 0)
 polygon = PackedVector2Array(-3, 11, 3, 5, 1, 3, -3, 6, -5, 9)
+disabled = true
 
 [node name="Second" type="Area2D" parent="Collisions/Attack/Left"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/Attack/Left/Second"]
 position = Vector2(-8, -3)
 polygon = PackedVector2Array(3, 4, 6, 4, 6, 8, 2, 8, 3, 15, -1, 10, -3, 5)
+disabled = true
 
 [node name="Third" type="Area2D" parent="Collisions/Attack/Left"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/Attack/Left/Third"]
 position = Vector2(-8, -3)
 polygon = PackedVector2Array(5, 2, 4, 5, 0, 4, -1, 0, -1, -3)
+disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_crni2")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

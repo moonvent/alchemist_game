@@ -10,10 +10,54 @@ script = ExtResource("2_hqpet")
 [node name="AnimatedSprite2D" parent="." index="1"]
 self_modulate = Color(1, 0.261236, 0.337813, 1)
 animation = &"move_left"
-frame = 0
 
 [node name="VisionZone" type="Node2D" parent="." index="2"]
 script = ExtResource("3_k8bqn")
 
 [node name="Collisions" parent="." index="3"]
 visible = false
+
+[node name="CollisionShape2D" parent="Collisions/Attack/Down/First" index="0"]
+disabled = false
+
+[node name="CollisionPolygon2D" parent="Collisions/Attack/Down/Second" index="0"]
+disabled = false
+
+[node name="CollisionPolygon2D" parent="Collisions/Attack/Down/Third" index="0"]
+disabled = false
+
+[node name="Right" parent="Collisions/Attack" index="1"]
+visible = true
+
+[node name="CollisionPolygon2D" parent="Collisions/Attack/Right/First" index="0"]
+disabled = false
+
+[node name="CollisionPolygon2D" parent="Collisions/Attack/Right/Second" index="0"]
+disabled = false
+
+[node name="CollisionShape2D" parent="Collisions/Attack/Right/Third" index="0"]
+disabled = false
+
+[node name="Up" parent="Collisions/Attack" index="2"]
+visible = true
+
+[node name="CollisionShape2D" parent="Collisions/Attack/Up/First" index="0"]
+disabled = false
+
+[node name="CollisionShape2D" parent="Collisions/Attack/Up/Second" index="0"]
+disabled = false
+
+[node name="CollisionShape2D" parent="Collisions/Attack/Up/Third" index="0"]
+disabled = false
+
+[node name="Left" parent="Collisions/Attack" index="3"]
+visible = true
+
+[node name="CollisionPolygon2D" parent="Collisions/Attack/Left/First" index="0"]
+disabled = false
+
+[node name="CollisionPolygon2D" parent="Collisions/Attack/Left/Second" index="0"]
+disabled = false
+
+[node name="CollisionPolygon2D" parent="Collisions/Attack/Left/Third" index="0"]
+disabled = false

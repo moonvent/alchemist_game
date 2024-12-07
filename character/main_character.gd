@@ -1,6 +1,14 @@
 extends "res://character/base_character.gd"
 
 
+func _ready():
+	super._ready()
+	set_collision_layer(1)
+	set_collision_mask(2)
+
+	_setup_attack_collisions(3, 2)
+
+
 func _physics_process(delta):
 	var direction = Vector2.ZERO
 
@@ -23,5 +31,5 @@ func _physics_process(delta):
 		velocity = direction * SPEED
 		move_and_slide()
 
-	if Input.is_action_pressed('attack'):
+	if Input.is_action_pressed("attack"):
 		_start_attack(get_global_mouse_position())
