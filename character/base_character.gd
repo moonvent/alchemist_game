@@ -5,7 +5,12 @@ extends CharacterBody2D
 var SPEED = 75.0
 const JUMP_VELOCITY = -400.0
 
+var health_points = 10
+var primary_sword_damage_per_collider = 0.25
+
 var is_attacking = false
+
+var is_dead = false
 
 enum AttackSide {
 	UP,
@@ -18,20 +23,29 @@ var collision_attack: Node2D = null
 
 
 func _ready():
-	pass
+	_setup_attack_collisions()
+
+
+func die():
+	is_dead = true
+	set_collision_layer(2)
+	set_collision_mask(2)
+
+
+func make_damage(damage_points: float):
+	health_points -= damage_points
+	print(health_points)
+
+	if health_points == 0:
+		die()
 
 
 func _on_attack_collider_body_entered(body):
-	if body.name not in ["MainCharacter", "Enemy"]:
-		# print(body.name, body.get_collision_layer())
-		print(body.name)
-		pass
-		# velocity = Vector2.ZERO
-	# if body.name.starts_with("AttackCollider"):
-	# print("keks")
+	if body != self:
+		body.make_damage(primary_sword_damage_per_collider)
 
 
-func _setup_attack_collisions(collision_layer: int, mask_layer: int):
+func _setup_attack_collisions():
 	var attack_colliders_list = [
 		$Collisions/Attack/Up,
 		$Collisions/Attack/Left,
@@ -41,8 +55,6 @@ func _setup_attack_collisions(collision_layer: int, mask_layer: int):
 	for collider in attack_colliders_list:
 		for one_attack_frame in collider.get_children():
 			one_attack_frame.connect("body_entered", _on_attack_collider_body_entered)
-			one_attack_frame.set_collision_layer(collision_layer)
-			one_attack_frame.set_collision_mask(collision_mask)
 
 
 func _play_run_sprite_animation(direction: Vector2):
@@ -116,8 +128,7 @@ func _on_animated_sprite_2d_frame_changed():
 			current_frame_number = 2
 		if current_frame_number == 4:
 			current_frame_number = 0
-
-			_activate_attack_collider(current_frame_number)
+		_activate_attack_collider(current_frame_number)
 
 
 func _start_attack(attack_position_point: Vector2):

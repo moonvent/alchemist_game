@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Contant="*res://utils/contants.gd"
 AlchemyElements="*res://alchemy/aspects/elements.gd"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 move_up={

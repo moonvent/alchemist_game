@@ -3,10 +3,6 @@ extends "res://character/base_character.gd"
 
 func _ready():
 	super._ready()
-	set_collision_layer(1)
-	set_collision_mask(2)
-
-	_setup_attack_collisions(3, 2)
 
 
 func _physics_process(delta):

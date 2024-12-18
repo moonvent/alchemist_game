@@ -13,16 +13,11 @@ var vision_zone_node: Node2D
 
 
 func _ready():
-	SPEED = 0  # only for test
+	SPEED = 50  # only for test
 	player = get_node_or_null("../MainCharacter")
 	assert(player != null, "Player node not found! Check the path.")
 	vision_zone_node = get_node("VisionZone")
-
 	super._ready()
-	set_collision_layer(2)
-	set_collision_mask(1)
-
-	_setup_attack_collisions(4, 1)
 
 
 func _physics_process(delta):
