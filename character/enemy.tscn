@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c68liskpp1nvr"]
+[gd_scene load_steps=3 format=3 uid="uid://c68liskpp1nvr"]
 
 [ext_resource type="PackedScene" uid="uid://conyxj0l1d2aw" path="res://character/npc.tscn" id="1_ga7lh"]
 [ext_resource type="Script" path="res://character/enemy.gd" id="2_hqpet"]
-[ext_resource type="Script" path="res://character/vision_zone.gd" id="3_k8bqn"]
 
 [node name="Enemy" instance=ExtResource("1_ga7lh")]
 script = ExtResource("2_hqpet")
@@ -11,10 +10,7 @@ script = ExtResource("2_hqpet")
 self_modulate = Color(1, 0.261236, 0.337813, 1)
 animation = &"move_left"
 
-[node name="VisionZone" type="Node2D" parent="." index="2"]
-script = ExtResource("3_k8bqn")
-
-[node name="Collisions" parent="." index="3"]
+[node name="Collisions" parent="." index="2"]
 visible = false
 
 [node name="CollisionShape2D" parent="Collisions/Attack/Down/First" index="0"]
