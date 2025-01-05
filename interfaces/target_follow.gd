@@ -25,14 +25,17 @@ class FollowResult:
 
 	Attributes:
 		direction(Vector2): where the target
-		last_seen_position(Vector2): last seen position of target"
+		last_seen_position(Vector2): last seen position of target
+		is_lost_target(bool): if lost target it's true"
 
 	var direction: Vector2
 	var last_seen_position: Vector2
+	var is_lost_target: bool
 
-	func _init(_direction, _last_seen_position) -> void:
+	func _init(_direction: Vector2, _last_seen_position: Vector2, _is_lost_target: bool) -> void:
 		direction = _direction
 		last_seen_position = _last_seen_position
+		is_lost_target = _is_lost_target
 
 
 func _init(
@@ -53,6 +56,8 @@ func _ready() -> void:
 
 
 func follow():
+	var is_lost_target = false
+
 	if can_see_target():
 		_last_seen_position = _target.global_position
 		_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
@@ -64,9 +69,16 @@ func follow():
 		_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
 
 		if _main_node.global_position.distance_to(_last_seen_position) < 10:
+			# pause following if near last seen point
 			has_seen_target = false
 
-	return FollowResult.new(_follow_direction, _last_seen_position)
+		is_lost_target = true
+
+	else:
+		_follow_direction = Vector2.ZERO
+		is_lost_target = true
+
+	return FollowResult.new(_follow_direction, _last_seen_position, is_lost_target)
 
 
 func can_see_target() -> bool:
