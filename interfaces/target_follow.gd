@@ -7,7 +7,7 @@ var vision_angle: float = 60
 
 var has_seen_target: bool = false
 
-var _target: CharacterBody2D
+var _target: CharacterBody2D = null
 var _main_node: CharacterBody2D
 
 # see only in up
@@ -18,6 +18,8 @@ var _vision_zone_node: Node2D
 var _last_seen_position: Vector2 = Vector2.ZERO
 
 var _follow_direction: Vector2 = Vector2.ZERO
+
+var _vision_zone_area: Area2D
 
 
 class FollowResult:
@@ -39,12 +41,10 @@ class FollowResult:
 
 
 func _init(
-	target: CharacterBody2D,
 	main_node: CharacterBody2D,
 	_vision_range: int,
 	_vision_angle: int,
 ) -> void:
-	_target = target
 	_main_node = main_node
 	vision_range = _vision_range
 	vision_angle = _vision_angle
@@ -52,7 +52,22 @@ func _init(
 
 func _ready() -> void:
 	_vision_zone_node = VisionZone.new()
+
+	_vision_zone_area = get_parent().get_node('VisionZoneArea2D')
+	_vision_zone_area.connect('body_entered', _on_body_entered_in_vision_zone)
+	_vision_zone_area.connect('body_exited', _on_body_exited_from_vision_zone)
+
 	add_child(_vision_zone_node)
+
+
+func _on_body_entered_in_vision_zone(body):
+	if body != _main_node:
+		_target = body
+
+
+func _on_body_exited_from_vision_zone(body):
+	if body != _main_node:
+		_target = null
 
 
 func follow():
@@ -82,14 +97,4 @@ func follow():
 
 
 func can_see_target() -> bool:
-	if _main_node.global_position.distance_to(_target.global_position) > vision_range:
-		return false
-
-	var to_target = (_target.global_position - _main_node.global_position).normalized()
-
-	var angle_to_player = forward_vector.angle_to(to_target)
-
-	if abs(rad_to_deg(angle_to_player)) <= vision_angle:
-		return true
-
-	return false
+	return true if _target else false

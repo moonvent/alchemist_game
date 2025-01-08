@@ -58,3 +58,7 @@ disabled = false
 
 [node name="CollisionPolygon2D" parent="Collisions/Attack/Left/Third" index="0"]
 disabled = false
+
+[node name="CollisionPolygon2D" parent="VisionZoneArea2D" index="0"]
+position = Vector2(9, 0)
+polygon = PackedVector2Array(-16, -11, -16, 12, -37, 71, -77, 51, -108, 0, -77, -49, -28, -62)

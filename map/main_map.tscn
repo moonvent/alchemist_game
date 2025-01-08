@@ -3707,4 +3707,4 @@ position = Vector2(71, -26)
 position = Vector2(-94, 80)
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_lxmyn")]
-position = Vector2(-141.5, 110)
+position = Vector2(-204, 140)
