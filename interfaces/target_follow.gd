@@ -31,11 +31,13 @@ class FollowResult:
 	var direction: Vector2
 	var last_seen_position: Vector2
 	var is_lost_target: bool
+	var distance_to_target: float
 
-	func _init(_direction: Vector2, _last_seen_position: Vector2, _is_lost_target: bool) -> void:
+	func _init(_direction: Vector2, _last_seen_position: Vector2, _is_lost_target: bool, _distance_to_target: float) -> void:
 		direction = _direction
 		last_seen_position = _last_seen_position
 		is_lost_target = _is_lost_target
+		distance_to_target = _distance_to_target
 
 
 func _init(
@@ -55,17 +57,19 @@ func _ready() -> void:
 
 
 func _on_body_entered_in_vision_zone(body):
-	if body != _main_node:
+	if body != _main_node and not _target:
 		_target = body
 
 
 func _on_body_exited_from_vision_zone(body):
-	if body != _main_node:
+	if body != _main_node and _target:
 		_target = null
 
 
 func follow():
+
 	var is_lost_target = false
+	var distance_to_target = 0
 
 	if can_see_target():
 		_last_seen_position = _target.global_position
@@ -74,6 +78,7 @@ func follow():
 		has_seen_target = true
 		forward_vector = _follow_direction
 		_vision_zone_area.rotation = atan2(-follow_not_normalized_direction.y, -follow_not_normalized_direction.x)
+		distance_to_target = follow_not_normalized_direction.length()
 
 	elif has_seen_target:
 		_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
@@ -83,12 +88,13 @@ func follow():
 			has_seen_target = false
 
 		is_lost_target = true
+		distance_to_target = (_last_seen_position - _main_node.global_position).length()
 
 	else:
 		_follow_direction = Vector2.ZERO
 		is_lost_target = true
 
-	return FollowResult.new(_follow_direction, _last_seen_position, is_lost_target)
+	return FollowResult.new(_follow_direction, _last_seen_position, is_lost_target, distance_to_target)
 
 
 func can_see_target() -> bool:

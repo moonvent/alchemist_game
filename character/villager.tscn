@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://7e1ylgl02hha"]
+[gd_scene load_steps=3 format=3 uid="uid://7e1ylgl02hha"]
 
 [ext_resource type="PackedScene" uid="uid://conyxj0l1d2aw" path="res://character/npc.tscn" id="1_c4l3t"]
+[ext_resource type="Script" path="res://character/villager.gd" id="2_7iu58"]
 
 [node name="Villager" instance=ExtResource("1_c4l3t")]
-script = null
+script = ExtResource("2_7iu58")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 self_modulate = Color(9.72241e-06, 0.9384, 0.236581, 1)
-animation = &"move_up"
+animation = &"move_right"
 
-[node name="VisionZone" type="Node2D" parent="." index="2"]
+[node name="VisionZoneArea2D" parent="." index="4"]
+rotation = 3.14159
+
+[node name="CollisionPolygon2D" parent="VisionZoneArea2D" index="0"]
+position = Vector2(9, 0)
+polygon = PackedVector2Array(-16, -11, -16, 12, -37, 71, -69, 100, -108, 0, -66, -105, -28, -62)

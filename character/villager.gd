@@ -1,5 +1,1 @@
-extends "res://character/base_character.gd"
-
-
-func _ready():
-	pass
+extends "res://character/enemy.gd"
