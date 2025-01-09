@@ -13,8 +13,6 @@ var _main_node: CharacterBody2D
 # see only in up
 var forward_vector: Vector2 = Vector2.UP
 
-var _vision_zone_node: Node2D
-
 var _last_seen_position: Vector2 = Vector2.ZERO
 
 var _follow_direction: Vector2 = Vector2.ZERO
@@ -51,13 +49,9 @@ func _init(
 
 
 func _ready() -> void:
-	_vision_zone_node = VisionZone.new()
-
 	_vision_zone_area = get_parent().get_node('VisionZoneArea2D')
 	_vision_zone_area.connect('body_entered', _on_body_entered_in_vision_zone)
 	_vision_zone_area.connect('body_exited', _on_body_exited_from_vision_zone)
-
-	add_child(_vision_zone_node)
 
 
 func _on_body_entered_in_vision_zone(body):
@@ -75,10 +69,11 @@ func follow():
 
 	if can_see_target():
 		_last_seen_position = _target.global_position
-		_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
+		var follow_not_normalized_direction = _last_seen_position - _main_node.global_position
+		_follow_direction = follow_not_normalized_direction.normalized()
 		has_seen_target = true
 		forward_vector = _follow_direction
-		_vision_zone_node.redraw(_follow_direction)
+		_vision_zone_area.rotation = atan2(-follow_not_normalized_direction.y, -follow_not_normalized_direction.x)
 
 	elif has_seen_target:
 		_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
