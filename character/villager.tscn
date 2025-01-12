@@ -8,4 +8,4 @@ script = ExtResource("2_7iu58")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 self_modulate = Color(9.72241e-06, 0.9384, 0.236581, 1)
-animation = &"move_right"
+animation = &"move_left"

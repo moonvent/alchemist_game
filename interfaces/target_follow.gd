@@ -16,6 +16,8 @@ var _follow_direction: Vector2 = Vector2.ZERO
 
 var _vision_zone_area: Node2D
 
+var _active_mode: bool
+
 
 class FollowResult:
 	# Object is following result
@@ -42,48 +44,49 @@ class FollowResult:
 		distance_to_target = _distance_to_target
 
 
-func _init(
-	main_node: CharacterBody2D,
-) -> void:
+func _init(main_node: CharacterBody2D, active_mode: bool) -> void:
 	_main_node = main_node
+	_active_mode = active_mode
 
 
 func _ready() -> void:
 	_vision_zone_area = get_parent().get_node("VisionRays")
+	_vision_zone_area.switch_enable_status(_active_mode)
 
 
 func follow():
 	var is_lost_target = false
 	var distance_to_target = -1
 
-	_target = can_see_target()
+	if _active_mode:
+		_target = can_see_target()
 
-	if _target:
-		_last_seen_position = _target.global_position
-		var follow_not_normalized_direction = _last_seen_position - _main_node.global_position
-		_follow_direction = follow_not_normalized_direction.normalized()
-		has_seen_target = true
-		forward_vector = _follow_direction
-		_vision_zone_area.rotation = atan2(
-			-follow_not_normalized_direction.y, -follow_not_normalized_direction.x
-		)
-		distance_to_target = follow_not_normalized_direction.length()
+		if _target:
+			_last_seen_position = _target.global_position
+			var follow_not_normalized_direction = _last_seen_position - _main_node.global_position
+			_follow_direction = follow_not_normalized_direction.normalized()
+			has_seen_target = true
+			forward_vector = _follow_direction
+			_vision_zone_area.rotation = atan2(
+				-follow_not_normalized_direction.y, -follow_not_normalized_direction.x
+			)
+			distance_to_target = follow_not_normalized_direction.length()
 
-	elif has_seen_target:
-		_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
+		elif has_seen_target:
+			_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
 
-		if _main_node.global_position.distance_to(_last_seen_position) < 1:
-			# pause following if near last seen point
-			has_seen_target = false
+			if _main_node.global_position.distance_to(_last_seen_position) < 1:
+				# pause following if near last seen point
+				has_seen_target = false
+
+			else:
+				distance_to_target = (_last_seen_position - _main_node.global_position).length()
+
+			is_lost_target = true
 
 		else:
-			distance_to_target = (_last_seen_position - _main_node.global_position).length()
-
-		is_lost_target = true
-
-	else:
-		_follow_direction = Vector2.ZERO
-		is_lost_target = true
+			_follow_direction = Vector2.ZERO
+			is_lost_target = true
 
 	return FollowResult.new(
 		_follow_direction, _last_seen_position, is_lost_target, distance_to_target

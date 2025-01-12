@@ -13,3 +13,8 @@ func scan_near_location():
 			var collider = ray.get_collider()
 			if collider is CharacterBody2D:
 				return collider
+
+
+func switch_enable_status(status: bool):
+	for ray in _vision_rays_list:
+		ray.enabled = status
