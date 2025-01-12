@@ -32,7 +32,7 @@ func _ready():
 
 func _on_attack_collider_body_entered(body):
 	if body != self:
-		body.make_damage(primary_sword_damage_per_collider)
+		body.make_damage(primary_sword_damage_per_collider, self)
 
 
 func _setup_attack_collisions():

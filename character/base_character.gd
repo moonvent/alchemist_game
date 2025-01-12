@@ -32,7 +32,7 @@ func die():
 	set_collision_mask(2)
 
 
-func make_damage(damage_points: float):
+func make_damage(damage_points: float, who: CharacterBody2D):
 	health_points -= damage_points
 	print(health_points)
 
@@ -42,7 +42,7 @@ func make_damage(damage_points: float):
 
 func _on_attack_collider_body_entered(body):
 	if body != self and body is CharacterBody2D:
-		body.make_damage(primary_sword_damage_per_collider)
+		body.make_damage(primary_sword_damage_per_collider, self)
 
 
 func _setup_attack_collisions():

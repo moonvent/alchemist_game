@@ -54,12 +54,15 @@ func _ready() -> void:
 	_vision_zone_area.switch_enable_status(_active_mode)
 
 
-func follow():
+func follow(target: CharacterBody2D = null):
 	var is_lost_target = false
 	var distance_to_target = -1
 
-	if _active_mode:
-		_target = can_see_target()
+	if _active_mode or target:
+		if target:
+			_target = target
+		else:
+			_target = can_see_target()
 
 		if _target:
 			_last_seen_position = _target.global_position

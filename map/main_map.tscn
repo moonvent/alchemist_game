@@ -3706,8 +3706,8 @@ position = Vector2(-142, -30)
 collision_mask = 1
 
 [node name="Enemy" parent="." instance=ExtResource("4_otygb")]
-position = Vector2(23, -37)
+position = Vector2(-87, -31)
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_lxmyn")]
-position = Vector2(-99, -33)
+position = Vector2(-54, -54)
 collision_mask = 3

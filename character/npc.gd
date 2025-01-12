@@ -2,7 +2,9 @@ extends "res://character/base_character.gd"
 
 var vision_range: int = 100
 var vision_angle: float = 60
-var attack_range: int = 20
+var attack_range: int = 15
+
+var _target: CharacterBody2D
 
 # see only in up
 var forward_vector: Vector2 = Vector2.UP
