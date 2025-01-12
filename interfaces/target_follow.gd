@@ -59,10 +59,11 @@ func follow(target: CharacterBody2D = null):
 	var distance_to_target = -1
 
 	if _active_mode or target:
-		if target:
-			_target = target
-		else:
-			_target = can_see_target()
+		# if target:
+		# 	_target = target
+		# else:
+		# 	_target = can_see_target(target)
+		_target = can_see_target(target)
 
 		if _target:
 			_last_seen_position = _target.global_position
@@ -96,5 +97,9 @@ func follow(target: CharacterBody2D = null):
 	)
 
 
-func can_see_target():
-	return _vision_zone_area.scan_near_location()
+func can_see_target(target: CharacterBody2D = null):
+	if not _active_mode:
+		_active_mode = true
+		_vision_zone_area.switch_enable_status(true)
+
+	return _vision_zone_area.scan_near_location(target)
