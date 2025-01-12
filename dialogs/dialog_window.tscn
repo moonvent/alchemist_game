@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqoh6ryruh0e3"]
+
+[ext_resource type="Script" path="res://dialogs/dialog_window.gd" id="1_qlvcw"]
+
+[node name="DialogWindow" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qlvcw")
+
+[node name="ReplicaOwnerName" type="Label" parent="."]
+layout_mode = 2
+text = "ReplicaOwnerName
+"
+
+[node name="ReplicaText" type="Label" parent="."]
+layout_mode = 2
+text = "ReplicaText
+"
+
+[node name="ReplicaOptions" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="ReplicaOption1" type="Button" parent="ReplicaOptions"]
+layout_mode = 2
+text = "Replica option 1"
+
+[node name="Button2" type="Button" parent="ReplicaOptions"]
+visible = false
+layout_mode = 2
+text = "2b"
+
+[node name="Button3" type="Button" parent="ReplicaOptions"]
+visible = false
+layout_mode = 2
+text = "3b"
+
+[node name="Button4" type="Button" parent="ReplicaOptions"]
+visible = false
+layout_mode = 2
+text = "4b"

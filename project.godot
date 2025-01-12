@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Contant="*res://utils/contants.gd"
 AlchemyElements="*res://alchemy/aspects/elements.gd"
+Contant="*res://utils/autoload/contants.gd"
+TextTranslation="*res://utils/autoload/translation.gd"
 
 [display]
 

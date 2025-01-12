@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://conyxj0l1d2aw"]
+[gd_scene load_steps=6 format=3 uid="uid://conyxj0l1d2aw"]
 
 [ext_resource type="PackedScene" uid="uid://dq83nruv4u00g" path="res://character/base_character.tscn" id="1_g1lmp"]
 [ext_resource type="Script" path="res://interfaces/vision_rays.gd" id="2_dwv08"]
+[ext_resource type="Texture2D" uid="uid://u5kmjl34s645" path="res://assets/ui/Emoji.png" id="3_n52jw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lwxb"]
+radius = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbh64"]
+atlas = ExtResource("3_n52jw")
+region = Rect2(80, 384, 16, 18)
 
 [node name="NPC" instance=ExtResource("1_g1lmp")]
 collision_mask = 3
@@ -71,3 +79,14 @@ collision_mask = 3
 scale = Vector2(1, -1)
 target_position = Vector2(-8, -51)
 collision_mask = 3
+
+[node name="DialogAreaTrigger" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogAreaTrigger" index="0"]
+shape = SubResource("CircleShape2D_2lwxb")
+
+[node name="DialogAvailable" type="Sprite2D" parent="." index="6"]
+visible = false
+position = Vector2(0, -16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_vbh64")
