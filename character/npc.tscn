@@ -1,9 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://conyxj0l1d2aw"]
+[gd_scene load_steps=3 format=3 uid="uid://conyxj0l1d2aw"]
 
 [ext_resource type="PackedScene" uid="uid://dq83nruv4u00g" path="res://character/base_character.tscn" id="1_g1lmp"]
+[ext_resource type="Script" path="res://interfaces/vision_rays.gd" id="2_dwv08"]
 
 [node name="NPC" instance=ExtResource("1_g1lmp")]
+collision_mask = 3
 
-[node name="VisionZoneArea2D" type="Area2D" parent="." index="4"]
+[node name="VisionRays" type="Node2D" parent="." index="4"]
+script = ExtResource("2_dwv08")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionZoneArea2D" index="0"]
+[node name="RayCast2D" type="RayCast2D" parent="VisionRays" index="0"]
+target_position = Vector2(-57, 0)
+collision_mask = 3
+
+[node name="RayCast2D2" type="RayCast2D" parent="VisionRays" index="1"]
+target_position = Vector2(-18, -48)
+collision_mask = 3
+
+[node name="RayCast2D3" type="RayCast2D" parent="VisionRays" index="2"]
+target_position = Vector2(-56, -11)
+collision_mask = 3
+
+[node name="RayCast2D4" type="RayCast2D" parent="VisionRays" index="3"]
+target_position = Vector2(-50, -23)
+collision_mask = 3
+
+[node name="RayCast2D5" type="RayCast2D" parent="VisionRays" index="4"]
+target_position = Vector2(-40, -34)
+collision_mask = 3
+
+[node name="RayCast2D6" type="RayCast2D" parent="VisionRays" index="5"]
+target_position = Vector2(-30, -43)
+collision_mask = 3
+
+[node name="RayCast2D7" type="RayCast2D" parent="VisionRays" index="6"]
+target_position = Vector2(-8, -51)
+collision_mask = 3
+
+[node name="RayCast2D8" type="RayCast2D" parent="VisionRays" index="7"]
+scale = Vector2(1, -1)
+target_position = Vector2(-57, 0)
+collision_mask = 3
+
+[node name="RayCast2D9" type="RayCast2D" parent="VisionRays" index="8"]
+scale = Vector2(1, -1)
+target_position = Vector2(-18, -48)
+collision_mask = 3
+
+[node name="RayCast2D10" type="RayCast2D" parent="VisionRays" index="9"]
+scale = Vector2(1, -1)
+target_position = Vector2(-56, -11)
+collision_mask = 3
+
+[node name="RayCast2D11" type="RayCast2D" parent="VisionRays" index="10"]
+scale = Vector2(1, -1)
+target_position = Vector2(-50, -23)
+collision_mask = 3
+
+[node name="RayCast2D12" type="RayCast2D" parent="VisionRays" index="11"]
+scale = Vector2(1, -1)
+target_position = Vector2(-40, -34)
+collision_mask = 3
+
+[node name="RayCast2D13" type="RayCast2D" parent="VisionRays" index="12"]
+scale = Vector2(1, -1)
+target_position = Vector2(-30, -43)
+collision_mask = 3
+
+[node name="RayCast2D14" type="RayCast2D" parent="VisionRays" index="13"]
+scale = Vector2(1, -1)
+target_position = Vector2(-8, -51)
+collision_mask = 3

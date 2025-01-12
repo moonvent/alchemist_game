@@ -2,9 +2,6 @@ extends Node2D
 
 class_name TargetFollowBehavior
 
-var vision_range: int
-var vision_angle: float = 60
-
 var has_seen_target: bool = false
 
 var _target: CharacterBody2D = null
@@ -17,7 +14,7 @@ var _last_seen_position: Vector2 = Vector2.ZERO
 
 var _follow_direction: Vector2 = Vector2.ZERO
 
-var _vision_zone_area: Area2D
+var _vision_zone_area: Node2D
 
 
 class FollowResult:
@@ -26,7 +23,7 @@ class FollowResult:
 	Attributes:
 		direction(Vector2): where the target
 		last_seen_position(Vector2): last seen position of target
-		is_lost_target(bool): if lost target it's true"
+		is_lost_target(bool): if lost target its true"
 
 	var direction: Vector2
 	var last_seen_position: Vector2
@@ -42,36 +39,22 @@ class FollowResult:
 
 func _init(
 	main_node: CharacterBody2D,
-	_vision_range: int,
-	_vision_angle: int,
 ) -> void:
 	_main_node = main_node
-	vision_range = _vision_range
-	vision_angle = _vision_angle
 
 
 func _ready() -> void:
-	_vision_zone_area = get_parent().get_node('VisionZoneArea2D')
-	_vision_zone_area.connect('body_entered', _on_body_entered_in_vision_zone)
-	_vision_zone_area.connect('body_exited', _on_body_exited_from_vision_zone)
-
-
-func _on_body_entered_in_vision_zone(body):
-	if body != _main_node and not _target:
-		_target = body
-
-
-func _on_body_exited_from_vision_zone(body):
-	if body != _main_node and _target:
-		_target = null
+	_vision_zone_area = get_parent().get_node('VisionRays')
 
 
 func follow():
 
 	var is_lost_target = false
-	var distance_to_target = 0
+	var distance_to_target = 1
 
-	if can_see_target():
+	_target = can_see_target()
+
+	if _target:
 		_last_seen_position = _target.global_position
 		var follow_not_normalized_direction = _last_seen_position - _main_node.global_position
 		_follow_direction = follow_not_normalized_direction.normalized()
@@ -97,5 +80,7 @@ func follow():
 	return FollowResult.new(_follow_direction, _last_seen_position, is_lost_target, distance_to_target)
 
 
-func can_see_target() -> bool:
-	return true if _target else false
+func can_see_target():
+	# return true if _target else false
+	# return false
+	return _vision_zone_area.scan_near_location()

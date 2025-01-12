@@ -2508,7 +2508,7 @@ texture = ExtResource("1_ughoj")
 30:0/0 = 0
 30:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 31:0/0 = 0
-31:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.5, 8, -4.375, 8, 8, -8, 8)
+31:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 32:0/0 = 0
 33:0/0 = 0
 34:0/0 = 0
@@ -3671,7 +3671,8 @@ texture = ExtResource("1_ughoj")
 1:35/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ut8sc"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Core"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -3701,10 +3702,12 @@ tile_map_data = PackedByteArray("AAA3ABIAAAAIAAoAAAA3ABEAAAANABwAAAA3ABAAAAAHAAk
 tile_set = SubResource("TileSet_ut8sc")
 
 [node name="Villager" parent="." instance=ExtResource("3_l65ui")]
-position = Vector2(-176, 67)
+position = Vector2(-277, -19)
+collision_mask = 1
 
 [node name="Enemy" parent="." instance=ExtResource("4_otygb")]
-position = Vector2(-94, 80)
+position = Vector2(23, -37)
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_lxmyn")]
-position = Vector2(-204, 140)
+position = Vector2(-99, -33)
+collision_mask = 3

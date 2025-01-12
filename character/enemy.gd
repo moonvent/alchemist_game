@@ -2,7 +2,7 @@ extends "res://character/npc.gd"
 
 
 func _ready():
-	target_follow_behavior = TargetFollowBehavior.new(self, vision_range, vision_angle)
+	target_follow_behavior = TargetFollowBehavior.new(self)
 	add_child(target_follow_behavior)
 
 	super._ready()

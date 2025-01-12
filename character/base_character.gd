@@ -41,7 +41,7 @@ func make_damage(damage_points: float):
 
 
 func _on_attack_collider_body_entered(body):
-	if body != self:
+	if body != self and body is CharacterBody2D:
 		body.make_damage(primary_sword_damage_per_collider)
 
 
