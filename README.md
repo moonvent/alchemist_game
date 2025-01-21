@@ -28,6 +28,14 @@ Telegram: https://t.me/moonvent
 
 ### Points
 
+#### 21.01.2025
+1. Complete dialog system;
+  1. Create save system;
+2. Update following and agr systems;
+3. Begin to create quest system;
+
+#### OLD VERSION
+
 - [x] Make brain for enemies and villagers
   - [ ] Make following for the main character from enemy if they see him, if enemy doesn't see the main hero, 
   it going to the last point where see them and start to explore terrain, search the corners and some this logic
