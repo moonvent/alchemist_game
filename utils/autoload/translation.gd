@@ -1,6 +1,6 @@
 extends Node
 
-var current_language = "en"
+var current_language = "ru"
 
 
 func _ready():

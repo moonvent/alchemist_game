@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt1rf4mxwmv02"]
+
+[ext_resource type="PackedScene" uid="uid://7e1ylgl02hha" path="res://character/villager.tscn" id="1_ebrys"]
+[ext_resource type="Script" path="res://character/first_npc.gd" id="2_j5yca"]
+
+[node name="first_npc" instance=ExtResource("1_ebrys")]
+script = ExtResource("2_j5yca")

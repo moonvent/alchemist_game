@@ -1,0 +1,49 @@
+{
+    "1": {
+        "id": 1,
+        "text": "greetings_traveler",
+        "available_answers": [
+            {
+                "id": 2,
+                "text": "greetings_back"
+            },
+            {
+                "id": 3,
+                "text": "go_away"
+            }
+        ]
+    },
+    "2": {
+        "id": 2,
+        "text": "what_are_you_doing_here",
+        "available_answers": [
+            {
+                "id": 4,
+                "text": "im_in_searching_of_village_head"
+            },
+            {
+                "id": 3,
+                "text": "go_away"
+            }
+        ]
+    },
+    "3": {
+        "id": 3,
+        "action": "exit",
+        "text": "__action__exit__"
+    },
+    "4": {
+        "id": 4,
+        "text": "ho_ho_you_need_to_wait_cause_headmaster_not_here",
+        "available_answers": [
+            {
+                "id": 5,
+                "text": "where_is_headmaster"
+            },
+            {
+                "id": 3,
+                "text": "go_away"
+            }
+        ]
+    }
+}

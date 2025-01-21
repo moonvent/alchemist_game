@@ -1,11 +1,17 @@
 extends "res://character/base_character.gd"
 
+var dialog_npc: CharacterBody2D = null
+
 
 func _ready():
 	super._ready()
 
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("activate_dialog"):
+		_start_dialog()
+		return
+
 	var direction = Vector2.ZERO
 
 	if Input.is_action_pressed("move_right"):
@@ -29,3 +35,8 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("attack"):
 		_start_attack(get_global_mouse_position())
+
+
+func _start_dialog():
+	if dialog_npc:
+		print(tr(dialog_npc.name + "__1"))

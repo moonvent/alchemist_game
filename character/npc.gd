@@ -31,8 +31,11 @@ func _physics_process(delta):
 func activate_dialog_hover(body):
 	if body == player:
 		$DialogAvailable.visible = true
+		player.dialog_npc = self
+		return true
 
 
 func deactivate_dialog_hover(body):
 	if body == player:
 		$DialogAvailable.visible = false
+		return true

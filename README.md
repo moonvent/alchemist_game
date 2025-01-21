@@ -8,9 +8,21 @@ Game work on Godot 4.3
 
 More about dev activity in [Changelog](CHANGELOG.md)
 
+* State on 21.01.2025: https://youtu.be/pa91fphBOwo
 * State on 16.11.2024: https://youtu.be/r8zgBmNLmKo
 * State on 28.07.2024: https://youtu.be/8ys3l1ou1Bg
 
+
+### State Notes
+
+#### 21.01.2025
+
+Since the last report, I improved a basic finite state machine for proper chasing behavior, enhanced the overall state of the project, learned how to work with raycasts, implemented peaceful behavior for NPCs, and started working on a dialogue system with support for multiple locales to enable writing for several languages at once.
+
+
+## Contacts
+
+Telegram: https://t.me/moonvent
 
 ## Roadmap
 
@@ -58,3 +70,5 @@ Target of it, it's a connect elements from right sides to left sides, one elemen
 and if this elements connected, they add some backlight and make a little line between them, and actually,
 every element has a radius to connect to other element, if element not connect to other, them has a little
 dimming.
+
+
