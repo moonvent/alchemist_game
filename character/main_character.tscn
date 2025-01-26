@@ -1,10 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvvhta1msvh35"]
+[gd_scene load_steps=4 format=3 uid="uid://bvvhta1msvh35"]
 
 [ext_resource type="PackedScene" uid="uid://dq83nruv4u00g" path="res://character/base_character.tscn" id="1_hvmc8"]
 [ext_resource type="Script" path="res://character/main_character.gd" id="2_uuhhm"]
+[ext_resource type="PackedScene" uid="uid://dqoh6ryruh0e3" path="res://dialogs/dialog_window.tscn" id="3_u8pbo"]
 
 [node name="MainCharacter" instance=ExtResource("1_hvmc8")]
 script = ExtResource("2_uuhhm")
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 zoom = Vector2(2, 2)
+
+[node name="UI" type="Control" parent="." index="5"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -289.0
+offset_top = -161.0
+offset_right = 288.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogWindow" parent="UI" index="0" instance=ExtResource("3_u8pbo")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 577.0
+offset_bottom = 325.0
+grow_horizontal = 1
+grow_vertical = 1

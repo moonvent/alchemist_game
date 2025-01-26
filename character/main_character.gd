@@ -4,7 +4,10 @@ var dialog_npc: CharacterBody2D = null
 
 
 func _ready():
+	# TODO: add autogeneration size of ui and dialog window
 	super._ready()
+	#$UI.size = DisplayServer.window_get_size()
+	$UI/DialogWindow.visible = false
 
 
 func _physics_process(delta):
@@ -39,4 +42,8 @@ func _physics_process(delta):
 
 func _start_dialog():
 	if dialog_npc:
-		print(tr(dialog_npc.name + "__1"))
+		$UI/DialogWindow.start_new_dialog(dialog_npc.name, 1)
+
+
+func deactivate_dialog():
+	$UI/DialogWindow.deactivate_dialog()

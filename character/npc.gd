@@ -38,4 +38,5 @@ func activate_dialog_hover(body):
 func deactivate_dialog_hover(body):
 	if body == player:
 		$DialogAvailable.visible = false
+		body.deactivate_dialog()
 		return true

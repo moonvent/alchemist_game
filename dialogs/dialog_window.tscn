@@ -2,44 +2,68 @@
 
 [ext_resource type="Script" path="res://dialogs/dialog_window.gd" id="1_qlvcw"]
 
-[node name="DialogWindow" type="VBoxContainer"]
+[node name="DialogWindow" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 2
 script = ExtResource("1_qlvcw")
 
-[node name="ReplicaOwnerName" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+color = Color(0.104293, 0.0249162, 0.0234881, 1)
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DialogElements" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 154.0
+grow_vertical = 0
+
+[node name="ReplicaOwnerName" type="Label" parent="DialogElements"]
 layout_mode = 2
 text = "ReplicaOwnerName
 "
 
-[node name="ReplicaText" type="Label" parent="."]
+[node name="ReplicaText" type="Label" parent="DialogElements"]
 layout_mode = 2
 text = "ReplicaText
 "
 
-[node name="ReplicaOptions" type="GridContainer" parent="."]
+[node name="ReplicaOptions" type="GridContainer" parent="DialogElements"]
 layout_mode = 2
 columns = 2
 
-[node name="ReplicaOption1" type="Button" parent="ReplicaOptions"]
+[node name="ReplicaOption1" type="Button" parent="DialogElements/ReplicaOptions"]
 layout_mode = 2
 text = "Replica option 1"
 
-[node name="Button2" type="Button" parent="ReplicaOptions"]
+[node name="Button2" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
 layout_mode = 2
 text = "2b"
 
-[node name="Button3" type="Button" parent="ReplicaOptions"]
+[node name="Button3" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
 layout_mode = 2
 text = "3b"
 
-[node name="Button4" type="Button" parent="ReplicaOptions"]
+[node name="Button4" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
 layout_mode = 2
 text = "4b"
