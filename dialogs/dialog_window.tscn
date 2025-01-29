@@ -49,21 +49,22 @@ text = "ReplicaText
 layout_mode = 2
 columns = 2
 
-[node name="ReplicaOption1" type="Button" parent="DialogElements/ReplicaOptions"]
+[node name="ReplicaOption0" type="Button" parent="DialogElements/ReplicaOptions"]
+visible = false
 layout_mode = 2
-text = "Replica option 1"
+text = "Replica option 0"
 
-[node name="Button2" type="Button" parent="DialogElements/ReplicaOptions"]
+[node name="ReplicaOption1" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
 layout_mode = 2
 text = "2b"
 
-[node name="Button3" type="Button" parent="DialogElements/ReplicaOptions"]
+[node name="ReplicaOption2" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
 layout_mode = 2
 text = "3b"
 
-[node name="Button4" type="Button" parent="DialogElements/ReplicaOptions"]
+[node name="ReplicaOption3" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
 layout_mode = 2
 text = "4b"

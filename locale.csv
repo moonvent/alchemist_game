@@ -1,3 +1,7 @@
 key;en;ru
 lol;kek;лол
-first_npc__1;Greetings, friend!;Добро пожаловать, друг!
+first_npc;First Villager;Первый житель
+first_npc__1;Greetings, I see you first time!;Добро пожаловать, я вижу тебя впервые!
+first_npc__1__1;Greetings, villager!;Добро пожаловать, житель!
+first_npc__1__3;Go away.;Пошел прочь.
+first_npc__1__2;I saw you before.;Я тебя уже видел.

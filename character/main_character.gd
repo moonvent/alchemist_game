@@ -2,6 +2,8 @@ extends "res://character/base_character.gd"
 
 var dialog_npc: CharacterBody2D = null
 
+var npc_dialogs_history: Dictionary = {}
+
 
 func _ready():
 	# TODO: add autogeneration size of ui and dialog window
@@ -42,7 +44,7 @@ func _physics_process(delta):
 
 func _start_dialog():
 	if dialog_npc:
-		$UI/DialogWindow.start_new_dialog(dialog_npc.name, 1)
+		$UI/DialogWindow.start_new_dialog(dialog_npc, npc_dialogs_history.get(dialog_npc.name, 1))
 
 
 func deactivate_dialog():
