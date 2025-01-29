@@ -8,6 +8,7 @@ Game work on Godot 4.3
 
 More about dev activity in [Changelog](CHANGELOG.md)
 
+* State on 28.01.2025: https://youtu.be/h0nUJ01OXJU
 * State on 21.01.2025: https://youtu.be/pa91fphBOwo
 * State on 16.11.2024: https://youtu.be/r8zgBmNLmKo
 * State on 28.07.2024: https://youtu.be/8ys3l1ou1Bg
@@ -27,6 +28,10 @@ Telegram: https://t.me/moonvent
 ## Roadmap
 
 ### Points
+
+#### 28.01.2025
+
+1. Add condition to dialog system, answers, lines, dependes from world state;
 
 #### 21.01.2025
 1. Complete dialog system;
