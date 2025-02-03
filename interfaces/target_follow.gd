@@ -5,7 +5,7 @@ class_name TargetFollowBehavior
 var has_seen_target: bool = false
 
 var _target: CharacterBody2D = null
-var _main_node: CharacterBody2D
+var _main_node: CharacterBody2D  # it's a parent node, character body
 
 # see only in up
 var forward_vector: Vector2 = Vector2.UP
@@ -16,7 +16,7 @@ var _follow_direction: Vector2 = Vector2.ZERO
 
 var _vision_zone_area: Node2D
 
-var _active_mode: bool
+var _aggressive_mode: bool
 
 
 class FollowResult:
@@ -44,25 +44,22 @@ class FollowResult:
 		distance_to_target = _distance_to_target
 
 
-func _init(main_node: CharacterBody2D, active_mode: bool) -> void:
+func _init(main_node: CharacterBody2D, aggressive_mode: bool) -> void:
 	_main_node = main_node
-	_active_mode = active_mode
+	_aggressive_mode = aggressive_mode
 
 
 func _ready() -> void:
 	_vision_zone_area = get_parent().get_node("VisionRays")
-	_vision_zone_area.switch_enable_status(_active_mode)
+	_vision_zone_area.set_main_node(_main_node)
+	_vision_zone_area.switch_enable_status(_aggressive_mode)
 
 
 func follow(target: CharacterBody2D = null):
 	var is_lost_target = false
-	var distance_to_target = -1
+	var distance_to_target: float
 
-	if _active_mode or target:
-		# if target:
-		# 	_target = target
-		# else:
-		# 	_target = can_see_target(target)
+	if _aggressive_mode or target:
 		_target = can_see_target(target)
 
 		if _target:
@@ -70,18 +67,18 @@ func follow(target: CharacterBody2D = null):
 			var follow_not_normalized_direction = _last_seen_position - _main_node.global_position
 			_follow_direction = follow_not_normalized_direction.normalized()
 			has_seen_target = true
-			forward_vector = _follow_direction
-			_vision_zone_area.rotation = atan2(
-				-follow_not_normalized_direction.y, -follow_not_normalized_direction.x
-			)
+			_vision_zone_area.rotation = follow_not_normalized_direction.angle() + PI
 			distance_to_target = follow_not_normalized_direction.length()
+
+			print(distance_to_target, _target, _last_seen_position, _main_node.global_position)
 
 		elif has_seen_target:
 			_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
 
-			if _main_node.global_position.distance_to(_last_seen_position) < 1:
+			if _main_node.global_position.distance_to(_last_seen_position) < 10:
 				# pause following if near last seen point
 				has_seen_target = false
+				distance_to_target = -1
 
 			else:
 				distance_to_target = (_last_seen_position - _main_node.global_position).length()
@@ -98,8 +95,8 @@ func follow(target: CharacterBody2D = null):
 
 
 func can_see_target(target: CharacterBody2D = null):
-	if not _active_mode:
-		_active_mode = true
+	if not _aggressive_mode:
+		_aggressive_mode = true
 		_vision_zone_area.switch_enable_status(true)
 
 	return _vision_zone_area.scan_near_location(target)
