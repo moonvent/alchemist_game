@@ -3703,10 +3703,11 @@ tile_set = SubResource("TileSet_ut8sc")
 
 [node name="first_npc" parent="." instance=ExtResource("2_8bmta")]
 position = Vector2(-97, -37)
+collision_layer = 1
+collision_mask = 3
 
 [node name="Enemy" parent="." instance=ExtResource("4_otygb")]
 position = Vector2(-32, 43)
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_lxmyn")]
-position = Vector2(-54, -54)
-collision_mask = 3
+position = Vector2(9, 44)

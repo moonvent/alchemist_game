@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://character/villager.gd" id="2_7iu58"]
 
 [node name="Villager" instance=ExtResource("1_c4l3t")]
+collision_mask = 0
 script = ExtResource("2_7iu58")
 
 [node name="AnimatedSprite2D" parent="." index="1"]

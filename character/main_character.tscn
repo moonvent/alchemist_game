@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dqoh6ryruh0e3" path="res://dialogs/dialog_window.tscn" id="3_u8pbo"]
 
 [node name="MainCharacter" instance=ExtResource("1_hvmc8")]
+collision_layer = 3
 collision_mask = 12
 script = ExtResource("2_uuhhm")
 

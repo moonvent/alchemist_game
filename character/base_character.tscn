@@ -311,6 +311,8 @@ size = Vector2(3.5, 11.5)
 size = Vector2(7, 3)
 
 [node name="BaseCharacter" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_cw67c")
 
 [node name="CollisionShapeForMap" type="CollisionShape2D" parent="."]
