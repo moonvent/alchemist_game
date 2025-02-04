@@ -70,8 +70,6 @@ func follow(target: CharacterBody2D = null):
 			_vision_zone_area.rotation = follow_not_normalized_direction.angle() + PI
 			distance_to_target = follow_not_normalized_direction.length()
 
-			print(distance_to_target, _target, _last_seen_position, _main_node.global_position)
-
 		elif has_seen_target:
 			_follow_direction = (_last_seen_position - _main_node.global_position).normalized()
 

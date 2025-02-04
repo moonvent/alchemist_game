@@ -63,6 +63,13 @@ activate_dialog={
 
 locale/translations=PackedStringArray("res://locale.en.translation", "res://locale.ru.translation")
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="PlayerWeapon"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="EnemyWeapon"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
