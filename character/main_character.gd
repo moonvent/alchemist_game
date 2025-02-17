@@ -1,7 +1,10 @@
 extends "res://character/base_character.gd"
 
-var dialog_npc: CharacterBody2D = null
+class_name Player
 
+var dialog_npc: BaseCharacter = null
+
+# for history, which dialog use right now with which npc
 var npc_dialogs_history: Dictionary = {}
 
 
@@ -10,6 +13,7 @@ func _ready():
 	super._ready()
 	#$UI.size = DisplayServer.window_get_size()
 	$UI/DialogWindow.visible = false
+	conditions[Attributes.SpawnInTheGame] = "1"
 
 
 func _physics_process(delta):

@@ -1,0 +1,7 @@
+{
+  "speak_this_person_two_times": {
+    "current_value": 0,
+    "need_value": 2,
+    "completed": false
+  }
+}

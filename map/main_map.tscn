@@ -3709,5 +3709,6 @@ collision_mask = 3
 [node name="Enemy" parent="." instance=ExtResource("4_otygb")]
 position = Vector2(-32, 43)
 
-[node name="MainCharacter" parent="." instance=ExtResource("2_lxmyn")]
-position = Vector2(9, 44)
+[node name="Player" parent="." instance=ExtResource("2_lxmyn")]
+unique_name_in_owner = true
+position = Vector2(-58, -36)

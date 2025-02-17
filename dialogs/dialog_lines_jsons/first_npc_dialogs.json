@@ -11,10 +11,11 @@
                     "id": 1,
                     "text": "greetings_back",
                     "conditions_for_answer": {
-                        "first_look": false
+                        "first_look": false,
                     },
                     "conditions_after_line": {
-                        "first_look": true
+                        "first_look": true,
+                        "__speak_this_person_two_times": 1
                     },
                 },
                 {
@@ -24,6 +25,7 @@
                         "first_look": true
                     },
                     "conditions_after_line": {
+                        "__speak_this_person_two_times": 2
                     },
                 },
                 {

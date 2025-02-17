@@ -1,0 +1,61 @@
+{
+  "npc_name": "Harry the Merchant",
+  "replicas": [
+    {
+      "id": 1,
+      "npc_name": "Harry the Merchant",
+      "text": "Greetings, traveler! How can I help you?",
+      "answers": [
+        {
+          "answer_id": 101,
+          "text": "What do you have for sale?",
+          "select_params": [
+            {
+              "param_name": "OpenShop",
+              "param_value": "true",
+              "param_type": "Attribute"
+            }
+          ],
+          "conditions": [
+            {
+              "condition_name": "spawn_in_the_game",
+              "condition_value": "2",
+              "condition_type": "Attribute",
+            }
+          ]
+        },
+        {
+          "answer_id": 102,
+          "text": "Tell me about yourself.",
+          "select_params": [],
+          "conditions": []
+        },
+        {
+          "answer_id": 103,
+          "text": "Goodbye!",
+          "select_params": [],
+          "conditions": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "npc_name": "Harry the Merchant",
+      "text": "I've been trading here for many years. I see thousands of travelers, each with their own story.",
+      "answers": [
+        {
+          "answer_id": 201,
+          "text": "Interesting! What stories have you heard?",
+          "select_params": [],
+          "conditions": []
+        },
+        {
+          "answer_id": 202,
+          "text": "I see. Thanks!",
+          "select_params": [],
+          "conditions": []
+        }
+      ]
+    }
+  ]
+}

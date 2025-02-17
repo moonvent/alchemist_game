@@ -20,7 +20,8 @@ config/icon="res://icon.svg"
 AlchemyElements="*res://alchemy/aspects/elements.gd"
 Contant="*res://utils/autoload/contants.gd"
 TextTranslation="*res://utils/autoload/translation.gd"
-DialogJsonLoader="*res://utils/autoload/dialog_json_loader.gd"
+JsonLoader="*res://utils/autoload/dialog_json_loader.gd"
+Attributes="*res://utils/autoload/attributes.gd"
 
 [display]
 
