@@ -5,7 +5,7 @@ class_name DialogAnswer
 
 var answer_id: int
 var text: String
-var select_dialog_params_list: Array[DialogAttributeSetter]
+var prize_for_select_answer: Array[DialogAttributeSetter]
 var conditions_for_availability: Array[DialogAnswerCondition]
 var player: Player
 
@@ -50,3 +50,34 @@ func _get_attribute(get_entity: BaseCharacter, get_body: Dictionary):
 	if condition_value:
 		return condition_value == get_body["attribute_value"]
 	return false
+
+
+func set_param_after_chose_answer():
+	for set_param in prize_for_select_answer:
+		var handler: Callable
+		var entity: BaseCharacter
+		# var for hander
+		var get_body: Dictionary = {}
+
+		match set_param.attribute_type:
+			DialogAttributeSetter.AttributeType.Attribute:
+				handler = set_attribute
+
+		if set_param.attribute_name.begins_with("npc__"):
+			pass
+
+		else:
+			entity = player
+			get_body["attribute_name"] = set_param.attribute_name
+			get_body["attribute_value"] = set_param.attribute_value
+
+		handler.call(entity, get_body)
+
+
+func set_attribute(set_entity: BaseCharacter, set_body: Dictionary):
+	# var condition_value = get_entity.conditions.get(get_body["attribute_name"])
+	# if condition_value:
+	# 	return condition_value == get_body["attribute_value"]
+	# return false
+	print(set_entity, set_body)
+	pass

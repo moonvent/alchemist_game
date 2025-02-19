@@ -11,8 +11,8 @@ var player: Player
 func _ready() -> void:
 	TranslationServer.set_locale("en")
 	player = get_parent().get_parent()
-	# for replica_option in $DialogElements/ReplicaOptions.get_children():
-	# 	replica_option.pressed.connect(func(): _replica_handler(replica_option))
+	for replica_option in $DialogElements/ReplicaOptions.get_children():
+		replica_option.pressed.connect(func(): _replica_handler(replica_option))
 
 
 func start_new_dialog(npc: BaseCharacter, replica_number: int):
@@ -84,22 +84,28 @@ func deactivate_dialog():
 		$DialogElements/ReplicaOptions.get_node("ReplicaOption" + str(i)).visible = false
 
 
-# func _replica_handler(button):
-# 	var answer = current_dialog_line["available_answers"][int(button.get_meta("answer_index"))]
-# 	var conditions_after_line = answer["conditions_after_line"]
-#
-# 	for condition in conditions_after_line:
-# 		if condition.begins_with("__"):
-# 			var current_npc_conditions_in_player = player.conditions.get(current_dialog_npc.name)
-#
-# 			if not current_npc_conditions_in_player:
-# 				player.conditions[current_dialog_npc.name] = {}
-# 				current_npc_conditions_in_player = player.conditions[current_dialog_npc.name]
-#
-# 			current_npc_conditions_in_player[condition] = conditions_after_line[condition]
-#
-# 		else:
-# 			current_dialog_npc["conditions"][condition] = conditions_after_line[condition]
+func _replica_handler(answer_button: Button):
+	# var answer = current_dialog_line["available_answers"][int(answer_button.get_meta("answer_index"))]
+	# var answer = current_dialog_line["available_answers"][int(
+	# 	answer_button.get_meta("answer_index")
+	# )]
+	var answer = answer_button.get_meta("answer")
+	# print(answer.prize_for_select_answer)
+	answer.set_param_after_chose_answer()
+	# var conditions_after_line = answer["conditions_after_line"]
+	#
+	# for condition in conditions_after_line:
+	# 	if condition.begins_with("__"):
+	# 		var current_npc_conditions_in_player = player.conditions.get(current_dialog_npc.name)
+	#
+	# 		if not current_npc_conditions_in_player:
+	# 			player.conditions[current_dialog_npc.name] = {}
+	# 			current_npc_conditions_in_player = player.conditions[current_dialog_npc.name]
+	#
+	# 		current_npc_conditions_in_player[condition] = conditions_after_line[condition]
+	#
+	# 	else:
+	# 		current_dialog_npc["conditions"][condition] = conditions_after_line[condition]
 
 
 func _set_owner_name():
@@ -111,5 +117,16 @@ func _set_text():
 
 
 func _set_answers():
-	for answer in current_dialog_replica.available_to_display_answers_list:
-		print(answer.text)
+	var answers = current_dialog_replica.available_to_display_answers_list
+	for answer_index in range(len(answers)):
+		var answer = answers[answer_index]
+		var replica_option = $DialogElements/ReplicaOptions.get_node(
+			"ReplicaOption" + str(answer_index)
+		)
+		replica_option.visible = true
+		# var answer_id = answer.id
+
+		# replica_option.text = tr(npc_replica_text_code + "__" + str(answer_id))
+		replica_option.text = tr(answer.text)
+
+		replica_option.set_meta("answer", answer)

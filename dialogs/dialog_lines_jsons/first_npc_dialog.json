@@ -14,12 +14,17 @@
               "param_name": "OpenShop",
               "param_value": "true",
               "param_type": "Attribute"
+            },
+            {
+              "param_name": "take_a_speech_with_harry",
+              "param_value": "true",
+              "param_type": "Attribute"
             }
           ],
           "conditions": [
             {
               "condition_name": "spawn_in_the_game",
-              "condition_value": "2",
+              "condition_value": "1",
               "condition_type": "Attribute",
             }
           ]

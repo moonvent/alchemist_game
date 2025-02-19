@@ -62,7 +62,7 @@ func load_dialog(file_path: String):
 				else:
 					param.attribute_type = DialogAttributeSetter.AttributeType.Attribute
 
-				answer.select_dialog_params_list.append(param)
+				answer.prize_for_select_answer.append(param)
 
 			# Load conditions for answer availability
 			for cond_data in answer_data.get("conditions", []):
