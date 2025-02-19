@@ -51,31 +51,31 @@ func load_dialog(file_path: String):
 
 			# Load selection parameters for this answer
 			for param_data in answer_data.get("select_params", []):
-				var param = DialogAttributeSetter.new()
-				param.attribute_name = param_data.get("param_name", "")
-				param.attribute_value = param_data.get("param_value", "")
+				var param = DialogParamWorker.new()
+				param.param_name = param_data.get("param_name", "")
+				param.param_value = param_data.get("param_value", "")
 
 				# Convert string param_type to enum
 				var param_type_str = param_data.get("param_type", "Attribute")
-				if param_type_str in DialogAttributeSetter.AttributeType:
-					param.attribute_type = DialogAttributeSetter.AttributeType[param_type_str]
+				if param_type_str in DialogParamWorker.ParamType:
+					param.param_type = DialogParamWorker.ParamType[param_type_str]
 				else:
-					param.attribute_type = DialogAttributeSetter.AttributeType.Attribute
+					param.param_type = DialogParamWorker.ParamType.Attribute
 
 				answer.prize_for_select_answer.append(param)
 
 			# Load conditions for answer availability
 			for cond_data in answer_data.get("conditions", []):
-				var condition = DialogAnswerCondition.new()
-				condition.condition_name = cond_data.get("condition_name", "")
-				condition.condition_value = cond_data.get("condition_value", "")
+				var condition = DialogParamWorker.new()
+				condition.param_name = cond_data.get("condition_name", "")
+				condition.param_value = cond_data.get("condition_value", "")
 
 				# Convert string condition_type to enum
 				var cond_type_str = cond_data.get("condition_type", "Attribute")
-				if cond_type_str in DialogAnswerCondition.ConditionType:
-					condition.condition_type = DialogAnswerCondition.ConditionType[cond_type_str]
+				if cond_type_str in DialogParamWorker.ParamType:
+					condition.param_type = DialogParamWorker.ParamType[cond_type_str]
 				else:
-					condition.condition_type = DialogAnswerCondition.ConditionType.Attribute
+					condition.param_type = DialogParamWorker.ParamType.Attribute
 
 				answer.conditions_for_availability.append(condition)
 

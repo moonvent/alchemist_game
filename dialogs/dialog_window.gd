@@ -19,6 +19,7 @@ func start_new_dialog(npc: BaseCharacter, replica_number: int):
 	self.visible = true
 
 	current_dialog_replica = npc.dialog_replicas[replica_number]
+	current_dialog_replica.npc = npc
 	_set_owner_name()
 	_set_text()
 	_set_answers()
@@ -91,7 +92,7 @@ func _replica_handler(answer_button: Button):
 	# )]
 	var answer = answer_button.get_meta("answer")
 	# print(answer.prize_for_select_answer)
-	answer.set_param_after_chose_answer()
+	answer.set_param_after_chose_answer(current_dialog_replica.npc)
 	# var conditions_after_line = answer["conditions_after_line"]
 	#
 	# for condition in conditions_after_line:
