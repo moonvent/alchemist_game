@@ -95,3 +95,15 @@ func _handle_answer_next(next: String):
 			start_new_dialog(current_dialog_replica.npc, int(action[1]))
 		DialogAnswer.NextType.Out:
 			deactivate_dialog()
+
+
+func _input(event):
+	# TODO: think about some locking player for dialog
+	if event.is_action_pressed("first_answer"):
+		_answer_choise_handler(available_answers[0])
+	elif event.is_action_pressed("second_answer"):
+		_answer_choise_handler(available_answers[1])
+	elif event.is_action_pressed("third_answer"):
+		_answer_choise_handler(available_answers[2])
+	elif event.is_action_pressed("fourth_answer"):
+		_answer_choise_handler(available_answers[3])

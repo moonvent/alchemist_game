@@ -51,20 +51,28 @@ columns = 2
 
 [node name="ReplicaOption0" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Replica option 0"
+autowrap_mode = 2
 
 [node name="ReplicaOption1" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "2b"
+autowrap_mode = 2
 
 [node name="ReplicaOption2" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "3b"
+autowrap_mode = 2
 
 [node name="ReplicaOption3" type="Button" parent="DialogElements/ReplicaOptions"]
 visible = false
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "4b"
+autowrap_mode = 2

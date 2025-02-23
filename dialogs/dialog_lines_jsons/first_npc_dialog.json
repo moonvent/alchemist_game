@@ -1,40 +1,35 @@
 {
-  "npc_name": "Harry the Merchant",
+  "npc_name": "Mystic Elder",
   "replicas": [
     {
       "id": 1,
-      "npc_name": "Harry the Merchant",
-      "text": "Greetings, traveler! How can I help you?",
+      "npc_name": "Mystic Elder",
+      "text": "Greetings, traveler. Who are you?",
       "answers": [
         {
           "answer_id": 101,
-          "text": "What do you have for sale?",
-          "select_params": [
-            {
-              "param_name": "take_a_speech_with_harry",
-              "param_value": "true",
-              "param_type": "Attribute"
-            }
-          ],
-          "conditions": [
-            {
-              "condition_name": "spawn_in_the_game",
-              "condition_value": "1",
-              "condition_type": "Attribute",
-            }
-          ],
-          "next": "action__open_shop_1"
+          "text": "My name is Aldric.",
+          "select_params": [],
+          "conditions": [],
+          "next": "new_replica__2"
         },
         {
           "answer_id": 102,
-          "text": "Tell me about yourself.",
+          "text": "People call me Rowan.",
           "select_params": [],
           "conditions": [],
           "next": "new_replica__2"
         },
         {
           "answer_id": 103,
-          "text": "Goodbye!",
+          "text": "You don't need to know my name.",
+          "select_params": [],
+          "conditions": [],
+          "next": "new_replica__2"
+        },
+        {
+          "answer_id": 104,
+          "text": "Farewell, elder.",
           "select_params": [],
           "conditions": [],
           "next": "out"
@@ -43,19 +38,102 @@
     },
     {
       "id": 2,
-      "npc_name": "Harry the Merchant",
-      "text": "I've been trading here for many years. I see thousands of travelers, each with their own story.",
+      "npc_name": "Mystic Elder",
+      "text": "Interesting. What brings you to our village?",
       "answers": [
         {
           "answer_id": 201,
-          "text": "Interesting! What stories have you heard?",
+          "text": "I carry a letter for the king.",
           "select_params": [],
           "conditions": [],
           "next": "new_replica__3"
         },
         {
           "answer_id": 202,
-          "text": "I see. Thanks!",
+          "text": "I just need a place to rest for the night.",
+          "select_params": [],
+          "conditions": [],
+          "next": "new_replica__3"
+        },
+        {
+          "answer_id": 203,
+          "text": "That’s none of your concern. Just tell me where to find the village chief.",
+          "select_params": [],
+          "conditions": [],
+          "next": "new_replica__4"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "npc_name": "Mystic Elder",
+      "text": "If you wish to stay, you must earn the village's trust. Speak to our hunter, he watches over the land and its people.",
+      "answers": [
+        {
+          "answer_id": 301,
+          "text": "Where can I find the hunter?",
+          "select_params": [],
+          "conditions": [],
+          "next": "new_replica__5"
+        },
+        {
+          "answer_id": 302,
+          "text": "Thank you for your wisdom.",
+          "select_params": [],
+          "conditions": [],
+          "next": "out"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "npc_name": "Mystic Elder",
+      "text": "The village chief is at the central square. Seek him out if you wish to speak with him.",
+      "answers": [
+        {
+          "answer_id": 401,
+          "text": "Understood. Goodbye.",
+          "select_params": [],
+          "conditions": [],
+          "next": "out"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "npc_name": "Mystic Elder",
+      "text": "The hunter resides near the forest edge. If you wish to prove yourself, he will show you the way.",
+      "answers": [
+        {
+          "answer_id": 501,
+          "text": "I will seek him out. Farewell.",
+          "select_params": [],
+          "conditions": [],
+          "next": "out"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "npc_name": "Mystic Elder",
+      "text": "I can provide certain supplies, but only to those who have proven their worth.",
+      "answers": [
+        {
+          "answer_id": 601,
+          "text": "What do you have for sale?",
+          "select_params": [],
+          "conditions": [
+            {
+              "condition_name": "player_level",
+              "condition_value": "5",
+              "condition_type": "Attribute"
+            }
+          ],
+          "next": "action__open_shop_1"
+        },
+        {
+          "answer_id": 602,
+          "text": "I see. Perhaps another time.",
           "select_params": [],
           "conditions": [],
           "next": "out"
