@@ -11,11 +11,6 @@
           "text": "What do you have for sale?",
           "select_params": [
             {
-              "param_name": "OpenShop",
-              "param_value": "true",
-              "param_type": "Attribute"
-            },
-            {
               "param_name": "take_a_speech_with_harry",
               "param_value": "true",
               "param_type": "Attribute"
@@ -27,19 +22,22 @@
               "condition_value": "1",
               "condition_type": "Attribute",
             }
-          ]
+          ],
+          "next": "action__open_shop_1"
         },
         {
           "answer_id": 102,
           "text": "Tell me about yourself.",
           "select_params": [],
-          "conditions": []
+          "conditions": [],
+          "next": "new_replica__2"
         },
         {
           "answer_id": 103,
           "text": "Goodbye!",
           "select_params": [],
-          "conditions": []
+          "conditions": [],
+          "next": "out"
         }
       ]
     },
@@ -52,13 +50,15 @@
           "answer_id": 201,
           "text": "Interesting! What stories have you heard?",
           "select_params": [],
-          "conditions": []
+          "conditions": [],
+          "next": "new_replica__3"
         },
         {
           "answer_id": 202,
           "text": "I see. Thanks!",
           "select_params": [],
-          "conditions": []
+          "conditions": [],
+          "next": "out"
         }
       ]
     }

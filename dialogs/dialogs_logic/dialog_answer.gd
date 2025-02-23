@@ -8,6 +8,13 @@ var text: String
 var prize_for_select_answer: Array[DialogParamWorker]
 var conditions_for_availability: Array[DialogParamWorker]
 var player: Player
+var next: String
+
+
+class NextType:
+	const NewReplica = "new_replica"
+	const Action = "action"
+	const Out = "out"
 
 
 func _init(_player: Player):

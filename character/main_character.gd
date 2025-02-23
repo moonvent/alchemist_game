@@ -4,14 +4,10 @@ class_name Player
 
 var dialog_npc: BaseCharacter = null
 
-# for history, which dialog use right now with which npc
-var npc_dialogs_history: Dictionary = {}
-
 
 func _ready():
 	# TODO: add autogeneration size of ui and dialog window
 	super._ready()
-	#$UI.size = DisplayServer.window_get_size()
 	$UI/DialogWindow.visible = false
 	conditions[Attributes.SpawnInTheGame] = "1"
 
@@ -48,7 +44,12 @@ func _physics_process(delta):
 
 func _start_dialog():
 	if dialog_npc:
-		$UI/DialogWindow.start_new_dialog(dialog_npc, npc_dialogs_history.get(dialog_npc.name, 1))
+		if not $UI/DialogWindow.visible:
+			$UI/DialogWindow.start_new_dialog(
+				dialog_npc, conditions.get(dialog_npc.name + "__last_dialog_number", 1)
+			)
+		else:
+			deactivate_dialog()
 
 
 func deactivate_dialog():

@@ -41,4 +41,5 @@ func deactivate_dialog_hover(body):
 	if body == player:
 		$DialogAvailable.visible = false
 		body.deactivate_dialog()
+		player.dialog_npc = null
 		return true

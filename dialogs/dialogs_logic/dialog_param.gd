@@ -42,10 +42,6 @@ func _get_attribute(character: BaseCharacter):
 
 
 func _set_attribute(character: BaseCharacter):
-	# var condition_value = character.conditions.get(param_name)
-	# if condition_value:
-	# 	return condition_value == param_value
-	# return false
-	print(character, self)
+	character.conditions[param_name] = param_value
 	return true
 # TODO: add set attr, get item, get quest, set item, set quest

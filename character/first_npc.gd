@@ -30,6 +30,7 @@ func load_dialog(file_path: String):
 
 	if json == null:
 		push_error("❌ Failed to parse JSON: " + file_path)
+		assert(json, "Error parse json: " + file_path)
 		return
 
 	# Clear the previous dialogs
@@ -48,6 +49,7 @@ func load_dialog(file_path: String):
 			var answer = DialogAnswer.new(get_node("%Player"))
 			answer.answer_id = answer_data.get("answer_id", 0)
 			answer.text = answer_data.get("text", "")
+			answer.next = answer_data.get("next", "out")
 
 			# Load selection parameters for this answer
 			for param_data in answer_data.get("select_params", []):
