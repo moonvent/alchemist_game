@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5gx52xo32ick"]
 
-[ext_resource type="Script" path="res://alchemy/table/alchemy_table_element.gd" id="1_02pvl"]
+[ext_resource type="Script" uid="uid://cls2ibf4qica5" path="res://alchemy/table/alchemy_table_element.gd" id="1_02pvl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4xi5"]
 radius = 20.0

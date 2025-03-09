@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1m87u1c18y07"]
 
-[ext_resource type="Script" path="res://alchemy/table/alchemy_table_grid_element.gd" id="1_eiivg"]
+[ext_resource type="Script" uid="uid://3hy1b2f53wbe" path="res://alchemy/table/alchemy_table_grid_element.gd" id="1_eiivg"]
 
 [node name="AlchemyTableGridElement" type="Button"]
 anchors_preset = 15

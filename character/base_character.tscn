@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://dq83nruv4u00g"]
 
-[ext_resource type="Script" path="res://character/base_character.gd" id="1_cw67c"]
+[ext_resource type="Script" uid="uid://dreaoqgudy5p4" path="res://character/base_character.gd" id="1_cw67c"]
 [ext_resource type="Texture2D" uid="uid://dnb74x2rlb6y8" path="res://assets/map/gfx/character.png" id="1_uyeml"]
 [ext_resource type="AudioStream" uid="uid://cf3cn2pc1kbbc" path="res://assets/sounds/sword_clash.mp3" id="3_crni2"]
 

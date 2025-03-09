@@ -1,0 +1,35 @@
+{
+  "speak_with_king": {
+    "name": "Speak With King",
+    "goal": "Speak with King about world",
+    "conditions_to_complete": [
+      {
+        "param_name": "Speak With",
+        "param_value": "King",
+        "param_type": "WorldState"
+      }
+    ]
+  },
+  "kill_5_pigs": {
+    "name": "Take some material for saving Blacksmith dougther",
+    "goal": "Kill 5 pigs for taking they blood",
+    "conditions_to_complete": [
+      {
+        "param_name": "Killed / Pigs",
+        "param_value": "5",
+        "param_type": "WorldState"
+      }
+    ]
+  },
+  "speak_with_hunter": {
+    "name": "Speak With Hunter",
+    "goal": "Speak with Hunter about house on the night",
+    "conditions_to_complete": [
+      {
+        "param_name": "Speak With",
+        "param_value": "Hunter",
+        "param_type": "WorldState"
+      }
+    ]
+  },
+}

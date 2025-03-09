@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4ung2so5ttkx"]
 
-[ext_resource type="Script" path="res://alchemy/table/alchemy_table_element_list.gd" id="1_qspel"]
+[ext_resource type="Script" uid="uid://chphr4jg16tys" path="res://alchemy/table/alchemy_table_element_list.gd" id="1_qspel"]
 
 [node name="AlchemyTableElementList" type="TabContainer"]
 offset_right = 259.0

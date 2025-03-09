@@ -99,11 +99,14 @@ func _handle_answer_next(next: String):
 
 func _input(event):
 	# TODO: think about some locking player for dialog
-	if event.is_action_pressed("first_answer"):
-		_answer_choise_handler(available_answers[0])
-	elif event.is_action_pressed("second_answer"):
-		_answer_choise_handler(available_answers[1])
-	elif event.is_action_pressed("third_answer"):
-		_answer_choise_handler(available_answers[2])
-	elif event.is_action_pressed("fourth_answer"):
-		_answer_choise_handler(available_answers[3])
+	if available_answers:
+		var amount_available_answers := len(available_answers)
+
+		if amount_available_answers and event.is_action_pressed("first_answer"):
+			_answer_choise_handler(available_answers[0])
+		elif amount_available_answers >= 2 and event.is_action_pressed("second_answer"):
+			_answer_choise_handler(available_answers[1])
+		elif amount_available_answers >= 3 and event.is_action_pressed("third_answer"):
+			_answer_choise_handler(available_answers[2])
+		elif amount_available_answers >= 4 and event.is_action_pressed("fourth_answer"):
+			_answer_choise_handler(available_answers[3])
