@@ -32,6 +32,7 @@ func _load_all_quests_from_file():
 			for quest_key in quests_data.keys():
 				var quest_info = quests_data[quest_key]
 				var quest = Quest.new(
+					quest_key,
 					quest_info.get("name", ""),
 					quest_info.get("goal", ""),
 					_parse_conditions(quest_info.get("conditions_to_complete", []))

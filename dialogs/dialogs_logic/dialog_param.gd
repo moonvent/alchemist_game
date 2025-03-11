@@ -15,7 +15,7 @@ var param_name: String
 var param_value: String
 var param_type: ParamType
 
-enum ParamOperation { Check, Set }
+enum ParamOperation { Check, Set, CheckAndComplete }
 
 
 func is_check_condition(character: BaseCharacter) -> bool:
@@ -33,7 +33,12 @@ func _param_manipulate(character: BaseCharacter, param_operation: ParamOperation
 		ParamType.Attribute:
 			handler = _get_attribute if param_operation == ParamOperation.Check else _set_attribute
 		ParamType.Quest:
-			handler = _get_quest if param_operation == ParamOperation.Check else _set_quest
+			if param_operation == ParamOperation.Check:
+				handler = _get_quest
+			elif param_operation == ParamOperation.Set:
+				handler = _set_quest
+			else:
+				push_error("Something went wrong.")
 
 	return handler.call(character)
 
@@ -51,9 +56,13 @@ func _set_attribute(character: BaseCharacter):
 
 
 func _get_quest(character: BaseCharacter):
-	var condition_value = character.conditions.get(param_name)
-	if condition_value:
-		return condition_value == param_value
+	# var condition_value = character.quests.get(param_name)
+	# if condition_value:
+	# 	return condition_value == param_value
+	for quest in QuestWorker.active_quests:
+		print(quest.quest_id)
+		if quest.quest_id == param_name:
+			return true
 	return false
 
 

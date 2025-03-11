@@ -1,0 +1,76 @@
+
+{
+  "npc_name": "Hunter",
+  "replicas": [
+    {
+      "id": 1,
+      "npc_name": "Hunter",
+      "text": "Hey there, stranger. Haven't seen you around. What are you looking for in our village?",
+      "answers": [
+        {
+          "answer_id": 101,
+          "text": "I have an important letter for the king.",
+          "select_params": [
+            {
+              "param_name": "deliver_letter_to_king",
+              "param_value": "add",
+              "param_type": "Quest"
+            }
+          ],
+          "conditions": [],
+          "next": "new_replica__2"
+        },
+        {
+          "answer_id": 102,
+          "text": "An elder told me you could help me find a place to stay.",
+          "select_params": [
+          ],
+          "conditions": [
+            {
+              "condition_name": "speak_with_hunter",
+              "condition_value": "check__and__complete",
+              "condition_type": "Quest",
+            }
+          ],
+          "next": "new_replica__2"
+        },
+        {
+          "answer_id": 103,
+          "text": "Nice village you have here. Can I speak with the elder?",
+          "select_params": [],
+          "conditions": [],
+          "next": "new_replica__3"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "npc_name": "Hunter",
+      "text": "That’s quite the task you’ve got there. If you need help navigating, you should speak to the village elder at the central square.",
+      "answers": [
+        {
+          "answer_id": 201,
+          "text": "Thanks for the advice. I’ll seek him out.",
+          "select_params": [],
+          "conditions": [],
+          "next": "out"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "npc_name": "Hunter",
+      "text": "The elder usually stays near the temple, guiding those who seek wisdom. You’ll find him there.",
+      "answers": [
+        {
+          "answer_id": 301,
+          "text": "I’ll go find him. Thanks.",
+          "select_params": [],
+          "conditions": [],
+          "next": "out"
+        }
+      ]
+    }
+  ]
+}
+
