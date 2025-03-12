@@ -27,12 +27,7 @@ func is_answer_available(npc: BaseCharacter) -> bool:
 	for condition in conditions_for_availability:
 		character = npc if condition.param_name.begins_with("npc__") else player
 
-		if (
-			condition.param_value == "check__and__complete"
-			and condition.is_check_condition(character)
-		):
-			return true
-		elif not condition.is_check_condition(character):
+		if not condition.is_check_condition(character):
 			return false
 
 	return true

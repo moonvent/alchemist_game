@@ -15,7 +15,7 @@ var param_name: String
 var param_value: String
 var param_type: ParamType
 
-enum ParamOperation { Check, Set, CheckAndComplete }
+enum ParamOperation { Check, Set, CheckAndComplete, Complete }
 
 
 func is_check_condition(character: BaseCharacter) -> bool:
@@ -23,7 +23,13 @@ func is_check_condition(character: BaseCharacter) -> bool:
 
 
 func set_param(character: BaseCharacter) -> bool:
-	return _param_manipulate(character, ParamOperation.Set)
+	var action: ParamOperation = ParamOperation.Set
+
+	if param_type == ParamType.Quest:
+		if param_value == "complete":
+			action = ParamOperation.Complete
+
+	return _param_manipulate(character, action)
 
 
 func _param_manipulate(character: BaseCharacter, param_operation: ParamOperation):
@@ -32,13 +38,19 @@ func _param_manipulate(character: BaseCharacter, param_operation: ParamOperation
 	match param_type:
 		ParamType.Attribute:
 			handler = _get_attribute if param_operation == ParamOperation.Check else _set_attribute
+
 		ParamType.Quest:
-			if param_operation == ParamOperation.Check:
-				handler = _get_quest
-			elif param_operation == ParamOperation.Set:
-				handler = _set_quest
-			else:
-				push_error("Something went wrong.")
+			match param_operation:
+				ParamOperation.Check:
+					return param_name in QuestWorker.active_quests
+				ParamOperation.Set:
+					QuestWorker.add_quest(self)
+					return true
+				ParamOperation.Complete:
+					QuestWorker.complete_quest(self)
+					return true
+				_:
+					return false
 
 	return handler.call(character)
 
@@ -52,20 +64,4 @@ func _get_attribute(character: BaseCharacter):
 
 func _set_attribute(character: BaseCharacter):
 	character.conditions[param_name] = param_value
-	return true
-
-
-func _get_quest(character: BaseCharacter):
-	# var condition_value = character.quests.get(param_name)
-	# if condition_value:
-	# 	return condition_value == param_value
-	for quest in QuestWorker.active_quests:
-		print(quest.quest_id)
-		if quest.quest_id == param_name:
-			return true
-	return false
-
-
-func _set_quest(character: BaseCharacter):
-	QuestWorker.add_quest(self)
 	return true

@@ -24,11 +24,16 @@
           "answer_id": 102,
           "text": "An elder told me you could help me find a place to stay.",
           "select_params": [
+            {
+              "param_name": "speak_with_hunter",
+              "param_value": "complete",
+              "param_type": "Quest",
+            }
           ],
           "conditions": [
             {
               "condition_name": "speak_with_hunter",
-              "condition_value": "check__and__complete",
+              "condition_value": "check",
               "condition_type": "Quest",
             }
           ],

@@ -1,7 +1,7 @@
 extends Node
 
 # quests storage
-var active_quests: Array[Quest] = []
+var active_quests: Dictionary[String, Quest] = {}
 var quests_map: Dictionary[String, Quest] = {}
 
 
@@ -10,12 +10,15 @@ func _ready() -> void:
 
 
 func add_quest(param: DialogParamWorker):
-	active_quests.append(quests_map[param.param_name])
-	print(active_quests)
+	active_quests[param.param_name] = quests_map[param.param_name]
 
 
 func remove_quest():
 	pass
+
+
+func complete_quest(param: DialogParamWorker):
+	active_quests.erase(param.param_name)
 
 
 func get_quest_list():

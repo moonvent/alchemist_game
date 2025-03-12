@@ -83,11 +83,11 @@ func load_dialog(file_path: String):
 			# Load selection parameters for this answer
 			for param_data in answer_data.get("select_params", []):
 				var param = DialogParamWorker.new()
-				param.param_name = param_data.get("param_name", "")
-				param.param_value = param_data.get("param_value", "")
+				param.param_name = param_data["param_name"]
+				param.param_value = param_data["param_value"]
 
 				# Convert string param_type to enum
-				var param_type_str = param_data.get("param_type", "Attribute")
+				var param_type_str = param_data["param_type"]
 				if param_type_str in DialogParamWorker.ParamType:
 					param.param_type = DialogParamWorker.ParamType[param_type_str]
 				else:
@@ -96,13 +96,13 @@ func load_dialog(file_path: String):
 				answer.prize_for_select_answer.append(param)
 
 			# Load conditions for answer availability
-			for cond_data in answer_data.get("conditions", []):
+			for cond_data in answer_data["conditions"]:
 				var condition = DialogParamWorker.new()
-				condition.param_name = cond_data.get("condition_name", "")
-				condition.param_value = cond_data.get("condition_value", "")
+				condition.param_name = cond_data["condition_name"]
+				condition.param_value = cond_data["condition_value"]
 
 				# Convert string condition_type to enum
-				var cond_type_str = cond_data.get("condition_type", "Attribute")
+				var cond_type_str = cond_data["condition_type"]
 				if cond_type_str in DialogParamWorker.ParamType:
 					condition.param_type = DialogParamWorker.ParamType[cond_type_str]
 				else:
