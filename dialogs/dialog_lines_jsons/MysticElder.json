@@ -90,8 +90,9 @@
           "answer_id": 301,
           "text": "Where can I find the hunter?",
           "select_params": [
+
             {
-              "param_name": "speak_with_hunter",
+              "param_name": "deal_5_damage",
               "param_value": "add",
               "param_type": "Quest"
             },

@@ -22,8 +22,8 @@ Contant="*res://utils/autoload/contants.gd"
 TextTranslation="*res://utils/autoload/translation.gd"
 JsonLoader="*res://utils/autoload/dialog_json_loader.gd"
 Attributes="*res://utils/autoload/attributes.gd"
-WorldState="*res://utils/autoload/world_state.gd"
 QuestWorker="*res://utils/autoload/quest_worker.gd"
+WorldListenerCore="*res://world_listener/world_listener_core.gd"
 
 [display]
 

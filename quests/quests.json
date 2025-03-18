@@ -32,4 +32,40 @@
       }
     ]
   },
+  "make_5_attacks": {
+    "name": "Make 5 attacks",
+    "goal": "Try to make 5 attacks on any target",
+    "conditions_to_complete": [
+      {
+        "param_name": "Attacks",
+        "param_value": "5",
+        "param_type": "WorldState"
+      }
+    ],
+    "actions_to_complete": [
+      {
+        "action_name": "attack",
+        "target": "any",
+        "from": "player",
+      }
+    ]
+  },
+  "deal_5_damage": {
+    "name": "Deal 5 attacks",
+    "goal": "Try to deal 5 attacks on any target",
+    "conditions_to_complete": [
+      {
+        "param_name": "deal damage",
+        "param_value": "5",
+        "param_type": "WorldState"
+      }
+    ],
+    "actions_to_complete": [
+      {
+        "action_name": "deal damage",
+        "target": "any",
+        "from": "player",
+      }
+    ]
+  },
 }

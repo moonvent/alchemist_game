@@ -25,6 +25,10 @@ func _ready():
 
 func die():
 	is_dead = true
+	print(name, " die")
+	# WorldHandler.update_world_state(
+	# 	DialogParamWorker("DieEvent", name, DialogParamWorker.ParamType.WorldState)
+	# )
 	# set_collision_layer(2)
 	# set_collision_mask(2)
 
@@ -32,6 +36,12 @@ func die():
 func make_damage(damage_points: float, who: BaseCharacter):
 	health_points -= damage_points
 	print(health_points)
+
+	WorldListenerCore.emit_event(
+		WorldListenerCore.DealDamageEvent.new(
+			who.name, name, str(damage_points), WorldListenerCore.WorldEventOperation.Add
+		)
+	)
 
 	if health_points == 0:
 		die()

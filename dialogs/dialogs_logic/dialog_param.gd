@@ -18,6 +18,10 @@ var param_type: ParamType
 enum ParamOperation { Check, Set, CheckAndComplete, Complete }
 
 
+func quick_init(_param_name: String, _param_value: String, _param_type: ParamType) -> void:
+	pass
+
+
 func is_check_condition(character: BaseCharacter) -> bool:
 	return _param_manipulate(character, ParamOperation.Check)
 
