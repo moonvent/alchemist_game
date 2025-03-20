@@ -1,6 +1,6 @@
 extends Node
 
-enum WorldEventOperation { Add, Minus, Multiply, Divide }
+enum WorldEventOperation { Add, Minus, Multiply, Divide, IntAdd, FloatAdd }
 
 var global_world_storage: Dictionary = {}
 
@@ -35,6 +35,7 @@ class AttackEvent:
 		self.event_operation = _event_operation
 		self.from = _from
 		self.to = _to
+		self.value = _value
 
 
 class DealDamageEvent:

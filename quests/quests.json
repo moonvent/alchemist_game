@@ -56,7 +56,7 @@
     "conditions_to_complete": [
       {
         "param_name": "deal damage",
-        "param_value": "5",
+        "param_value": "2.0",
         "param_type": "WorldState"
       }
     ],
@@ -64,7 +64,7 @@
       {
         "action_name": "deal damage",
         "target": "any",
-        "from": "player",
+        "from": "Player",
       }
     ]
   },

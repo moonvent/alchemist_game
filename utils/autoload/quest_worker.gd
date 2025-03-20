@@ -37,7 +37,26 @@ func emit_event(event: WorldListenerCore.WorldEvent):
 		quest = active_quests[quest_name]
 		for condition_to_complete in quest.conditions_to_complete:
 			if condition_to_complete.param_name == event.name:
-				print("sex")
+				for action in quest.actions_to_complete:
+					if condition_to_complete.param_name == action.action_name:
+						if (
+							event.from == action.from
+							and (action.target == "any" or (action.target == event.target))
+						):
+							if (
+								event.event_operation
+								== WorldListenerCore.WorldEventOperation.FloatAdd
+							):
+								quest.current_progression = str(
+									float(event.value) + float(quest.current_progression)
+								)
+								if quest.current_progression == condition_to_complete.param_value:
+									complete_quest_step(quest)
+
+
+func complete_quest_step(quest: Quest):
+	# think about it, maybe we need to do it in Quest object
+	print("quest_step_complete")
 
 
 func _load_all_quests_from_file():

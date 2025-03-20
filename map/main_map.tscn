@@ -3702,20 +3702,20 @@ tile_map_data = PackedByteArray("AAA3ABIAAAAIAAoAAAA3ABEAAAANABwAAAA3ABAAAAAHAAk
 tile_set = SubResource("TileSet_ut8sc")
 
 [node name="Enemy" parent="." instance=ExtResource("4_otygb")]
-position = Vector2(-104, 59)
+position = Vector2(-274, 76)
 
 [node name="Player" parent="." instance=ExtResource("2_lxmyn")]
 unique_name_in_owner = true
-position = Vector2(-58, -36)
+position = Vector2(-85, -14)
 
 [node name="King" parent="." instance=ExtResource("4_v0ysp")]
 position = Vector2(49, -92)
 
 [node name="Hunter" parent="." instance=ExtResource("4_v0ysp")]
-position = Vector2(-67, -92)
+position = Vector2(-58, -134)
 
 [node name="MysticElder" parent="." instance=ExtResource("4_v0ysp")]
 position = Vector2(-116, -37)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_otygb")]
-position = Vector2(-39, 57)
+position = Vector2(-116, 21)

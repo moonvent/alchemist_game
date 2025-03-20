@@ -15,6 +15,8 @@ var goal: String  # just goal of quest for player
 var conditions_to_complete: Array
 var actions_to_complete: Array
 var current_progression: String
+var current_step: int
+var steps: Array
 
 
 func _init(
@@ -30,3 +32,4 @@ func _init(
 	self.conditions_to_complete = _conditions_to_complete
 	self.actions_to_complete = _actions_to_complete
 	self.current_progression = ""
+	self.current_step = 0
