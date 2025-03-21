@@ -1,35 +1,58 @@
 class_name Quest
 
+enum ProgressOperation { Add, Minus, Multiply, Divide, IntAdd, FloatAdd }
 
-class QuestActionToComplete:
-	var action_name: String = ""
 
+class ActionToComplete:
 	# optional vars
 	var target: String = ""
 	var from: String = ""
+
+	func _init(_target: String = "", _from: String = ""):
+		target = _target
+		from = _from
+
+
+class ConditionToComplete:
+	var readable_name: String
+	var ctype: WorldListenerCore.WorldEventName
+	var value: String
+	var operation: ProgressOperation
+	var actions_to_complete: Array[ActionToComplete]
+
+	func _init(
+		_readable_name: String,
+		_ctype: WorldListenerCore.WorldEventName,
+		_value: String,
+		_operation: ProgressOperation,
+		_actions_to_complete: Array[ActionToComplete]
+	):
+		readable_name = _readable_name
+		ctype = _ctype
+		value = _value
+		operation = _operation
+		actions_to_complete = _actions_to_complete
+
+
+class Step:
+	var conditions_to_complete: Array[ConditionToComplete]
+
+	func _init(_conditions_to_complete: Array[ConditionToComplete]):
+		conditions_to_complete = _conditions_to_complete
 
 
 var quest_id: String
 var name: String  # just name of quest for player
 var goal: String  # just goal of quest for player
-var conditions_to_complete: Array
-var actions_to_complete: Array
 var current_progression: String
-var current_step: int
-var steps: Array
+var current_step_number: int
+var steps: Array[Step]
 
 
-func _init(
-	_quest_id: String,
-	_name: String,
-	_goal: String,
-	_conditions_to_complete: Array,
-	_actions_to_complete: Array
-):
+func _init(_quest_id: String, _name: String, _goal: String, _steps: Array[Step]):
 	self.quest_id = _quest_id
 	self.name = _name
 	self.goal = _goal
-	self.conditions_to_complete = _conditions_to_complete
-	self.actions_to_complete = _actions_to_complete
 	self.current_progression = ""
-	self.current_step = 0
+	self.steps = _steps
+	self.current_step_number = 0

@@ -1,12 +1,13 @@
 extends Node
 
 enum WorldEventOperation { Add, Minus, Multiply, Divide, IntAdd, FloatAdd }
+enum WorldEventName { Attack, DealDamage }
 
 var global_world_storage: Dictionary = {}
 
 
 class WorldEvent:
-	var name: String
+	var name: WorldEventName
 	var value: String
 	var event_operation: WorldEventOperation
 
@@ -31,7 +32,7 @@ class AttackEvent:
 	var to: String
 
 	func _init(_from: String, _to: String, _value: String, _event_operation: WorldEventOperation):
-		self.name = "attack"
+		self.name = WorldEventName.Attack
 		self.event_operation = _event_operation
 		self.from = _from
 		self.to = _to
@@ -43,7 +44,7 @@ class DealDamageEvent:
 
 	func _init(_from: String, _to: String, _value: String, _event_operation: WorldEventOperation):
 		super(_from, _to, _value, _event_operation)
-		self.name = "deal damage"
+		self.name = WorldEventName.DealDamage
 
 
 func emit_event(event: WorldEvent):

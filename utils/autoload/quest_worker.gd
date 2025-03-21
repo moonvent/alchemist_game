@@ -35,23 +35,22 @@ func emit_event(event: WorldListenerCore.WorldEvent):
 
 	for quest_name in active_quests:
 		quest = active_quests[quest_name]
-		for condition_to_complete in quest.conditions_to_complete:
-			if condition_to_complete.param_name == event.name:
-				for action in quest.actions_to_complete:
-					if condition_to_complete.param_name == action.action_name:
+		for conditions_to_complete in quest.steps[quest.current_step_number].conditions_to_complete:
+			if conditions_to_complete.ctype == event.name:
+				for action in conditions_to_complete.actions_to_complete:
+					if (
+						action.from == event.from
+						and (action.target == "any" or (action.target == event.target))
+					):
 						if (
-							event.from == action.from
-							and (action.target == "any" or (action.target == event.target))
+							conditions_to_complete.operation
+							== WorldListenerCore.WorldEventOperation.FloatAdd
 						):
-							if (
-								event.event_operation
-								== WorldListenerCore.WorldEventOperation.FloatAdd
-							):
-								quest.current_progression = str(
-									float(event.value) + float(quest.current_progression)
-								)
-								if quest.current_progression == condition_to_complete.param_value:
-									complete_quest_step(quest)
+							quest.current_progression = str(
+								float(event.value) + float(quest.current_progression)
+							)
+							if quest.current_progression == conditions_to_complete.value:
+								complete_quest_step(quest)
 
 
 func complete_quest_step(quest: Quest):
@@ -72,8 +71,7 @@ func _load_all_quests_from_file():
 					quest_key,
 					quest_info.get("name", ""),
 					quest_info.get("goal", ""),
-					_parse_conditions(quest_info.get("conditions_to_complete", [])),
-					_parse_actions(quest_info.get("actions_to_complete", []))
+					_parse_steps(quest_info.get("steps", []))
 				)
 				quests_map[quest_key] = quest
 
@@ -84,30 +82,30 @@ func _load_all_quests_from_file():
 		push_error("Failed to open quests.json.")
 
 
-func _parse_conditions(conditions_array: Array) -> Array:
-	var conditions_parsed: Array = []
-	for condition in conditions_array:
-		conditions_parsed.append(
-			{
-				"param_name": condition["param_name"],
-				"param_value": condition["param_value"],
-				"param_type": DialogParamWorker.ParamType[condition["param_type"]]
-			}
-		)
-	return conditions_parsed
+func _parse_steps(steps: Array) -> Array[Quest.Step]:
+	var result_array: Array[Quest.Step] = []
+	var actions_to_complete: Array[Quest.ActionToComplete]
+	var conditions_to_complete: Array[Quest.ConditionToComplete]
+	var step: Quest.Step
 
-
-func _parse_actions(actions_array: Array) -> Array:
-	var conditions_parsed: Array = []
-	for condition in actions_array:
-		(
-			conditions_parsed
-			. append(
-				{
-					"action_name": condition["action_name"],
-					"target": condition.get("target", ""),
-					"from": condition.get("from", ""),
-				}
+	for json_step in steps:
+		conditions_to_complete = []
+		for condition in json_step["conditions_to_complete"]:
+			actions_to_complete = []
+			for action in condition["actions_to_complete"]:
+				actions_to_complete.append(
+					Quest.ActionToComplete.new(action.get("target", ""), action.get("from", ""))
+				)
+			conditions_to_complete.append(
+				Quest.ConditionToComplete.new(
+					condition["readable_name"],
+					WorldListenerCore.WorldEventName[condition["ctype"]],
+					condition["value"],
+					Quest.ProgressOperation[condition["operation"]],
+					actions_to_complete
+				)
 			)
-		)
-	return conditions_parsed
+		step = Quest.Step.new(conditions_to_complete)
+		result_array.append(step)
+
+	return result_array

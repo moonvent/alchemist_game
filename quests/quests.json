@@ -52,20 +52,24 @@
   },
   "deal_5_damage": {
     "name": "Deal 5 attacks",
-    "goal": "Try to deal 5 attacks on any target",
-    "conditions_to_complete": [
+    "goal": "Try to deal 5 damage on any target",
+    "steps": [
       {
-        "param_name": "deal damage",
-        "param_value": "2.0",
-        "param_type": "WorldState"
+        "conditions_to_complete": [
+          {
+            "readable_name": "Deal 5 attacks",
+            "ctype": "DealDamage",
+            "value": "2.0",
+            "operation": "FloatAdd",
+            "actions_to_complete": [
+              {
+                "target": "any",
+                "from": "Player",
+              }
+            ]
+          }
+        ],
       }
     ],
-    "actions_to_complete": [
-      {
-        "action_name": "deal damage",
-        "target": "any",
-        "from": "Player",
-      }
-    ]
   },
 }
