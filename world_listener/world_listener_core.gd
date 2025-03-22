@@ -31,9 +31,8 @@ class AttackEvent:
 	var from: String
 	var to: String
 
-	func _init(_from: String, _to: String, _value: String, _event_operation: WorldEventOperation):
+	func _init(_from: String, _to: String, _value: String):
 		self.name = WorldEventName.Attack
-		self.event_operation = _event_operation
 		self.from = _from
 		self.to = _to
 		self.value = _value
@@ -42,8 +41,8 @@ class AttackEvent:
 class DealDamageEvent:
 	extends AttackEvent
 
-	func _init(_from: String, _to: String, _value: String, _event_operation: WorldEventOperation):
-		super(_from, _to, _value, _event_operation)
+	func _init(_from: String, _to: String, _value: String):
+		super(_from, _to, _value)
 		self.name = WorldEventName.DealDamage
 
 

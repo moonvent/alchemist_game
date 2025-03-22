@@ -56,3 +56,24 @@ func _init(_quest_id: String, _name: String, _goal: String, _steps: Array[Step])
 	self.current_progression = ""
 	self.steps = _steps
 	self.current_step_number = 0
+
+
+func switch_to_next_step():
+	print("sex")
+
+
+func update_quest_progression(event: WorldListenerCore.WorldEvent):
+	for conditions_to_complete in steps[current_step_number].conditions_to_complete:
+		if conditions_to_complete.ctype == event.name:
+			for action in conditions_to_complete.actions_to_complete:
+				if (
+					action.from == event.from
+					and (action.target == "any" or (action.target == event.target))
+				):
+					if (
+						conditions_to_complete.operation
+						== WorldListenerCore.WorldEventOperation.FloatAdd
+					):
+						current_progression = str(float(event.value) + float(current_progression))
+						if current_progression == conditions_to_complete.value:
+							switch_to_next_step()

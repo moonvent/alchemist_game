@@ -38,7 +38,7 @@ func make_damage(damage_points: float, who: BaseCharacter):
 
 	WorldListenerCore.emit_event(
 		WorldListenerCore.DealDamageEvent.new(
-			who.name, name, str(damage_points), WorldListenerCore.WorldEventOperation.IntAdd
+			who.name, name, str(damage_points)
 		)
 	)
 

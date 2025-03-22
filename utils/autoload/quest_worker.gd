@@ -35,27 +35,7 @@ func emit_event(event: WorldListenerCore.WorldEvent):
 
 	for quest_name in active_quests:
 		quest = active_quests[quest_name]
-		for conditions_to_complete in quest.steps[quest.current_step_number].conditions_to_complete:
-			if conditions_to_complete.ctype == event.name:
-				for action in conditions_to_complete.actions_to_complete:
-					if (
-						action.from == event.from
-						and (action.target == "any" or (action.target == event.target))
-					):
-						if (
-							conditions_to_complete.operation
-							== WorldListenerCore.WorldEventOperation.FloatAdd
-						):
-							quest.current_progression = str(
-								float(event.value) + float(quest.current_progression)
-							)
-							if quest.current_progression == conditions_to_complete.value:
-								complete_quest_step(quest)
-
-
-func complete_quest_step(quest: Quest):
-	# think about it, maybe we need to do it in Quest object
-	print("quest_step_complete")
+		quest.update_quest_progression(event)
 
 
 func _load_all_quests_from_file():
