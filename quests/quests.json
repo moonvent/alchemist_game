@@ -59,7 +59,7 @@
           {
             "readable_name": "Deal 5 attacks",
             "ctype": "DealDamage",
-            "value": "2.0",
+            "value": "1.0",
             "operation": "FloatAdd",
             "actions_to_complete": [
               {

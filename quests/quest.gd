@@ -47,6 +47,7 @@ var goal: String  # just goal of quest for player
 var current_progression: String
 var current_step_number: int
 var steps: Array[Step]
+var current_step: Step
 
 
 func _init(_quest_id: String, _name: String, _goal: String, _steps: Array[Step]):
@@ -55,7 +56,10 @@ func _init(_quest_id: String, _name: String, _goal: String, _steps: Array[Step])
 	self.goal = _goal
 	self.current_progression = ""
 	self.steps = _steps
-	self.current_step_number = 0
+
+	if _steps.size() > 0:
+		self.current_step_number = 0
+		self.current_step = _steps[current_step_number]
 
 
 func switch_to_next_step():
@@ -63,17 +67,21 @@ func switch_to_next_step():
 
 
 func update_quest_progression(event: WorldListenerCore.WorldEvent):
-	for conditions_to_complete in steps[current_step_number].conditions_to_complete:
-		if conditions_to_complete.ctype == event.name:
-			for action in conditions_to_complete.actions_to_complete:
-				if (
-					action.from == event.from
-					and (action.target == "any" or (action.target == event.target))
-				):
-					if (
-						conditions_to_complete.operation
-						== WorldListenerCore.WorldEventOperation.FloatAdd
-					):
-						current_progression = str(float(event.value) + float(current_progression))
-						if current_progression == conditions_to_complete.value:
-							switch_to_next_step()
+	for condition in current_step.conditions_to_complete:
+		if condition.ctype == event.name:
+			for action in condition.actions_to_complete:
+				match event.name:
+					WorldListenerCore.WorldEventName.DealDamage:
+						_handle_deal_damage_event(action, event, condition)
+				if current_progression == condition.value:
+					switch_to_next_step()
+
+
+func _handle_deal_damage_event(
+	action: ActionToComplete,
+	event: WorldListenerCore.WorldEvent,
+	conditions_to_complete: ConditionToComplete
+):
+	if action.from == event.from and (action.target == "any" or (action.target == event.target)):
+		if conditions_to_complete.operation == WorldListenerCore.WorldEventOperation.FloatAdd:
+			current_progression = str(float(event.value) + float(current_progression))

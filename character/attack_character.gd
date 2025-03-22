@@ -36,10 +36,17 @@ func die():
 func make_damage(damage_points: float, who: BaseCharacter):
 	health_points -= damage_points
 
+	print(
+		who.name,
+		" deal damage to: ",
+		name,
+		", current hp: ",
+		health_points,
+		", damage ",
+		damage_points
+	)
 	WorldListenerCore.emit_event(
-		WorldListenerCore.DealDamageEvent.new(
-			who.name, name, str(damage_points)
-		)
+		WorldListenerCore.DealDamageEvent.new(who.name, name, str(damage_points))
 	)
 
 	if health_points == 0:
