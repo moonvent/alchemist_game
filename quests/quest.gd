@@ -44,7 +44,7 @@ class Step:
 var quest_id: String
 var name: String  # just name of quest for player
 var goal: String  # just goal of quest for player
-var current_progression: String
+var current_progression: Dictionary
 var current_step_number: int
 var steps: Array[Step]
 var current_step: Step
@@ -54,7 +54,7 @@ func _init(_quest_id: String, _name: String, _goal: String, _steps: Array[Step])
 	self.quest_id = _quest_id
 	self.name = _name
 	self.goal = _goal
-	self.current_progression = ""
+	self.current_progression = {}
 	self.steps = _steps
 
 	if _steps.size() > 0:
@@ -63,24 +63,46 @@ func _init(_quest_id: String, _name: String, _goal: String, _steps: Array[Step])
 
 
 func switch_to_next_step():
-	print("sex")
+	current_step_number += 1
+	if current_step_number == steps.size():
+		# change status of quest to complete
+		print("Quest: '", name, "' is complete, but not changed status")
+		pass
 
 
 func update_quest_progression(event: WorldListenerCore.WorldEvent):
 	for condition in current_step.conditions_to_complete:
+		if condition.ctype != event.name:
+			continue
 		match event.name:
 			WorldListenerCore.WorldEventName.DealDamage:
-				for action in condition.actions_to_complete:
-					_handle_deal_damage_event(action, event, condition)
-					if current_progression == condition.value:
-						switch_to_next_step()
+				_handle_deal_damage_event(event, condition)
+			WorldListenerCore.WorldEventName.PlayerMove:
+				_handle_player_move_event(event, condition)
 
 
 func _handle_deal_damage_event(
-	action: ActionToComplete,
-	event: WorldListenerCore.WorldEvent,
-	conditions_to_complete: ConditionToComplete
+	event: WorldListenerCore.DealDamageEvent, condition: ConditionToComplete
 ):
-	if action.from == event.from and (action.target == "any" or (action.target == event.target)):
-		if conditions_to_complete.operation == WorldListenerCore.WorldEventOperation.FloatAdd:
-			current_progression = str(float(event.value) + float(current_progression))
+	for action in condition.actions_to_complete:
+		if (
+			action.from == event.from
+			and (action.target == "any" or (action.target == event.target))
+		):
+			current_progression[event.name] = (
+				float(event.value) + float(current_progression.get(event.name, 0))
+			)
+
+		if current_progression.get(event.name, 0) >= float(condition.value):
+			switch_to_next_step()
+
+
+func _handle_player_move_event(
+	event: WorldListenerCore.PlayerMoveEvent, condition: ConditionToComplete
+):
+	current_progression[event.name] = (
+		event.distance_in_pixels + current_progression.get(event.name, 0)
+	)
+
+	if current_progression.get(event.name, 0) >= float(condition.value):
+		switch_to_next_step()

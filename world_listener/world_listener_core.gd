@@ -1,7 +1,7 @@
 extends Node
 
 enum WorldEventOperation { Add, Minus, Multiply, Divide, IntAdd, FloatAdd }
-enum WorldEventName { Attack, DealDamage }
+enum WorldEventName { Attack, DealDamage, PlayerMove }
 
 var global_world_storage: Dictionary = {}
 
@@ -14,9 +14,15 @@ class WorldEvent:
 	var world_state_param: String
 
 
-class MoveEvent:
+class PlayerMoveEvent:
 	extends WorldEvent
-	pass
+
+	const ONE_METR_IN_PIXELS := 15
+	var distance_in_pixels: float
+
+	func _init(_distance_in_pixels: float):
+		self.name = WorldEventName.PlayerMove
+		self.distance_in_pixels = _distance_in_pixels / ONE_METR_IN_PIXELS
 
 
 class QuestEvent:

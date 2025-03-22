@@ -51,7 +51,7 @@
     ]
   },
   "deal_5_damage": {
-    "name": "Deal 5 attacks",
+    "name": "Deal 1 damage",
     "goal": "Try to deal 5 damage on any target",
     "steps": [
       {
@@ -67,6 +67,22 @@
                 "from": "Player",
               }
             ]
+          }
+        ],
+      }
+    ],
+  },
+  "run_5_meters": {
+    "name": "Run 5 meters",
+    "goal": "Try to run 5 meters",
+    "steps": [
+      {
+        "conditions_to_complete": [
+          {
+            "readable_name": "Run 5 meters",
+            "ctype": "PlayerMove",
+            "value": "5.0",
+            "operation": "FloatAdd",
           }
         ],
       }

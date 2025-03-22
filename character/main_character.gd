@@ -3,6 +3,7 @@ extends "res://character/base_character.gd"
 class_name Player
 
 var dialog_npc: BaseCharacter = null
+var previous_position: Vector2
 
 
 func _ready():
@@ -13,6 +14,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	previous_position = position
+
 	if Input.is_action_just_pressed("activate_dialog"):
 		_start_dialog()
 		return
@@ -37,6 +40,10 @@ func _physics_process(delta):
 		direction = direction.normalized()
 		velocity = direction * SPEED
 		move_and_slide()
+
+		WorldListenerCore.emit_event(
+			WorldListenerCore.PlayerMoveEvent.new(position.distance_to(previous_position))
+		)
 
 	if Input.is_action_pressed("attack"):
 		_start_attack(get_global_mouse_position())

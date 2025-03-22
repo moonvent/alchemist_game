@@ -72,7 +72,7 @@ func _parse_steps(steps: Array) -> Array[Quest.Step]:
 		conditions_to_complete = []
 		for condition in json_step["conditions_to_complete"]:
 			actions_to_complete = []
-			for action in condition["actions_to_complete"]:
+			for action in condition.get("actions_to_complete", []):
 				actions_to_complete.append(
 					Quest.ActionToComplete.new(action.get("target", ""), action.get("from", ""))
 				)
