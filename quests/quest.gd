@@ -68,13 +68,12 @@ func switch_to_next_step():
 
 func update_quest_progression(event: WorldListenerCore.WorldEvent):
 	for condition in current_step.conditions_to_complete:
-		if condition.ctype == event.name:
-			for action in condition.actions_to_complete:
-				match event.name:
-					WorldListenerCore.WorldEventName.DealDamage:
-						_handle_deal_damage_event(action, event, condition)
-				if current_progression == condition.value:
-					switch_to_next_step()
+		match event.name:
+			WorldListenerCore.WorldEventName.DealDamage:
+				for action in condition.actions_to_complete:
+					_handle_deal_damage_event(action, event, condition)
+					if current_progression == condition.value:
+						switch_to_next_step()
 
 
 func _handle_deal_damage_event(
