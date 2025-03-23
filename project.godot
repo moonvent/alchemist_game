@@ -21,9 +21,9 @@ AlchemyElements="*res://alchemy/aspects/elements.gd"
 Contant="*res://utils/autoload/contants.gd"
 TextTranslation="*res://utils/autoload/translation.gd"
 JsonLoader="*res://utils/autoload/dialog_json_loader.gd"
-Attributes="*res://utils/autoload/attributes.gd"
-QuestWorker="*res://utils/autoload/quest_worker.gd"
-WorldListenerCore="*res://world_listener/world_listener_core.gd"
+QuestWorker="*res://core/quest_worker.gd"
+WorldListenerCore="*res://core/world_listener_core.gd"
+AttributeWorker="*res://core/attribute_worker.gd"
 
 [display]
 

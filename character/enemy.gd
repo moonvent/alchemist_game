@@ -8,10 +8,13 @@ func _ready():
 	super._ready()
 
 
-func _physics_process(delta):
+func _move_mechanic():
 	var follow_object: TargetFollowBehavior.FollowResult = target_follow_behavior.follow()
 
-	velocity = follow_object.direction * SPEED
+	velocity = (
+		follow_object.direction
+		* AttributeWorker.get_attribute_value(name, Attribute.AttributeName.MoveSpeed)
+	)
 
 	if not follow_object.is_lost_target:
 		if follow_object.distance_to_target < attack_range:

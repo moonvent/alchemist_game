@@ -5,12 +5,15 @@ class_name Player
 var dialog_npc: BaseCharacter = null
 var previous_position: Vector2
 
+var attributes: Dictionary
+
 
 func _ready():
 	# TODO: add autogeneration size of ui and dialog window
 	super._ready()
 	$UI/DialogWindow.visible = false
-	conditions[Attributes.SpawnInTheGame] = "1"
+	#conditions[Attributes.SpawnInTheGame] = "1"
+	attributes = {}
 
 
 func _physics_process(delta):
@@ -38,7 +41,9 @@ func _physics_process(delta):
 		_play_run_sprite_animation(direction)
 
 		direction = direction.normalized()
-		velocity = direction * SPEED
+		velocity = (
+			direction * AttributeWorker.get_attribute_value(name, Attribute.AttributeName.MoveSpeed)
+		)
 		move_and_slide()
 
 		WorldListenerCore.emit_event(

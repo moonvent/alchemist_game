@@ -20,14 +20,10 @@ var target_follow_behavior: TargetFollowBehavior
 
 func _ready():
 	player = get_node("%Player")
-	SPEED = 35  # only for test
 	super._ready()
 	$DialogAreaTrigger.connect("body_entered", activate_dialog_hover)
 	$DialogAreaTrigger.connect("body_exited", deactivate_dialog_hover)
-
-
-func _physics_process(delta):
-	pass
+	AttributeWorker.set_attribute_value(name, Attribute.AttributeName.MoveSpeed, 20)
 
 
 func activate_dialog_hover(body):
@@ -114,3 +110,11 @@ func load_dialog(file_path: String):
 
 		# Add the fully populated replica to the list
 		dialog_replicas[replica.id] = replica
+
+
+func _physics_process(delta):
+	_move_mechanic()
+
+
+func _move_mechanic():
+	pass

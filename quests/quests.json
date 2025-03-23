@@ -24,29 +24,16 @@
   "speak_with_hunter": {
     "name": "Speak With Hunter",
     "goal": "Speak with Hunter about house on the night",
-    "conditions_to_complete": [
+    "steps": [
       {
-        "param_name": "Speak With",
-        "param_value": "Hunter",
-        "param_type": "WorldState"
-      }
-    ]
-  },
-  "make_5_attacks": {
-    "name": "Make 5 attacks",
-    "goal": "Try to make 5 attacks on any target",
-    "conditions_to_complete": [
-      {
-        "param_name": "Attacks",
-        "param_value": "5",
-        "param_type": "WorldState"
-      }
-    ],
-    "actions_to_complete": [
-      {
-        "action_name": "attack",
-        "target": "any",
-        "from": "player",
+        "conditions_to_complete": [
+          {
+            "readable_name": "Speak With Hunter",
+            "ctype": "SpeakWith",
+            "value": "Hunter",
+            "operation": "FloatAdd",
+          }
+        ]
       }
     ]
   },

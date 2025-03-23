@@ -2,7 +2,6 @@ extends "res://character/attack_character.gd"
 
 class_name BaseCharacter
 
-var SPEED = 75.0
 const JUMP_VELOCITY = -400.0
 
 var dialog_replicas: Dictionary[int, DialogReplica] = {}
