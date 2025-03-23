@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.6.0] - 2024-03-23 !! My birthday !! (happy smile)
+
+1. Add inventory entity, begin to develop it.
+2. Begin to little refactoring of scenes file positions;
+
 ## [0.5.0] - 2024-03-23 !! My birthday !! (happy smile)
 
 1. Add entity attiributes, and worker for that. It's only beggining of this mechanic;
