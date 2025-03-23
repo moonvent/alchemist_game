@@ -14,13 +14,6 @@ More about dev activity in [Changelog](CHANGELOG.md)
 * State on 28.07.2024: https://youtu.be/8ys3l1ou1Bg
 
 
-### State Notes
-
-#### 21.01.2025
-
-Since the last report, I improved a basic finite state machine for proper chasing behavior, enhanced the overall state of the project, learned how to work with raycasts, implemented peaceful behavior for NPCs, and started working on a dialogue system with support for multiple locales to enable writing for several languages at once.
-
-
 ## Contacts
 
 Telegram: https://t.me/moonvent
@@ -29,51 +22,15 @@ Telegram: https://t.me/moonvent
 
 ### Points
 
+#### 23.03.2025
 
-#### 21.03.2025
-
-1. Fully complete at this moment with dialog system. 
-  Business logic and game mechanic is the same right now.
-  Description of business logic:
-    - Player can choice between 1 - 4 answers
-    - Any answer can make some world change. For example: 
-      * add attribute to player;
-      * make some action like open the shop;
-      * start the quest;
-      * open new mechanic for player;
-      * and other...
-    - Any answer can have some conditions for represent, examples:
-      * need some attribute;
-      * some active quest;
-      * some active mechanic;
-      * and other.
-  Description of this mechanic in game:
-    - On intput we can send some params for represent some answers. 
-      For example, if you have quest, attribute or something for answer,
-      game show this answer to player.
-    - If player choice some answer, like in input, we can setup some params, 
-      it can be attributes, quests, or something like that.
-    - In near future it can be a little refactorize, 
-      because in near feature will be complete quest mechanic.
-
-2. Begin to work with quests mechanic:
-  Description of business logic:
-    - Begin of quest.
-    - Quest has some steps:
-      * first is hunt for X;
-      * second learn new spell;
-      * heal the npc;
-      * return with report to Y npc;
-    - Quest can have some status:
-      * completed;
-      * failed - if something went wrong, for example kill need npc, or somethin like that (maybe something more beatiful, give npc not correct potion and etc.);
-      * active;
-      * not active;
-  Description of this mechanic in game:
-    - Player can start and complete quest
-    - Quest have some progression, for example, deal 5 damage to some entity
-    Not added:
-      * steps
+1. CompletED dialog system;
+2. CompletED quest system;
+3. Begin to develop attribute system;
+4. Add item system, think about inventory system, does it need?
+5. Add save system;
+6. Add battle system;
+7. Begin to develop of behavior system of npc.
 
 #### 28.01.2025
 

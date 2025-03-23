@@ -1,6 +1,6 @@
 extends Node
 
-var attribute_storage: Dictionary[String, Dictionary] = {}
+var attribute_storage: Dictionary[String, Dictionary[Attribute.AttributeName, Attribute]] = {}
 
 
 func _init_new_attribute_storage() -> Dictionary[Attribute.AttributeName, Attribute]:
