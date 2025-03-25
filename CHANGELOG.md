@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0] - 2024-03-25
+
+1. Add new entity - item;
+2. Add 2 types of inventories;
+3. This additions made without any connection logic;
+
 ## [0.6.0] - 2024-03-23 !! My birthday !! (happy smile)
 
 1. Add inventory entity, begin to develop it.
