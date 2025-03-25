@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.6.0] - 2024-03-25
+## [0.7.0] - 2024-03-25
 
 1. Add new entity - item;
 2. Add 2 types of inventories;
