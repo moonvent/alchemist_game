@@ -1,23 +1,29 @@
 # Changelog
 
-## [0.7.0] - 2024-03-25
+## [0.8.0] - 2025-03-29
+
+1. Add new entities: Aspect, Spell, AspectsWorker;
+2. Begin to refactoring of aspects work;
+3. Begin to work with spells;
+
+## [0.7.0] - 2025-03-25
 
 1. Add new entity - item;
 2. Add 2 types of inventories;
 3. This additions made without any connection logic;
 
-## [0.6.0] - 2024-03-23 !! My birthday !! (happy smile)
+## [0.6.0] - 2025-03-23 !! My birthday !! (happy smile)
 
 1. Add inventory entity, begin to develop it.
 2. Begin to little refactoring of scenes file positions;
 
-## [0.5.0] - 2024-03-23 !! My birthday !! (happy smile)
+## [0.5.0] - 2025-03-23 !! My birthday !! (happy smile)
 
 1. Add entity attiributes, and worker for that. It's only beggining of this mechanic;
 2. Little refactoring of other elements of game;
 
 
-## [0.4.0] - 2024-03-21
+## [0.4.0] - 2025-03-21
 
 1. Fully complete at this moment with dialog system. 
   Business logic and game mechanic is the same right now.
