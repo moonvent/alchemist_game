@@ -1,0 +1,78 @@
+{
+  "fire": {
+    "damage": 1,
+    "level": 1,
+  },
+  "water": {
+    "damage": 1,
+    "level": 1,
+  },
+  "air": {
+    "damage": 1,
+    "level": 1,
+  },
+  "earth": {
+    "damage": 1,
+    "level": 1,
+  },
+  "steam": {
+    "damage": 2,
+    "level": 2,
+    "one_part": "fire",
+    "second_part": "water",
+  },
+  "light": {
+    "damage": 2,
+    "level": 2,
+    "one_part": "air",
+    "second_part": "fire",
+  },
+  "plant": {
+    "damage": 2,
+    "level": 2,
+    "one_part": "earth",
+    "second_part": "water",
+  },
+  "wind": {
+    "damage": 2,
+    "level": 2,
+    "one_part": "air",
+    "second_part": "air",
+  },
+  "stone": {
+    "damage": 2,
+    "level": 2,
+    "one_part": "earth",
+    "second_part": "fire",
+  },
+  "lava": {
+    "damage": 2,
+    "level": 2,
+    "one_part": "fire",
+    "second_part": "stone",
+  },
+  "tree": {
+    "damage": 3,
+    "level": 3,
+    "one_part": "plant",
+    "second_part": "plant",
+  },
+  "grass": {
+    "damage": 3,
+    "level": 3,
+    "one_part": "earth",
+    "second_part": "plant",
+  },
+  "life": {
+    "damage": 3,
+    "level": 3,
+    "one_part": "plant",
+    "second_part": "water",
+  },
+  "ore": {
+    "damage": 3,
+    "level": 3,
+    "one_part": "earth",
+    "second_part": "stone",
+  },
+}

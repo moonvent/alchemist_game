@@ -1,10 +1,8 @@
 extends Node2D
 
-
 class_name AlchemyTable
 
-
-var AlchemyTableElementScene = preload("res://alchemy/table/alchemy_table_element.tscn")
+var AlchemyTableElementScene = preload("res://scenes/alchemy/table/alchemy_table_element.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,9 +12,4 @@ func _ready():
 	# alchemist_table_element = AlchemyTableElement.new()
 	# alchemist_table_element.initialize_element('Fire')
 	# add_child(alchemist_table_element)
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
 	pass

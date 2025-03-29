@@ -25,6 +25,7 @@ QuestWorker="*res://core/quest_worker.gd"
 WorldListenerCore="*res://core/world_listener_core.gd"
 AttributeWorker="*res://core/attribute_worker.gd"
 InventoryWorker="*res://core/inventory_worker.gd"
+AspectsWorker="*res://core/aspects_worker.gd"
 
 [display]
 
