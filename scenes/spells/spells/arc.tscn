@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://nfdn4t8v77nu"]
+
+[ext_resource type="Script" uid="uid://d3xsv0bl2x7h7" path="res://spells/spells/arc.gd" id="1_oupsu"]
+
+[node name="ArcSpell" type="Node2D"]
+script = ExtResource("1_oupsu")
+
+[node name="Spell" type="Polygon2D" parent="."]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 64, 64, 96, 48, 120, 32, 128, 0, 120, -24, 96, -48, 64, -64)
