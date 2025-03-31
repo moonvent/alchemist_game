@@ -53,9 +53,9 @@ func make_damage(damage_points: float, who: BaseCharacter):
 		die()
 
 
-func _on_attack_collider_body_entered(body):
+func on_attack_collider_body_entered(body, damage: float):
 	if body is BaseCharacter:
-		body.make_damage(primary_sword_damage_per_collider, self)
+		body.make_damage(damage, self)
 
 
 func _setup_attack_collisions():
@@ -67,7 +67,9 @@ func _setup_attack_collisions():
 	]
 	for collider in attack_colliders_list:
 		for one_attack_frame in collider.get_children():
-			one_attack_frame.connect("body_entered", _on_attack_collider_body_entered)
+			one_attack_frame.connect(
+				"body_entered", on_attack_collider_body_entered, primary_sword_damage_per_collider
+			)
 			one_attack_frame.collision_layer = collision_layer
 			one_attack_frame.collision_mask = collision_mask
 

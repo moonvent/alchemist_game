@@ -6,5 +6,13 @@
 script = ExtResource("1_oupsu")
 
 [node name="Spell" type="Polygon2D" parent="."]
+scale = Vector2(0.25, 0.25)
 color = Color(1, 0, 0, 1)
-polygon = PackedVector2Array(0, 0, 64, 64, 96, 48, 120, 32, 128, 0, 120, -24, 96, -48, 64, -64)
+polygon = PackedVector2Array(0, 0, 48, 40, 64, 24, 72, 0, 64, -24, 48, -40)
+
+[node name="Area2D" type="Area2D" parent="Spell"]
+collision_layer = 3
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spell/Area2D"]
+polygon = PackedVector2Array(0, 0, 48, -40, 64, -24, 72, 0, 64, 24, 48, 40)

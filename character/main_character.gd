@@ -10,6 +10,8 @@ func _ready():
 	# TODO: add autogeneration size of ui and dialog window
 	super._ready()
 	$UI/DialogWindow.visible = false
+	SpellWorker.player = self
+
 
 
 func _input(event: InputEvent) -> void:
@@ -21,6 +23,25 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta):
+	_moving()
+	_attack_action()
+
+
+func _start_dialog():
+	if dialog_npc:
+		if not $UI/DialogWindow.visible:
+			$UI/DialogWindow.start_new_dialog(
+				dialog_npc, conditions.get(dialog_npc.name + "__last_dialog_number", 1)
+			)
+		else:
+			deactivate_dialog()
+
+
+func deactivate_dialog():
+	$UI/DialogWindow.deactivate_dialog()
+
+
+func _moving():
 	# here we handle every frame
 	previous_position = position
 
@@ -51,23 +72,14 @@ func _physics_process(delta):
 			WorldListenerCore.PlayerMoveEvent.new(position.distance_to(previous_position))
 		)
 
-	if Input.is_action_pressed("attack"):
-		_start_attack(get_global_mouse_position())
-
-
-func _start_dialog():
-	if dialog_npc:
-		if not $UI/DialogWindow.visible:
-			$UI/DialogWindow.start_new_dialog(
-				dialog_npc, conditions.get(dialog_npc.name + "__last_dialog_number", 1)
-			)
-		else:
-			deactivate_dialog()
-
-
-func deactivate_dialog():
-	$UI/DialogWindow.deactivate_dialog()
-
 
 func _open_inventory():
 	pass
+
+
+func _attack_action():
+	if Input.is_action_pressed("attack"):
+		_start_attack(get_global_mouse_position())
+
+	if Input.is_action_pressed("first_spell"):
+		SpellWorker.use_spell("first_spell")

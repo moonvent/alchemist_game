@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.1] - 2025-03-31
+
+1. Create SpellWorker;
+2. Complete feature which allow to make a damage from first spell;
+3. Update spell behavior;
+
 ## [0.8.0] - 2025-03-29
 
 1. Add new entities: Aspect, Spell, AspectsWorker;
