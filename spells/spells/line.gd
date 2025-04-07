@@ -10,10 +10,8 @@ var _base_projectile_points: PackedVector2Array
 var _origin_point: Vector2
 var _new_polygon_points: Array[Vector2]
 
-var _increase_size_speed = 3.0
+var _increase_size_speed = 3.25
 var _projectile_lifetime = 0.5
-
-var only_one_intance_in_time: bool = true
 
 # this var need, because we need to increase only in one direction line
 var first_point_setup_direction: Vector2
@@ -27,9 +25,14 @@ func _ready() -> void:
 	collider = $Spell/Area2D/CollisionPolygon2D
 	super()
 
+func _startup_mixins():
+	_startup_spell_mixin_one_instance_in_time()
+
+func _process_mixins_before():
+	_process_spell_mixin_look_at()
 
 func _physics_process(delta):
-	spell_node.look_at(get_global_mouse_position())
+	_process_mixins_before()
 
 	_base_projectile_points = spell_node.polygon
 	_origin_point = _base_projectile_points[0]

@@ -13,8 +13,6 @@ var _new_polygon_points: Array[Vector2]
 var _increase_size_speed = 2.0
 var _projectile_lifetime = 0.5
 
-var only_one_intance_in_time: bool = true
-
 var collider: CollisionPolygon2D
 
 
@@ -24,9 +22,14 @@ func _ready() -> void:
 	collider = $Spell/Area2D/CollisionPolygon2D
 	super()
 
+func _startup_mixins():
+	_startup_spell_mixin_one_instance_in_time()
+
+func _process_mixins_before():
+	_process_spell_mixin_look_at()
 
 func _physics_process(delta):
-	spell_node.look_at(get_global_mouse_position())
+	_process_mixins_before()
 
 	_base_projectile_points = spell_node.polygon
 	_origin_point = _base_projectile_points[0]
@@ -49,8 +52,6 @@ func _physics_process(delta):
 	if _projectile_lifetime <= 0:
 		can_use_spell = true
 		queue_free()
-	elif only_one_intance_in_time:
-		can_use_spell = false
 
 
 func add_damage_signal(player_signal_function: Callable):
