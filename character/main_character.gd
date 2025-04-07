@@ -83,3 +83,5 @@ func _attack_action():
 
 	if Input.is_action_pressed("first_spell"):
 		SpellWorker.use_spell("first_spell")
+	if Input.is_action_pressed("second_spell"):
+		SpellWorker.use_spell("second_spell")
