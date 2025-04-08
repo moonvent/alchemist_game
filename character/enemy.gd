@@ -2,14 +2,14 @@ extends "res://character/npc.gd"
 
 
 func _ready():
-	target_follow_behavior = TargetFollowBehavior.new(self, true)
+	target_follow_behavior = TargetFollowBehaviorMixin.new(self, true)
 	add_child(target_follow_behavior)
 
 	super._ready()
 
 
 func _move_mechanic():
-	var follow_object: TargetFollowBehavior.FollowResult = target_follow_behavior.follow()
+	var follow_object: TargetFollowBehaviorMixin.FollowResult = target_follow_behavior.follow()
 
 	velocity = (
 		follow_object.direction

@@ -15,7 +15,7 @@ var forward_vector: Vector2 = Vector2.UP
 
 var vision_zone_node: Node2D
 
-var target_follow_behavior: TargetFollowBehavior
+var target_follow_behavior: TargetFollowBehaviorMixin
 
 
 func _ready():

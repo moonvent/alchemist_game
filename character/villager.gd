@@ -1,11 +1,10 @@
 extends "res://character/npc.gd"
 
-
 class_name Villager
 
 
 func _ready():
-	target_follow_behavior = TargetFollowBehavior.new(self, false)
+	target_follow_behavior = TargetFollowBehaviorMixin.new(self, false)
 	load_dialog("dialogs/dialog_lines_jsons/%s.json" % self.name)
 
 	add_child(target_follow_behavior)
@@ -18,7 +17,9 @@ func make_damage(damage: float, who: CharacterBody2D):
 
 
 func _move_mechanic():
-	var follow_object: TargetFollowBehavior.FollowResult = target_follow_behavior.follow(_target)
+	var follow_object: TargetFollowBehaviorMixin.FollowResult = target_follow_behavior.follow(
+		_target
+	)
 
 	if not follow_object.is_lost_target:
 		if follow_object.distance_to_target > 0 and follow_object.distance_to_target < attack_range:

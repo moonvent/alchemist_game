@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name TargetFollowBehavior
+class_name TargetFollowBehaviorMixin
 
 var has_seen_target: bool = false
 
