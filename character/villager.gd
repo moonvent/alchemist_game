@@ -1,11 +1,12 @@
 extends "res://character/npc.gd"
 
 
+class_name Villager
+
+
 func _ready():
 	target_follow_behavior = TargetFollowBehavior.new(self, false)
-
 	load_dialog("dialogs/dialog_lines_jsons/%s.json" % self.name)
-	conditions["first_look"] = true
 
 	add_child(target_follow_behavior)
 	super._ready()

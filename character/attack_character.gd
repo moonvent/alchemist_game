@@ -68,7 +68,8 @@ func _setup_attack_collisions():
 	for collider in attack_colliders_list:
 		for one_attack_frame in collider.get_children():
 			one_attack_frame.connect(
-				"body_entered", on_attack_collider_body_entered, primary_sword_damage_per_collider
+				"body_entered", 
+				Callable(on_attack_collider_body_entered).bind(primary_sword_damage_per_collider) 
 			)
 			one_attack_frame.collision_layer = collision_layer
 			one_attack_frame.collision_mask = collision_mask
