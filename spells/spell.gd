@@ -27,7 +27,11 @@ func _process_mixins_before():
 	pass
 
 
-func _startup_spell_mixin_one_instance_in_time():
+func _process_mixins_after():
+	pass
+
+
+func _spell_mixin_one_instance_in_time():
 	# can have ONLY ONE instance when used
 	if only_one_intance_in_time:
 		can_use_spell = false

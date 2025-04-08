@@ -22,11 +22,14 @@ func _ready() -> void:
 	collider = $Spell/Area2D/CollisionPolygon2D
 	super()
 
+
 func _startup_mixins():
-	_startup_spell_mixin_one_instance_in_time()
+	_spell_mixin_one_instance_in_time()
+
 
 func _process_mixins_before():
 	_process_spell_mixin_look_at()
+
 
 func _physics_process(delta):
 	_process_mixins_before()

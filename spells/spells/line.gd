@@ -25,11 +25,18 @@ func _ready() -> void:
 	collider = $Spell/Area2D/CollisionPolygon2D
 	super()
 
+
 func _startup_mixins():
-	_startup_spell_mixin_one_instance_in_time()
+	_spell_mixin_one_instance_in_time()
+
 
 func _process_mixins_before():
 	_process_spell_mixin_look_at()
+
+
+func _process_mixins_after():
+	_spell_mixin_one_instance_in_time()
+
 
 func _physics_process(delta):
 	_process_mixins_before()
@@ -58,11 +65,10 @@ func _physics_process(delta):
 	_increase_size_speed *= pow(2, delta)  # speedup in two times every one frame
 
 	_projectile_lifetime -= delta
+
 	if _projectile_lifetime <= 0:
 		can_use_spell = true
 		queue_free()
-	elif only_one_intance_in_time:
-		can_use_spell = false
 
 
 func add_damage_signal(player_signal_function: Callable):
