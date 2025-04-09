@@ -8,13 +8,13 @@ var _new_polygon: Polygon2D
 
 var _projectile_speed = 100
 
+
 var _direction_mouse_pos: Vector2
 var _projectile_direction: Vector2
 
 var _projectile_lifetime = 1
 
 var _current_projectile_list: Array
-var _active_timer_in_childs: bool = true
 var _timer_for_create_new_projetiles: Timer
 var _time_for_create_new_projectiles: float = 0.2  # in seconds
 
@@ -23,6 +23,17 @@ var _initial_object: Polygon2D
 var _player_node: Player
 
 var _player_location: Node2D
+
+var _additional_projectiles_data: Dictionary[Polygon2D, _AdditionalProjectileData] = {}
+
+var _cached_player_signal_function: Callable
+
+
+class _AdditionalProjectileData:
+	var direction: Vector2
+
+	func _init(direction_mouse_pos: Vector2, current_global_position: Vector2):
+		direction = (direction_mouse_pos - current_global_position).normalized()
 
 
 func _ready() -> void:
@@ -39,6 +50,9 @@ func _ready() -> void:
 	_player_node = find_parent("Player")
 	_player_location = _player_node.get_parent()
 	spell_node.reparent(_player_location)
+	_additional_projectiles_data[spell_node as Polygon2D] = _AdditionalProjectileData.new(
+		_direction_mouse_pos, _player_node.global_position
+	)
 	_current_projectile_list = [spell_node]
 
 	_add_create_projectile_timer()
@@ -62,7 +76,11 @@ func _init_additional_projectile():
 		_new_polygon = _initial_object.duplicate()
 		_current_projectile_list.append(_new_polygon)
 		_new_polygon.global_position = _player_node.global_position
+		_additional_projectiles_data[_new_polygon] = _AdditionalProjectileData.new(
+			_direction_mouse_pos, _player_node.global_position
+		)
 		_player_location.add_child(_new_polygon)
+		add_damage_signal(_cached_player_signal_function, _new_polygon)
 	else:
 		_timer_for_create_new_projetiles.stop()
 
@@ -84,13 +102,16 @@ func _object_delete_from_scene():
 
 func _set_move_direction_every_frame(delta):
 	for polygon in _current_projectile_list:
-		_projectile_direction = (_direction_mouse_pos - polygon.global_position).normalized()
+		_projectile_direction = _additional_projectiles_data[polygon].direction
 		polygon.global_position += _projectile_direction * _projectile_speed * delta
 
 
-func add_damage_signal(player_signal_function: Callable):
+func add_damage_signal(player_signal_function: Callable, spell_polygon: Polygon2D = spell_node):
+	if not _cached_player_signal_function:
+		_cached_player_signal_function = player_signal_function
+
 	(
-		spell_node
+		spell_polygon
 		. get_node("Area2D")
 		. connect(
 			"body_entered",

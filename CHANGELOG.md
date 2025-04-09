@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.8.4] - 2025-04-09
+
+1. Add new spell, prolong ray;
+2. Add new feature of prolong spell, and add support of that spell type;
+
 ## [0.8.3] - 2025-04-09
 
 1. Add new spell, mini line queue;

@@ -3,8 +3,10 @@ extends Node2D
 class_name Spell
 
 var spell_name: String
-var base_damage: int
+var base_damage: float
 var spell_node: Node2D
+# if spell need to prolong press for use
+var prolong_use: bool = false
 
 var only_one_intance_in_time: bool = true
 static var can_use_spell: bool = true
@@ -13,6 +15,10 @@ static var can_use_spell: bool = true
 func _ready() -> void:
 	spell_node = $Spell
 	_startup_mixins()
+
+
+func update_spell_holding():
+	pass
 
 
 func add_damage_signal(player_signal_function: Callable):
@@ -29,6 +35,10 @@ func _process_mixins_before():
 
 func _process_mixins_after():
 	pass
+
+
+func spell_is_active():
+	return
 
 
 func _spell_mixin_one_instance_in_time():
