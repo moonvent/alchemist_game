@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcntx3hy0g6db"]
+
+[ext_resource type="Script" uid="uid://em0g47rplo6m" path="res://spells/spells/mini_line_queue.gd" id="1_rb1ms"]
+
+[node name="MiniLineQueueSpell" type="Node2D"]
+script = ExtResource("1_rb1ms")
+
+[node name="Spell" type="Polygon2D" parent="."]
+scale = Vector2(0.25, 0.25)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, 4, 56, 4, 56, -4, 0, -4)
+
+[node name="Area2D" type="Area2D" parent="Spell"]
+collision_layer = 3
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spell/Area2D"]
+polygon = PackedVector2Array(0, -4, 56, -4, 56, 4, 0, 4)

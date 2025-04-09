@@ -13,7 +13,6 @@ func _ready():
 	SpellWorker.player = self
 
 
-
 func _input(event: InputEvent) -> void:
 	# here we handle one time press
 	if event.is_action_pressed("activate_dialog"):
@@ -85,3 +84,5 @@ func _attack_action():
 		SpellWorker.use_spell("first_spell")
 	if Input.is_action_pressed("second_spell"):
 		SpellWorker.use_spell("second_spell")
+	if Input.is_action_pressed("third_spell"):
+		SpellWorker.use_spell("third_spell")

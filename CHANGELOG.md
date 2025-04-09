@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.8.3] - 2025-04-09
+
+1. Add new spell, mini line queue;
+
 ## [0.8.2] - 2025-04-08
 
 1. Add 2 spells, arc and line, and create for this spell logic of this spell;

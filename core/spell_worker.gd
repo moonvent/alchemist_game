@@ -4,6 +4,7 @@ var current_spells: Dictionary[String, PackedScene] = {}
 
 var first_spell: PackedScene = preload("res://scenes/spells/spells/arc.tscn")
 var second_spell: PackedScene = preload("res://scenes/spells/spells/line.tscn")
+var third_spell: PackedScene = preload("res://scenes/spells/spells/mini_line_queue.tscn")
 
 var spell_for_use: Spell
 
@@ -15,6 +16,7 @@ var player: Node2D
 func _ready() -> void:
 	current_spells["first_spell"] = first_spell
 	current_spells["second_spell"] = second_spell
+	current_spells["third_spell"] = third_spell
 
 
 func use_spell(spell_number: String):
