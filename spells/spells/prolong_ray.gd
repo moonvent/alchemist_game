@@ -13,7 +13,7 @@ var player: Player
 
 func _ready() -> void:
 	spell_name = "ProlongRay"
-	base_damage = 0.1
+	base_damage = 0.05
 	collider = $Spell/Area2D/CollisionPolygon2D
 	spell_area = collider.get_parent()
 	prolong_use = true

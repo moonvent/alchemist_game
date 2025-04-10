@@ -15,10 +15,11 @@ offset_left = 459.0
 offset_top = 109.0
 offset_right = 499.0
 offset_bottom = 149.0
-element = 1
+element_name = "fire"
 
 [node name="AlchemyTableElement2" parent="." instance=ExtResource("2_w3t03")]
 offset_left = 322.0
 offset_top = 111.0
 offset_right = 362.0
 offset_bottom = 151.0
+element_name = "air"

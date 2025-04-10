@@ -1,22 +1,16 @@
 extends TabContainer
 
-
 class_name AlchemyTableElementList
-
 
 var _element_grid_container: GridContainer
 var _table_element: AlchemyTable
 
 
 func _fill_element_tab():
-	for element in AlchemyElements.Element:
-
-		var element_data = AlchemyElements.InitializedElements.get(AlchemyElements.Element[element])
-
-		if element_data:
-			var temp_label = AlchemyTableGridElement.new()
-			temp_label.curstom_init(element_data, _table_element)
-			_element_grid_container.add_child(temp_label)
+	for element_name in AspectsWorker.aspects:
+		_element_grid_container.add_child(
+			AlchemyTableGridElement.new(AspectsWorker.aspects[element_name])
+		)
 
 
 func _ready():

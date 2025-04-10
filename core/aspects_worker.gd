@@ -1,10 +1,25 @@
 extends Node
 
 var aspects: Dictionary[String, AspectElement] = {}
+var creation_map: Dictionary[Array, AspectElement] = {}
 
 
 func _ready():
 	_load_aspects_from_file()
+	_create_creation_map()
+
+
+func _create_creation_map():
+	var generated_aspect: AspectElement
+	var first_elem_name: String
+	var second_elem_name: String
+	for aspect in aspects:
+		generated_aspect = aspects[aspect]
+
+		if generated_aspect.one_part_name:
+			first_elem_name = aspects[generated_aspect.one_part_name].name
+			second_elem_name = aspects[generated_aspect.second_part_name].name
+			creation_map[[first_elem_name, second_elem_name]] = generated_aspect
 
 
 func _load_aspects_from_file():
