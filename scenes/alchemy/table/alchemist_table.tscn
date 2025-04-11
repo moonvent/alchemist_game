@@ -1,25 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://btuvrqfja580s"]
+[gd_scene load_steps=5 format=3 uid="uid://btuvrqfja580s"]
 
 [ext_resource type="Script" uid="uid://dcn5r3edxts5l" path="res://alchemy/table/alchemist_table.gd" id="1_qotgv"]
 [ext_resource type="PackedScene" uid="uid://4ung2so5ttkx" path="res://scenes/alchemy/table/alchemy_table_element_list.tscn" id="2_t78ex"]
 [ext_resource type="PackedScene" uid="uid://b5gx52xo32ick" path="res://scenes/alchemy/table/alchemy_table_element.tscn" id="2_w3t03"]
+[ext_resource type="Script" uid="uid://ba80qkicouc4l" path="res://alchemy/table/aspects_space.gd" id="3_qiq5i"]
 
-[node name="AlchemistTable" type="Node2D"]
+[node name="AlchemistTable" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_qotgv")
 
 [node name="AlchemyTableElementList" parent="." instance=ExtResource("2_t78ex")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.0
 current_tab = 0
 
-[node name="AlchemyTableElement" parent="." instance=ExtResource("2_w3t03")]
-offset_left = 459.0
-offset_top = 109.0
-offset_right = 499.0
-offset_bottom = 149.0
+[node name="AspectsSpace" type="Panel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_qiq5i")
+
+[node name="AlchemyTableElement" parent="AspectsSpace" instance=ExtResource("2_w3t03")]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 38.0
+offset_right = 278.0
+offset_bottom = 110.0
 element_name = "fire"
 
-[node name="AlchemyTableElement2" parent="." instance=ExtResource("2_w3t03")]
-offset_left = 322.0
-offset_top = 111.0
-offset_right = 362.0
-offset_bottom = 151.0
+[node name="AlchemyTableElement2" parent="AspectsSpace" instance=ExtResource("2_w3t03")]
+layout_mode = 0
+offset_bottom = 72.0
 element_name = "air"

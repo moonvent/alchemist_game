@@ -16,3 +16,6 @@ var level: int
 
 # element radius in table
 var radius: int
+
+var child_elements: Array[String] = []
+var parent_elements: Array[String] = []

@@ -10,12 +10,20 @@ var has_entered = false
 
 var alchemy_table_element_list: AlchemyTableElementList
 
+var _panel_container: Panel
+
+var _parent_rect: Rect2
+
+static var CUSTOM_MINIMUM_SIZE = Vector2(72, 72)
+
 
 func _ready():
 	# if we setup it from debug window
 	if not element:
 		element = AspectsWorker.aspects[element_name]
 	$VBoxContainer/Label.text = element.name
+	_panel_container = get_parent()
+
 	# var collision_shape = $Area2D.get_node("CollisionShape2D")
 	#collision_shape.shape.radius += 5 + element_data.radius
 	# var material = CanvasItemMaterial.new()
@@ -32,7 +40,9 @@ func stop_dragging():
 	dragging = false
 	$VBoxContainer/Area2D.disconnect("area_entered", _on_area_2d_area_entered)
 
-	if alchemy_table_element_list and get_rect().intersects(alchemy_table_element_list.get_rect()):
+	if not _parent_rect:
+		_parent_rect = Rect2(get_parent().global_position, get_parent().get_rect().size)
+	if not _parent_rect.encloses(Rect2(global_position, get_rect().size)):
 		queue_free()
 
 
@@ -48,6 +58,7 @@ func _gui_input(event):
 	elif event is InputEventMouseMotion:
 		if dragging:
 			position += event.relative
+			_panel_container.queue_redraw()
 
 
 func _on_area_2d_area_entered(area):
@@ -61,6 +72,7 @@ func _on_area_2d_area_entered(area):
 	if new_element:
 		var self_copy = duplicate()
 		self_copy.element = new_element
-		get_parent().add_child(self_copy)
+		_panel_container.add_child(self_copy)
 		alchemy_table_element.queue_free()
 		queue_free()
+		_panel_container.queue_redraw()

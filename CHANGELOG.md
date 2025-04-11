@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.9.0] - 2025-04-12
+
+1. Start to work with table and aspects on table;
+
 ## [0.8.4] - 2025-04-09
 
 1. Add new spell, prolong ray;

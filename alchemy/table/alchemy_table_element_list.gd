@@ -17,3 +17,6 @@ func _ready():
 	_element_grid_container = get_child(0).get_node("GridContainer")
 	_table_element = get_parent()
 	_fill_element_tab()
+
+# func _draw():
+# 	draw_rect(get_rect(), Color.RED)

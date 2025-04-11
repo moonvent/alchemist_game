@@ -7,6 +7,7 @@ var creation_map: Dictionary[Array, AspectElement] = {}
 func _ready():
 	_load_aspects_from_file()
 	_create_creation_map()
+	_connect_childs_to_parents()
 
 
 func _create_creation_map():
@@ -20,6 +21,12 @@ func _create_creation_map():
 			first_elem_name = aspects[generated_aspect.one_part_name].name
 			second_elem_name = aspects[generated_aspect.second_part_name].name
 			creation_map[[first_elem_name, second_elem_name]] = generated_aspect
+
+
+func _connect_childs_to_parents():
+	for aspect_name in aspects:
+		for parent_aspect_name in aspects[aspect_name].parent_elements:
+			aspects[parent_aspect_name].child_elements.append(aspect_name)
 
 
 func _load_aspects_from_file():
@@ -48,7 +55,12 @@ func _load_aspects_from_file():
 			element.one_part_name = data.get("one_part", "")
 			element.second_part_name = data.get("second_part", "")
 
+			if element.one_part_name:
+				element.parent_elements.append(element.one_part_name)
+				element.parent_elements.append(element.second_part_name)
+
 			aspects[aspect_name] = element
+
 	else:
 		push_error("JSON data is invalid.")
 
