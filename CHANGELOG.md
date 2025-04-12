@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.9.1] - 2025-04-12
+
+1. Little refactoring;
+2. Add connections between nodes with line depend from the distance;
+
 ## [0.9.0] - 2025-04-12
 
 1. Start to work with table and aspects on table;

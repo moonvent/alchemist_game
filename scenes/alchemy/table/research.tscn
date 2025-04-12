@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx0f1qjytykgp"]
+
+[ext_resource type="Script" uid="uid://bqpbhh2m2ckit" path="res://alchemy/table/research.gd" id="1_jed68"]
+[ext_resource type="PackedScene" uid="uid://b5gx52xo32ick" path="res://scenes/alchemy/table/alchemy_table_element.tscn" id="2_klef0"]
+
+[node name="Research" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jed68")
+
+[node name="AlchemyTableElement" parent="." instance=ExtResource("2_klef0")]
+layout_mode = 0
+offset_left = 717.0
+offset_top = 370.0
+offset_right = 789.0
+offset_bottom = 442.0
+element_name = "fire"
+
+[node name="AlchemyTableElement2" parent="." instance=ExtResource("2_klef0")]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 186.0
+offset_right = 248.0
+offset_bottom = 258.0
+element_name = "air"

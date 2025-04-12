@@ -4,12 +4,17 @@ class_name AlchemyTableElementList
 
 var _element_grid_container: GridContainer
 var _table_element: AlchemyTable
+var _alchemy_table_grid_element = preload(
+	"res://scenes/alchemy/table/alchemy_table_grid_element.tscn"
+)
 
 
 func _fill_element_tab():
 	for element_name in AspectsWorker.aspects:
 		_element_grid_container.add_child(
-			AlchemyTableGridElement.new(AspectsWorker.aspects[element_name])
+			_alchemy_table_grid_element.instantiate().set_element(
+				AspectsWorker.aspects[element_name]
+			)
 		)
 
 

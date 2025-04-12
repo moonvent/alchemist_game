@@ -8,15 +8,15 @@ var _alchemy_table_element_prefab = preload("res://scenes/alchemy/table/alchemy_
 var _alchemy_table_element_list: AlchemyTableElementList
 
 
-func _init(element: AspectElement):
+func set_element(element: AspectElement):
 	_element = element
-
-	connect("button_down", _on_pressed)
+	return self
 
 
 func _ready() -> void:
-	_aspects_space = find_parent("AlchemistTable").get_node("AspectsSpace")
+	_aspects_space = find_parent("AlchemistTable").get_node("Research")
 	text = _element.name
+	connect("button_down", _on_pressed)
 
 
 func _on_pressed():
