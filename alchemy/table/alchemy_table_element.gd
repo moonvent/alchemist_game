@@ -17,6 +17,10 @@ var _parent_rect: Rect2
 static var CUSTOM_MINIMUM_SIZE = Vector2(72, 72)
 
 
+func get_node_center_point() -> Vector2:
+	return position + size / 2
+
+
 func _ready():
 	# if we setup it from debug window
 	if not element:

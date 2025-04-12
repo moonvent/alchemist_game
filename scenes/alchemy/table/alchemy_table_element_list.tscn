@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://chphr4jg16tys" path="res://alchemy/table/alchemy_table_element_list.gd" id="1_qspel"]
 
 [node name="AlchemyTableElementList" type="TabContainer"]
-offset_right = 259.0
+offset_right = 207.0
 offset_bottom = 646.0
 tab_alignment = 1
+current_tab = 0
 script = ExtResource("1_qspel")
 
 [node name="Elements" type="TabBar" parent="."]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="GridContainer" type="GridContainer" parent="Elements"]
-clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +26,7 @@ columns = 3
 [node name="Recipe Book" type="TabBar" parent="."]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="GridContainer2" type="GridContainer" parent="Recipe Book"]
 layout_mode = 1

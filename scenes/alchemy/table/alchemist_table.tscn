@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://btuvrqfja580s"]
+[gd_scene load_steps=4 format=3 uid="uid://btuvrqfja580s"]
 
 [ext_resource type="Script" uid="uid://dcn5r3edxts5l" path="res://alchemy/table/alchemist_table.gd" id="1_qotgv"]
 [ext_resource type="PackedScene" uid="uid://4ung2so5ttkx" path="res://scenes/alchemy/table/alchemy_table_element_list.tscn" id="2_t78ex"]
-[ext_resource type="PackedScene" uid="uid://b5gx52xo32ick" path="res://scenes/alchemy/table/alchemy_table_element.tscn" id="2_w3t03"]
-[ext_resource type="Script" uid="uid://ba80qkicouc4l" path="res://alchemy/table/aspects_space.gd" id="3_qiq5i"]
+[ext_resource type="PackedScene" uid="uid://dx0f1qjytykgp" path="res://scenes/alchemy/table/research.tscn" id="3_qiq5i"]
 
 [node name="AlchemistTable" type="HBoxContainer"]
 anchors_preset = 15
@@ -14,26 +13,10 @@ grow_vertical = 2
 script = ExtResource("1_qotgv")
 
 [node name="AlchemyTableElementList" parent="." instance=ExtResource("2_t78ex")]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(207, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_stretch_ratio = 0.0
-current_tab = 0
 
-[node name="AspectsSpace" type="Panel" parent="."]
+[node name="Research" parent="." instance=ExtResource("3_qiq5i")]
 layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("3_qiq5i")
-
-[node name="AlchemyTableElement" parent="AspectsSpace" instance=ExtResource("2_w3t03")]
-layout_mode = 0
-offset_left = 206.0
-offset_top = 38.0
-offset_right = 278.0
-offset_bottom = 110.0
-element_name = "fire"
-
-[node name="AlchemyTableElement2" parent="AspectsSpace" instance=ExtResource("2_w3t03")]
-layout_mode = 0
-offset_bottom = 72.0
-element_name = "air"

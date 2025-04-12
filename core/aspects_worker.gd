@@ -72,3 +72,7 @@ func _load_aspect_picture(name: String) -> String:
 	# return sprite
 
 	return name
+
+
+func _load_researches_from_file():
+	pass
