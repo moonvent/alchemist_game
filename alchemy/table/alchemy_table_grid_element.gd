@@ -23,5 +23,5 @@ func _on_pressed():
 	var alchemy_table_element = _alchemy_table_element_prefab.instantiate()
 	alchemy_table_element.element = _element
 	alchemy_table_element.position = get_global_mouse_position()
-	alchemy_table_element.alchemy_table_element_list = get_parent().get_parent().get_parent()
+	alchemy_table_element.alchemy_table_element_list = find_parent('AlchemyTableElementList')
 	_aspects_space.add_child(alchemy_table_element)

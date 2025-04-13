@@ -19,9 +19,14 @@ func _fill_element_tab():
 
 
 func _ready():
-	_element_grid_container = get_child(0).get_node("GridContainer")
+	_element_grid_container = find_child("GridContainer")
 	_table_element = get_parent()
 	_fill_element_tab()
+	find_child("ResearchModeButton").connect("toggled", Callable(self, "_on_checkbutton_toggled"))
+
+
+func _on_checkbutton_toggled(button_pressed):
+	get_parent().find_child("Research").research_mode = button_pressed
 
 # func _draw():
 # 	draw_rect(get_rect(), Color.RED)

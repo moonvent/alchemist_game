@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.9.2] - 2025-04-13
+
+1. Little refactoring;
+2. Complete making of research;
+
 ## [0.9.1] - 2025-04-12
 
 1. Little refactoring;
