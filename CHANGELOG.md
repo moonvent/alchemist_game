@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.10.0] - 2025-04-14
+
+1. Begin to work with smithy;
+
 ## [0.9.2] - 2025-04-13
 
 1. Little refactoring;

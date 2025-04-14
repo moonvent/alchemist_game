@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://ixk3mh1f04dj"]
+
+[ext_resource type="Script" uid="uid://enot6no6lma7" path="res://smithy/elements/hilt.gd" id="1_cn4lw"]
+[ext_resource type="PackedScene" uid="uid://cjje0fpmxby3i" path="res://scenes/smithy/smith_part.tscn" id="2_jemwl"]
+
+[node name="HiltSmithyElement" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 217.0
+offset_top = 443.0
+offset_right = 217.0
+offset_bottom = 443.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(25, 25)
+script = ExtResource("1_cn4lw")
+
+[node name="ResultPolygon" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(0, 0, 0, -5, 5, -5, 10, -9, 18, -9, 18, -5, 12, -5, 12, 0, 5, 0, 5, 5, -4, 5, -4, 0)
+
+[node name="Area2D" type="Area2D" parent="ResultPolygon"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ResultPolygon/Area2D"]
+polygon = PackedVector2Array(18, -9, 18, -5, 12, -5, 12, 0, 5, 0, 5, 5, -4, 5, -4, 0, 0, 0, 0, -5, 5, -5, 10, -9)
+
+[node name="FifthPart" parent="." instance=ExtResource("2_jemwl")]
+
+[node name="FourthFifth" type="Area2D" parent="FifthPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FifthPart/FourthFifth"]
+polygon = PackedVector2Array(0, 0, -4, 0, -4, 5)
+
+[node name="PartPolygon" type="Polygon2D" parent="FifthPart"]
+polygon = PackedVector2Array(0, 0, -4, 5, -4, 0)
+
+[node name="FourthPart" parent="." instance=ExtResource("2_jemwl")]
+
+[node name="ThirdFourth" type="Area2D" parent="FourthPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FourthPart/ThirdFourth"]
+polygon = PackedVector2Array(5, 0, 5, 1, 0, 1, 0, 0)
+
+[node name="FourthFifth" type="Area2D" parent="FourthPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FourthPart/FourthFifth"]
+polygon = PackedVector2Array(0, 0, -4, 5, -4, 0)
+
+[node name="PartPolygon" type="Polygon2D" parent="FourthPart"]
+polygon = PackedVector2Array(5, 0, 5, 5, -4, 5, 0, 0)
+
+[node name="ThirdPart" parent="." instance=ExtResource("2_jemwl")]
+
+[node name="SecondThird" type="Area2D" parent="ThirdPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ThirdPart/SecondThird"]
+polygon = PackedVector2Array(5, -5, 4, -5, 4, 0, 5, 0)
+
+[node name="ThirdFourth" type="Area2D" parent="ThirdPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ThirdPart/ThirdFourth"]
+polygon = PackedVector2Array(5, 0, 5, 1, 0, 1, 0, 0)
+
+[node name="PartPolygon" type="Polygon2D" parent="ThirdPart"]
+polygon = PackedVector2Array(5, -5, 5, 0, 0, 0, 0, -5)
+
+[node name="SecondPart" parent="." instance=ExtResource("2_jemwl")]
+
+[node name="FirstSecond" type="Area2D" parent="SecondPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondPart/FirstSecond"]
+polygon = PackedVector2Array(12, -5, 10, -5, 10, -9)
+
+[node name="SecondThird" type="Area2D" parent="SecondPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondPart/SecondThird"]
+polygon = PackedVector2Array(5, 0, 5, -5, 4, -5, 4, 0)
+
+[node name="PartPolygon" type="Polygon2D" parent="SecondPart"]
+polygon = PackedVector2Array(12, -5, 12, 0, 5, 0, 5, -5, 10, -9, 10, -5)
+
+[node name="FirstPart" parent="." instance=ExtResource("2_jemwl")]
+
+[node name="FirstSecond" type="Area2D" parent="FirstPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FirstPart/FirstSecond"]
+polygon = PackedVector2Array(10, -9, 10, -5, 12, -5)
+
+[node name="PartPolygon" type="Polygon2D" parent="FirstPart"]
+polygon = PackedVector2Array(18, -9, 18, -5, 10, -5, 10, -9)

@@ -74,7 +74,7 @@ func _gui_input(event):
 
 		# _panel_container.queue_redraw()
 
-	elif event is InputEventMouseMotion:
+	elif event is InputEventMouseMotion and is_dragging:
 		if is_dragging:
 			position += event.relative
 			_panel_container.queue_redraw()

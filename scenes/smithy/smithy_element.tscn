@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://b15xs3ga7lxml"]
+
+[node name="HiltSmithyElement" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultPolygon" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(0, 0, 0, -5, 5, -5, 10, -9, 18, -9, 18, -5, 12, -5, 12, 0, 5, 0, 5, 5, -4, 5, -4, 0)
+
+[node name="Area2D" type="Area2D" parent="ResultPolygon"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ResultPolygon/Area2D"]
+polygon = PackedVector2Array(18, -9, 18, -5, 12, -5, 12, 0, 5, 0, 5, 5, -4, 5, -4, 0, 0, 0, 0, -5, 5, -5, 10, -9)
+
+[node name="FifthPart" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-4, 5, -4, 0, 0, 0)
+
+[node name="FourthFifth" type="Area2D" parent="FifthPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FifthPart/FourthFifth"]
+polygon = PackedVector2Array(0, 0, -4, 0, -4, 5)
+
+[node name="FourthPart" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(5, 0, 5, 5, -4, 5, 0, 0)
+
+[node name="ThirdFourth" type="Area2D" parent="FourthPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FourthPart/ThirdFourth"]
+polygon = PackedVector2Array(5, 0, 5, 1, 0, 1, 0, 0)
+
+[node name="FourthFifth" type="Area2D" parent="FourthPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FourthPart/FourthFifth"]
+polygon = PackedVector2Array(0, 0, -4, 5, -4, 0)
+
+[node name="ThirdPart" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(5, -5, 0, -5, 0, 0, 5, 0)
+
+[node name="SecondThird" type="Area2D" parent="ThirdPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ThirdPart/SecondThird"]
+polygon = PackedVector2Array(5, -5, 4, -5, 4, 0, 5, 0)
+
+[node name="ThirdFourth" type="Area2D" parent="ThirdPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ThirdPart/ThirdFourth"]
+polygon = PackedVector2Array(5, 0, 5, 1, 0, 1, 0, 0)
+
+[node name="SecondPart" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(12, 0, 12, -5, 10, -5, 10, -9, 5, -5, 5, 0)
+
+[node name="FirstSecond" type="Area2D" parent="SecondPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondPart/FirstSecond"]
+polygon = PackedVector2Array(12, -5, 10, -5, 10, -9)
+
+[node name="SecondThird" type="Area2D" parent="SecondPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondPart/SecondThird"]
+polygon = PackedVector2Array(5, 0, 5, -5, 4, -5, 4, 0)
+
+[node name="FirstPart" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(18, -5, 10, -5, 10, -9, 18, -9)
+
+[node name="FirstSecond" type="Area2D" parent="FirstPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FirstPart/FirstSecond"]
+polygon = PackedVector2Array(10, -9, 10, -5, 12, -5)
