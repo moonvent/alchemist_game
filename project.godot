@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="alchemist"
-run/main_scene="uid://ixk3mh1f04dj"
+run/main_scene="uid://byd8aifajnxk0"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
