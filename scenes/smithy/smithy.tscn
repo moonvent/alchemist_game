@@ -11,8 +11,7 @@ grow_vertical = 2
 
 [node name="HiltSmithyElement" parent="." instance=ExtResource("1_nrxkw")]
 layout_mode = 1
-offset_left = 553.0
-offset_top = 332.0
-offset_right = 553.0
-offset_bottom = 332.0
-scale = Vector2(15, 15)
+offset_left = -19.0
+offset_top = -74.0
+offset_right = -19.0
+offset_bottom = -74.0

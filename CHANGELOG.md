@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.10.1] - 2025-04-15
+
+1. Complete move + stick feature of smithy element;
+
 ## [0.10.0] - 2025-04-14
 
 1. Begin to work with smithy;
