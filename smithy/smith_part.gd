@@ -3,26 +3,26 @@ extends Polygon2D
 class_name SmithyPart
 
 var is_dragging: bool = false
+var is_selected: bool = false
 
 var drag_offset: Vector2  # Сохраним смещение между мышкой и нодой
 
 
 func _ready() -> void:
 	add_to_group("MovePart")
+	add_to_group("RotatePart")
 
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed and Geometry2D.is_point_in_polygon(to_local(event.position), polygon):
-				start_dragging()
-
+	# check if selected current element
+	if Geometry2D.is_point_in_polygon(to_local(event.position), polygon):
+		if event.is_action_pressed("select_smith_part"):
+			if not is_selected:
+				is_selected = true
 			else:
-				stop_dragging()
+				stop_dragging() if is_dragging else start_dragging()
 
-	elif event is InputEventMouseMotion and is_dragging:
-		if is_dragging:
-			# if we use zoom, need event.relative / global_scale
+		elif is_dragging and is_selected and event is InputEventMouseMotion:
 			position += event.relative
 
 
