@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi0bxu5iqj35"]
+
+[ext_resource type="PackedScene" uid="uid://cjje0fpmxby3i" path="res://scenes/smithy/smith_part.tscn" id="1_uwu31"]
+
+[node name="FourthPart" instance=ExtResource("1_uwu31")]
+rotation = -0.785398
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+position = Vector2(64, 112)
+polygon = PackedVector2Array(-56, 0, -152, -104, -88, -216, 16, -128)
+
+[node name="ThirdFourth" type="Area2D" parent="." index="1"]
+position = Vector2(64, 112)
+
+[node name="PartPosition" type="Marker2D" parent="ThirdFourth" index="0"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ThirdFourth" index="1"]
+position = Vector2(160, -192)
+polygon = PackedVector2Array(-144, 64, -136, 64, -208, 192, -216, 192)

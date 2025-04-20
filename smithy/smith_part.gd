@@ -1,25 +1,31 @@
-extends Polygon2D
+extends Node2D
 
-class_name SmithyPart
+class_name SmithPart
 
 var is_dragging: bool = false
 var is_selected: bool = false
 
 var drag_offset: Vector2  # Сохраним смещение между мышкой и нодой
 
+var _smith_model: SmithModel
+
+@export var correct_rotation_degrees: int
+
 
 func _ready() -> void:
 	add_to_group("MovePart")
 	add_to_group("RotatePart")
+	_smith_model = get_parent()
 
 
 func _input(event):
 	if event.is_action_pressed("select_smith_part"):
 		# select / start srag / stop drag
-		if Geometry2D.is_point_in_polygon(to_local(event.position), polygon):
+		var local_mouse = $Polygon2D.to_local(get_global_mouse_position())
+		if Geometry2D.is_point_in_polygon(local_mouse, $Polygon2D.polygon):
 			# check if selected current element
 			if not is_selected:
-				is_selected = true
+				_smith_model.switch_select_part(self)
 			else:
 				stop_dragging() if is_dragging else start_dragging()
 
@@ -29,11 +35,9 @@ func _input(event):
 			position += event.relative
 		elif event.is_action_pressed("rotate_smith_part_right"):
 			# rotate to right
-			center_polygon_around_itself(self)
 			rotation += deg_to_rad(45)
 		elif event.is_action_pressed("rotate_smith_part_left"):
 			# rotate to left
-			center_polygon_around_itself(self)
 			rotation -= deg_to_rad(45)
 
 
@@ -48,9 +52,9 @@ func stop_dragging():
 
 
 func _enter_to_connect_area_part(new_area: Area2D, current_area: Area2D):
-	if new_area.name == current_area.name:
+	if new_area.name == current_area.name and correct_rotation_degrees == int(rotation_degrees):
 		stop_dragging()
-		global_position = new_area.global_position
+		global_position = new_area.get_node("PartPosition").global_position
 
 
 func _change_signals_to_connect_state(activate: bool = true):
@@ -60,30 +64,3 @@ func _change_signals_to_connect_state(activate: bool = true):
 			connection_area.connect("area_entered", _connect_func)
 		else:
 			connection_area.disconnect("area_entered", _connect_func)
-
-
-func center_polygon_around_itself(polygon_node: Polygon2D):
-	var points = polygon_node.polygon
-	var center = Vector2()
-
-	for point in points:
-		center += point
-	center /= points.size()
-
-	# Сдвигаем точки у Polygon2D
-	for i in range(points.size()):
-		points[i] -= center
-	polygon_node.polygon = points
-
-	# Сдвигаем саму ноду, чтобы визуально не изменилось
-	polygon_node.position += center
-
-	# Теперь ищем CollisionPolygon2D и сдвигаем его polygon тоже!
-	for child in polygon_node.get_children():
-		if child is Area2D:
-			for area_child in child.get_children():
-				if area_child is CollisionPolygon2D:
-					var shape_points = area_child.polygon
-					for i in range(shape_points.size()):
-						shape_points[i] -= center
-					area_child.polygon = shape_points

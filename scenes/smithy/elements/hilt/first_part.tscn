@@ -2,5 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://cjje0fpmxby3i" path="res://scenes/smithy/smith_part.tscn" id="1_87ggd"]
 
-[node name="SmithPart" instance=ExtResource("1_87ggd")]
-polygon = PackedVector2Array(0, 0, 0, -128, 192, -128, 192, 0)
+[node name="FirstPart" instance=ExtResource("1_87ggd")]
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+polygon = PackedVector2Array(-96, -64, 96, -64, 96, 64, -96, 64)
+
+[node name="FirstSecond" type="Area2D" parent="." index="1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FirstSecond" index="0"]
+polygon = PackedVector2Array(-96, -64, -88, -64, -88, 56, 0, 56, 0, 64, -96, 64)
+
+[node name="PartPosition" type="Marker2D" parent="FirstSecond" index="1"]
+position = Vector2(-128, 64)

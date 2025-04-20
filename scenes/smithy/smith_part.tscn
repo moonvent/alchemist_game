@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://d11skaeagcd5q" path="res://smithy/smith_part.gd" id="1_jjbbw"]
 
-[node name="SmithPart" type="Polygon2D"]
+[node name="SmithPart" type="Node2D"]
 script = ExtResource("1_jjbbw")

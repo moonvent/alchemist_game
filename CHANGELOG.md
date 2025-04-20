@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.10.3] - 2025-04-20
+
+1. Complete smithy element construct, can drag, select, rotate, move;
+
 ## [0.10.2] - 2025-04-20
 
 1. Add feature of selecting smithy elements, dragging, rotating (but
