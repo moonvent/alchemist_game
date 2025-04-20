@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.10.2] - 2025-04-20
+
+1. Add feature of selecting smithy elements, dragging, rotating (but
+   last not complete)
+
 ## [0.10.1] - 2025-04-15
 
 1. Complete move + stick feature of smithy element;

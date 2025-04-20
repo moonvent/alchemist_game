@@ -59,20 +59,20 @@ polygon = PackedVector2Array(576, 448, 576, 456, 384, 456, 384, 448)
 [node name="SecondPart" parent="." instance=ExtResource("2_jemwl")]
 polygon = PackedVector2Array(576, 320, 768, 192, 768, 320, 896, 320, 896, 448, 576, 448)
 
-[node name="FirstSecond" type="Area2D" parent="SecondPart" groups=["ConnectionArea"]]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondPart/FirstSecond"]
-polygon = PackedVector2Array(768, 192, 784, 320, 768, 320)
-
 [node name="SecondThird" type="Area2D" parent="SecondPart" groups=["ConnectionArea"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondPart/SecondThird"]
 polygon = PackedVector2Array(576, 320, 576, 448, 568, 448, 568, 320)
 
+[node name="FirstSecond" type="Area2D" parent="SecondPart"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondPart/FirstSecond"]
+polygon = PackedVector2Array(768, 192, 776, 192, 776, 312, 896, 312, 896, 320, 768, 320)
+
 [node name="FirstPart" parent="." instance=ExtResource("2_jemwl")]
 polygon = PackedVector2Array(768, 192, 960, 192, 960, 320, 768, 320)
 
-[node name="FirstSecond" type="Area2D" parent="FirstPart" groups=["ConnectionArea"]]
+[node name="FirstSecond" type="Area2D" parent="FirstPart"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FirstPart/FirstSecond"]
-polygon = PackedVector2Array(768, 192, 784, 320, 768, 320)
+polygon = PackedVector2Array(768, 192, 776, 192, 776, 312, 896, 312, 896, 320, 768, 320)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl7014f3n5ldc"]
+
+[ext_resource type="PackedScene" uid="uid://cjje0fpmxby3i" path="res://scenes/smithy/smith_part.tscn" id="1_87ggd"]
+
+[node name="SmithPart" instance=ExtResource("1_87ggd")]
+polygon = PackedVector2Array(0, 0, 0, -128, 192, -128, 192, 0)
