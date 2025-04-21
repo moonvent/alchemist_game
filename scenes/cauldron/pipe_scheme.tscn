@@ -1,0 +1,247 @@
+[gd_scene load_steps=3 format=3 uid="uid://boobry7uix4kh"]
+
+[ext_resource type="Script" uid="uid://dw6nqmvv8xkq3" path="res://cauldron/pipe_scheme.gd" id="1_4ldhf"]
+[ext_resource type="PackedScene" uid="uid://x1i1qqm4qgyn" path="res://scenes/cauldron/pipe.tscn" id="2_0u28g"]
+
+[node name="PipeScheme" type="Node2D"]
+script = ExtResource("1_4ldhf")
+
+[node name="Pipe1" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(352, 96)
+
+[node name="Pipe2" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(416, 96)
+
+[node name="Pipe3" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(480, 96)
+
+[node name="Pipe4" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(544, 96)
+
+[node name="Pipe5" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(608, 96)
+
+[node name="Pipe6" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(672, 96)
+
+[node name="Pipe7" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(736, 96)
+
+[node name="Pipe8" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(800, 96)
+
+[node name="Pipe9" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(864, 96)
+
+[node name="Pipe10" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(928, 96)
+
+[node name="Pipe11" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(352, 160)
+
+[node name="Pipe12" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(416, 160)
+
+[node name="Pipe13" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(480, 160)
+
+[node name="Pipe14" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(544, 160)
+
+[node name="Pipe15" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(608, 160)
+
+[node name="Pipe16" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(672, 160)
+
+[node name="Pipe17" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(736, 160)
+
+[node name="Pipe18" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(800, 160)
+
+[node name="Pipe19" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(864, 160)
+
+[node name="Pipe20" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(928, 160)
+
+[node name="Pipe21" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(352, 224)
+
+[node name="Pipe22" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(416, 224)
+
+[node name="Pipe23" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(480, 224)
+
+[node name="Pipe24" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(544, 224)
+
+[node name="Pipe25" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(608, 224)
+
+[node name="Pipe26" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(672, 224)
+
+[node name="Pipe27" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(736, 224)
+
+[node name="Pipe28" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(800, 224)
+
+[node name="Pipe29" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(864, 224)
+
+[node name="Pipe30" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(928, 224)
+
+[node name="Pipe31" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(352, 288)
+
+[node name="Pipe32" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(416, 288)
+
+[node name="Pipe33" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(480, 288)
+
+[node name="Pipe34" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(544, 288)
+
+[node name="Pipe35" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(608, 288)
+
+[node name="Pipe36" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(672, 288)
+
+[node name="Pipe37" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(736, 288)
+
+[node name="Pipe38" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(800, 288)
+
+[node name="Pipe39" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(864, 288)
+
+[node name="Pipe40" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(928, 288)
+
+[node name="Pipe41" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(352, 352)
+
+[node name="Pipe42" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(416, 352)
+
+[node name="Pipe43" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(480, 352)
+
+[node name="Pipe44" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(544, 352)
+
+[node name="Pipe45" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(608, 352)
+
+[node name="Pipe46" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(672, 352)
+
+[node name="Pipe47" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(736, 352)
+
+[node name="Pipe48" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(800, 352)
+
+[node name="Pipe49" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(864, 352)
+
+[node name="Pipe50" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(928, 352)
+
+[node name="Pipe51" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(352, 416)
+
+[node name="Pipe52" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(416, 416)
+
+[node name="Pipe53" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(480, 416)
+
+[node name="Pipe54" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(544, 416)
+
+[node name="Pipe55" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(608, 416)
+
+[node name="Pipe56" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(672, 416)
+
+[node name="Pipe57" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(736, 416)
+
+[node name="Pipe58" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(800, 416)
+
+[node name="Pipe59" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(864, 416)
+
+[node name="Pipe60" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(928, 416)
+
+[node name="Pipe61" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(352, 480)
+
+[node name="Pipe62" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(416, 480)
+
+[node name="Pipe63" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(480, 480)
+
+[node name="Pipe64" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(544, 480)
+
+[node name="Pipe65" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(608, 480)
+
+[node name="Pipe66" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(672, 480)
+
+[node name="Pipe67" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(736, 480)
+
+[node name="Pipe68" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(800, 480)
+
+[node name="Pipe69" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(864, 480)
+
+[node name="Pipe70" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(928, 480)
+
+[node name="Pipe71" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(352, 544)
+
+[node name="Pipe72" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(416, 544)
+
+[node name="Pipe73" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(480, 544)
+
+[node name="Pipe74" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(544, 544)
+
+[node name="Pipe75" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(608, 544)
+
+[node name="Pipe76" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(672, 544)
+
+[node name="Pipe77" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(736, 544)
+
+[node name="Pipe78" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(800, 544)
+
+[node name="Pipe79" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(864, 544)
+
+[node name="Pipe80" parent="." instance=ExtResource("2_0u28g")]
+position = Vector2(928, 544)

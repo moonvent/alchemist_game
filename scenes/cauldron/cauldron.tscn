@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cgp1lmakt300c"]
+
+[node name="Cauldron" type="Control"]
+layout_mode = 3
+anchors_preset = 0

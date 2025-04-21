@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.11.0] - 2025-04-22
+
+1. Begin to create cauldron mechanic;
+
 ## [0.10.3] - 2025-04-20
 
 1. Complete smithy element construct, can drag, select, rotate, move;
