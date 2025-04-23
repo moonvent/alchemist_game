@@ -1,6 +1,6 @@
 class_name PipeDirectionSchema
 
-var pipe_directions: Dictionary[String, Array] = {}
+var default_pipe_directions: Dictionary[String, Array] = {}
 const put_alias = Pipe.Puts
 
 var start_pipe_name: String

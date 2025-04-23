@@ -7,10 +7,9 @@ func _init():
 	start_pipe_name = "Pipe1"
 	finish_pipe_name = "Pipe25"
 	active_pipes = range(1, 8) + range(11, 18) + range(20, 27) + range(33, 38)
-	pipe_directions = {
+	default_pipe_directions = {
 		"Pipe1":
 		[
-			put_alias.LEFT,
 			put_alias.RIGHT,
 		],
 		"Pipe2":

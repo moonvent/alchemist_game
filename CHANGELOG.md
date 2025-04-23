@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.11.1] - 2025-04-23
+
+1. Complete feature of filling the tubs with a liquid;
+
 ## [0.11.0] - 2025-04-22
 
 1. Begin to create cauldron mechanic;
