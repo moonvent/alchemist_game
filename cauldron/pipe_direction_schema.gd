@@ -3,7 +3,5 @@ class_name PipeDirectionSchema
 var default_pipe_directions: Dictionary[String, Array] = {}
 const put_alias = Pipe.Puts
 
-var start_pipe_name: String
-var finish_pipe_name: String
-
 var active_pipes: Array
+var liquids_array: Array[SchemaLiquid]

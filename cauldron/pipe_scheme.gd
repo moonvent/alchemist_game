@@ -4,10 +4,14 @@ class_name PipeScheme
 
 var current_schema: PipeDirectionSchema
 
+var _primary_pipes: Array[Pipe]
+
+var _current_run_pipes: Array[Pipe]
+
 
 func _ready():
 	_set_pipe_schema()
-	start_liquid()
+	# start_liquids()
 
 
 func _set_pipe_schema():
@@ -16,41 +20,45 @@ func _set_pipe_schema():
 	for pipe_number in current_schema.active_pipes:
 		get_node("Pipe" + str(pipe_number)).is_contain_in_schema = true
 
-	get_node(current_schema.start_pipe_name).is_start_pipe = true
-	get_node(current_schema.finish_pipe_name).is_end_pipe = true
-
 	for pipe_name in current_schema.default_pipe_directions.keys():
 		get_node(pipe_name).active_puts = current_schema.default_pipe_directions[pipe_name]
 
-
-func start_liquid():
-	var start_pipe = get_node(current_schema.start_pipe_name)
-	var liquid = Liquid.new(AspectsWorker.aspects["fire"], start_pipe, Pipe.Puts.RIGHT)
-
-	var timer = Timer.new()
-	timer.wait_time = 5.0
-	timer.one_shot = true
-	add_child(timer)  # обязательно добавить в дерево сцены
-
-	timer.connect("timeout", Callable(process_liquid).bind(start_pipe, liquid))
-	timer.start()
-
-	# process_liquid(start_pipe, liquid)
+	_setup_lines_on_schema()
 
 
-func process_liquid(current_pipe: Pipe, liquid: Liquid):
+func _setup_lines_on_schema():
+	var start_pipe: Pipe
+
+	for schema_liquid in current_schema.liquids_array:
+		start_pipe = get_node(schema_liquid.start_pipe_name)
+		start_pipe.is_start_pipe = true
+		_primary_pipes.append(start_pipe)
+
+		get_node(schema_liquid.end_pipe_name).is_end_pipe = true
+
+
+func start_liquids():
+	print("start liquids")
+	_current_run_pipes = _primary_pipes.duplicate()
+
+	for active_pipe in _current_run_pipes:
+		process_liquid(active_pipe)
+
+
+func process_liquid(current_pipe: Pipe):
 	print("Now in:", current_pipe.name)
 	if current_pipe.is_end_pipe:
 		print("Grats")
 		return
+
 	var next_pipe: Pipe
-	if current_pipe.name == current_schema.start_pipe_name:
+	if current_pipe.is_start_pipe:
 		next_pipe = _get_next_pipe(current_pipe, current_pipe.active_puts[0])
 	else:
 		next_pipe = _get_next_pipe(current_pipe, current_pipe.output_put)
 
 	if next_pipe:
-		return process_liquid(next_pipe, liquid)
+		_current_run_pipes.append(next_pipe)
 	else:
 		print("Last connected pipe: ", current_pipe.name)
 

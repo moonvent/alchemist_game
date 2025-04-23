@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.11.2] - 2025-04-24
+
+1. Add supporting of few liquids;
+
 ## [0.11.1] - 2025-04-23
 
 1. Complete feature of filling the tubs with a liquid;

@@ -1,5 +1,28 @@
-[gd_scene format=3 uid="uid://cgp1lmakt300c"]
+[gd_scene load_steps=4 format=3 uid="uid://cgp1lmakt300c"]
+
+[ext_resource type="PackedScene" uid="uid://boobry7uix4kh" path="res://scenes/cauldron/pipe_scheme.tscn" id="1_8w4fm"]
+[ext_resource type="Script" uid="uid://7a8xisl8p4lv" path="res://cauldron/cauldron.gd" id="1_u2lxt"]
+[ext_resource type="PackedScene" uid="uid://dp77cik3hslru" path="res://scenes/cauldron/cauldron_control_panel.tscn" id="2_tvp6t"]
 
 [node name="Cauldron" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u2lxt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CauldronControlPanel" parent="HBoxContainer" instance=ExtResource("2_tvp6t")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PipeScheme" parent="HBoxContainer" instance=ExtResource("1_8w4fm")]

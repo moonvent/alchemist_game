@@ -4,6 +4,8 @@ class_name Pipe
 
 enum Puts { UP, RIGHT, DOWN, LEFT }
 
+var liquids_array: Array[Liquid]
+
 var _active_puts: Array = []  # array[puts]
 var active_puts: Array:
 	get:
@@ -135,3 +137,7 @@ func can_enter_in_new_pipe(new_pipe, old_put: Puts) -> bool:
 		new_pipe.input_put = interest_put
 		return true
 	return false
+
+
+func process_liquids():
+	pass
