@@ -59,5 +59,5 @@ func _get_next_pipe(current_pipe: Pipe, put: Pipe.Puts):
 	var new_pipe_number = current_pipe.get_next_pipe_number(put)
 	if new_pipe_number:
 		var new_pipe = get_node("Pipe" + str(new_pipe_number))
-		if current_pipe.can_enter(new_pipe, put):
+		if current_pipe.can_enter_in_new_pipe(new_pipe, put):
 			return new_pipe

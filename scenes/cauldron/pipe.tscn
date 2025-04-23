@@ -1,18 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://x1i1qqm4qgyn"]
+[gd_scene load_steps=2 format=3 uid="uid://x1i1qqm4qgyn"]
 
 [ext_resource type="Script" uid="uid://cs4mugbqq48dt" path="res://cauldron/pipe.gd" id="1_wxr6o"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iul2i"]
-size = Vector2(16, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxr6o"]
-size = Vector2(32, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ic8f"]
-size = Vector2(16, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8hba"]
-size = Vector2(32, 16)
 
 [node name="Pipe" type="Node2D"]
 script = ExtResource("1_wxr6o")
@@ -22,30 +10,22 @@ polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [node name="Puts" type="Node2D" parent="."]
 
-[node name="Up" type="Area2D" parent="Puts"]
+[node name="Up" type="Polygon2D" parent="Puts"]
 visible = false
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-8, 0, -8, -32, 8, -32, 8, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Puts/Up"]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_iul2i")
-
-[node name="Right" type="Area2D" parent="Puts"]
+[node name="Right" type="Polygon2D" parent="Puts"]
 visible = false
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, -8, 32, -8, 32, 8, 0, 8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Puts/Right"]
-position = Vector2(16, 0)
-shape = SubResource("RectangleShape2D_wxr6o")
-
-[node name="Down" type="Area2D" parent="Puts"]
+[node name="Down" type="Polygon2D" parent="Puts"]
 visible = false
+color = Color(0.980392, 0, 0, 1)
+polygon = PackedVector2Array(8, 0, 8, 32, -8, 32, -8, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Puts/Down"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_0ic8f")
-
-[node name="Left" type="Area2D" parent="Puts"]
+[node name="Left" type="Polygon2D" parent="Puts"]
 visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Puts/Left"]
-position = Vector2(-16, 0)
-shape = SubResource("RectangleShape2D_x8hba")
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, 8, -32, 8, -32, -8, 0, -8)

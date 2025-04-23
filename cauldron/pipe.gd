@@ -119,7 +119,7 @@ func get_next_pipe_number(put: Puts) -> int:
 	return 0
 
 
-func can_enter(new_pipe, old_put: Puts):
+func can_enter_in_new_pipe(new_pipe, old_put: Puts) -> bool:
 	var interest_put: Puts
 	match old_put:
 		Puts.UP:
@@ -134,3 +134,4 @@ func can_enter(new_pipe, old_put: Puts):
 	if interest_put in new_pipe.active_puts:
 		new_pipe.input_put = interest_put
 		return true
+	return false
