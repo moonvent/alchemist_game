@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.11.3] - 2025-05-11
+
+1. Add progress bar to pipe schemes;
+
 ## [0.11.2] - 2025-04-24
 
 1. Add supporting of few liquids;

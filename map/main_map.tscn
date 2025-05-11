@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://het282rmd2v2"]
+[gd_scene load_steps=12 format=4 uid="uid://het282rmd2v2"]
 
 [ext_resource type="Texture2D" uid="uid://x325jsuhkqlg" path="res://assets/map/gfx/Overworld.png" id="1_ughoj"]
 [ext_resource type="PackedScene" uid="uid://bvvhta1msvh35" path="res://scenes/character/main_character.tscn" id="2_lxmyn"]
 [ext_resource type="PackedScene" uid="uid://c68liskpp1nvr" path="res://scenes/character/enemy.tscn" id="4_otygb"]
 [ext_resource type="PackedScene" uid="uid://7e1ylgl02hha" path="res://scenes/character/villager.tscn" id="4_v0ysp"]
+[ext_resource type="AudioStream" uid="uid://w01ifjj6xv84" path="res://assets/sounds/Test.wav" id="5_qqobk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1yj6"]
 texture = ExtResource("1_ughoj")
@@ -3719,3 +3720,8 @@ position = Vector2(-116, -37)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_otygb")]
 position = Vector2(-116, 21)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qqobk")
+volume_db = -20.0
+autoplay = true

@@ -42,7 +42,7 @@ func start_liquids():
 	_current_run_pipes = _primary_pipes.duplicate()
 
 	for active_pipe in _current_run_pipes:
-		process_liquid(active_pipe)
+		await process_liquid(active_pipe)
 
 
 func process_liquid(current_pipe: Pipe):
@@ -53,9 +53,9 @@ func process_liquid(current_pipe: Pipe):
 
 	var next_pipe: Pipe
 	if current_pipe.is_start_pipe:
-		next_pipe = _get_next_pipe(current_pipe, current_pipe.active_puts[0])
+		next_pipe = await _get_next_pipe(current_pipe, current_pipe.active_puts[0])
 	else:
-		next_pipe = _get_next_pipe(current_pipe, current_pipe.output_put)
+		next_pipe = await _get_next_pipe(current_pipe, current_pipe.output_put)
 
 	if next_pipe:
 		_current_run_pipes.append(next_pipe)
@@ -67,5 +67,5 @@ func _get_next_pipe(current_pipe: Pipe, put: Pipe.Puts):
 	var new_pipe_number = current_pipe.get_next_pipe_number(put)
 	if new_pipe_number:
 		var new_pipe = get_node("Pipe" + str(new_pipe_number))
-		if current_pipe.can_enter_in_new_pipe(new_pipe, put):
+		if await current_pipe.can_enter_in_new_pipe(new_pipe, put):
 			return new_pipe

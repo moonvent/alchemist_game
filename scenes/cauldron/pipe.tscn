@@ -13,19 +13,51 @@ polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 [node name="Up" type="Polygon2D" parent="Puts"]
 visible = false
 color = Color(1, 0, 0, 1)
-polygon = PackedVector2Array(-8, 0, -8, -32, 8, -32, 8, 0)
+polygon = PackedVector2Array(-8, 8, -8, -32, 8, -32, 8, 8)
+
+[node name="UpProgressBar" type="TextureProgressBar" parent="Puts/Up"]
+visible = false
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 8.0
+offset_bottom = 8.0
+max_value = 4.0
 
 [node name="Right" type="Polygon2D" parent="Puts"]
 visible = false
 color = Color(1, 0, 0, 1)
-polygon = PackedVector2Array(0, -8, 32, -8, 32, 8, 0, 8)
+polygon = PackedVector2Array(-8, -8, 32, -8, 32, 8, -8, 8)
+
+[node name="RightProgressBar" type="TextureProgressBar" parent="Puts/Right"]
+visible = false
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 8.0
+max_value = 4.0
 
 [node name="Down" type="Polygon2D" parent="Puts"]
 visible = false
 color = Color(0.980392, 0, 0, 1)
-polygon = PackedVector2Array(8, 0, 8, 32, -8, 32, -8, 0)
+polygon = PackedVector2Array(8, -8, 8, 32, -8, 32, -8, -8)
+
+[node name="DownProgressBar" type="TextureProgressBar" parent="Puts/Down"]
+visible = false
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 32.0
+max_value = 4.0
 
 [node name="Left" type="Polygon2D" parent="Puts"]
 visible = false
 color = Color(1, 0, 0, 1)
-polygon = PackedVector2Array(0, 8, -32, 8, -32, -8, 0, -8)
+polygon = PackedVector2Array(8, 8, -32, 8, -32, -8, 8, -8)
+
+[node name="LeftProgressBar" type="TextureProgressBar" parent="Puts/Left"]
+visible = false
+offset_left = -32.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+max_value = 4.0

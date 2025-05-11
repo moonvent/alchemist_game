@@ -135,9 +135,80 @@ func can_enter_in_new_pipe(new_pipe, old_put: Puts) -> bool:
 
 	if interest_put in new_pipe.active_puts:
 		new_pipe.input_put = interest_put
+		await run_liquid(old_put, interest_put, new_pipe)
 		return true
+
+	await run_liquid_dead_end(old_put)
 	return false
 
 
-func process_liquids():
-	pass
+func _make_color_texture(color: Color, bar: TextureProgressBar):
+	var img := Image.create(bar.size.x, bar.size.y, false, Image.FORMAT_RGBA8)
+	img.fill(color)
+	bar.texture_progress = ImageTexture.create_from_image(img)
+
+
+func run_liquid(old_put: Puts, new_put: Puts, new_pipe: Pipe):
+	var from_progress_bar: TextureProgressBar
+	var to_progress_bar: TextureProgressBar
+	var fill_mode: ProgressBar.FillMode
+
+	match old_put:
+		Puts.UP:
+			from_progress_bar = find_child("UpProgressBar")
+			to_progress_bar = new_pipe.find_child("DownProgressBar")
+			fill_mode = ProgressBar.FillMode.FILL_BOTTOM_TO_TOP
+		Puts.RIGHT:
+			from_progress_bar = find_child("RightProgressBar")
+			to_progress_bar = new_pipe.find_child("LeftProgressBar")
+			fill_mode = ProgressBar.FillMode.FILL_BEGIN_TO_END
+		Puts.DOWN:
+			from_progress_bar = find_child("DownProgressBar")
+			to_progress_bar = new_pipe.find_child("UpProgressBar")
+			fill_mode = ProgressBar.FillMode.FILL_TOP_TO_BOTTOM
+		Puts.LEFT:
+			from_progress_bar = find_child("LeftProgressBar")
+			to_progress_bar = new_pipe.find_child("RightProgressBar")
+			fill_mode = ProgressBar.FillMode.FILL_END_TO_BEGIN
+
+	from_progress_bar.visible = true
+	_make_color_texture(Color.ORANGE, from_progress_bar)
+	from_progress_bar.texture_under = null
+	from_progress_bar.set_fill_mode(fill_mode)
+
+	to_progress_bar.visible = true
+	_make_color_texture(Color.ORANGE, to_progress_bar)
+	to_progress_bar.texture_under = null
+	to_progress_bar.set_fill_mode(fill_mode)
+
+	var tween = create_tween()
+	tween.tween_property(from_progress_bar, "value", 4, 0.5)
+	await tween.finished
+	tween = create_tween()
+	tween.tween_property(to_progress_bar, "value", 4, 0.5)
+	await tween.finished
+
+
+func run_liquid_dead_end(old_put: Puts):
+	var from_progress_bar: TextureProgressBar
+	var fill_mode: ProgressBar.FillMode
+	match old_put:
+		Puts.UP:
+			from_progress_bar = find_child("UpProgressBar")
+			fill_mode = ProgressBar.FillMode.FILL_BOTTOM_TO_TOP
+		Puts.RIGHT:
+			from_progress_bar = find_child("RightProgressBar")
+			fill_mode = ProgressBar.FillMode.FILL_BEGIN_TO_END
+		Puts.DOWN:
+			from_progress_bar = find_child("DownProgressBar")
+			fill_mode = ProgressBar.FillMode.FILL_TOP_TO_BOTTOM
+		Puts.LEFT:
+			from_progress_bar = find_child("LeftProgressBar")
+			fill_mode = ProgressBar.FillMode.FILL_END_TO_BEGIN
+
+	from_progress_bar.visible = true
+	from_progress_bar.set_fill_mode(fill_mode)
+
+	var tween := create_tween()
+	tween.tween_property(from_progress_bar, "value", 4, 0.5)
+	await tween.finished
