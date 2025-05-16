@@ -15,6 +15,9 @@ var min_polygon_area: float = 10000
 var last_correct_point: Vector2
 var is_move_point: bool = false
 
+var new_setup_point: Vector2
+var old_point: Vector2
+
 
 func _ready():
 	$Polygon2D/LeftTopCorner.connect(
@@ -54,20 +57,20 @@ func _button_up():
 
 func _input(event):
 	if event is InputEventMouseMotion and is_move_point:
+		new_setup_point = get_local_mouse_position()
+		old_point = $Polygon2D.polygon[move_point]
+
+		_setup_new_polygon_point(new_setup_point)
+
 		var current_polygon_area = get_polygon_area()
-		var new_point: Vector2
 
 		if current_polygon_area < min_polygon_area or current_polygon_area > max_polygon_area:
-			new_point = last_correct_point
-			is_move_point = false
+			_setup_new_polygon_point(old_point)
 
-		else:
-			new_point = get_local_mouse_position()
-			if current_polygon_area > min_polygon_area:
-				last_correct_point = new_point
 
-		$Polygon2D.polygon[move_point] = new_point
-		$Polygon2D.get_children()[move_point].position = new_point - corner_button_center
+func _setup_new_polygon_point(point: Vector2):
+	$Polygon2D.polygon[move_point] = point
+	$Polygon2D.get_children()[move_point].position = point - corner_button_center
 
 
 func get_polygon_area() -> float:
