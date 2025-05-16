@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciakycije47ma"]
+
+[ext_resource type="Script" uid="uid://cefty46dqab0u" path="res://sewing/fabric_piece.gd" id="1_3sstr"]
+
+[node name="FabricPiece" type="Node2D"]
+script = ExtResource("1_3sstr")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[node name="LeftTopCorner" type="Button" parent="Polygon2D"]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -48.0
+offset_bottom = -48.0
+
+[node name="RightTopCorner" type="Button" parent="Polygon2D"]
+offset_left = 48.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = -48.0
+
+[node name="RightDownCorner" type="Button" parent="Polygon2D"]
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="LeftDownCorner" type="Button" parent="Polygon2D"]
+offset_left = -80.0
+offset_top = 48.0
+offset_right = -48.0
+offset_bottom = 80.0

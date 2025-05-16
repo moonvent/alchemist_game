@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.12.0] - 2025-05-16
+
+1. Begin to create sewing;
+
 ## [0.11.3] - 2025-05-11
 
 1. Add progress bar to pipe schemes;
