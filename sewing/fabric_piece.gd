@@ -9,7 +9,7 @@ var move_point: int = -1
 var button_to_point: Dictionary[Direction, Vector2] = {}
 var corner_button_center: Vector2
 
-var max_polygon_area: float = 20000
+var max_polygon_area: float = 50000
 var min_polygon_area: float = 10000
 
 var last_correct_point: Vector2
@@ -45,6 +45,18 @@ func _ready():
 	button_to_point[Direction.RightDown] = $Polygon2D.polygon[2]
 	button_to_point[Direction.LeftDown] = $Polygon2D.polygon[3]
 
+	$Area2D/CollisionPolygon2D.polygon = $Polygon2D.polygon
+	$Area2D.connect("input_event", _on_area_input)
+
+
+func _on_area_input(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				get_parent().move_piece = self
+			else:
+				get_parent().move_piece = null
+
 
 func _start_moving_point(corner: Direction):
 	is_move_point = true
@@ -71,6 +83,7 @@ func _input(event):
 func _setup_new_polygon_point(point: Vector2):
 	$Polygon2D.polygon[move_point] = point
 	$Polygon2D.get_children()[move_point].position = point - corner_button_center
+	$Area2D/CollisionPolygon2D.polygon = $Polygon2D.polygon
 
 
 func get_polygon_area() -> float:

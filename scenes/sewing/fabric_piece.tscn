@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cefty46dqab0u" path="res://sewing/fabric_piece.gd" id="1_3sstr"]
 
-[node name="FabricPiece" type="Node2D"]
+[node name="FabricPiece" type="Node2D" groups=["piece"]]
 script = ExtResource("1_3sstr")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -31,3 +31,8 @@ offset_left = -80.0
 offset_top = 48.0
 offset_right = -48.0
 offset_bottom = 80.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
